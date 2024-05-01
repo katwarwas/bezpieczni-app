@@ -1,0 +1,27 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from database import engine
+from basic.views import router as basic_router
+from backend.admin.views import router as admin_router
+from backend.post.views import router as post_router
+from backend.admin import models as admin_models
+from backend.post import models as post_models
+
+admin_models.Base.metadata.create_all(bind=engine)
+post_models.Base.metadata.create_all(bind=engine)
+
+app = FastAPI()
+
+origins = ['http://localhost:3000']
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins
+)
+
+app.include_router(basic_router)
+app.include_router(admin_router)
+app.include_router(post_router)
+
+app.mount("/static", StaticFiles(directory="static"), name="static")

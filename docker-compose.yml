@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: "bezpieczni"
+    image: postgres:15
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=bezpieczni
+    ports:
+      - 5432:5432
+volumes:
+  db_data:
