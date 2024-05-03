@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bezpieczni</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', path='css/style.css') }}"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+    </style>
+    <script
+      defer
+      src="https://unpkg.com/htmx.org@1.9.12"
+      integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/dashboard">Bezpieczni</a></h1>
+      <div class="menu">
+        <a href="/add/post">Dodaj artykuł</a>
+        <a href="/admin/news" id="activeLink">Aktualności</a>
+      </div>
+    </header>
+    {% for post in posts %}
+    <article id="post-{{ post.id }}" class="postRow">
+      <a href="/admin/news/{{post.id}}">
+        {{ post.title }}
+        <hr />
+        <p class="time-cell">{{ post.created_at}}</p>
+        <span class="newsContent"> {{ post.content | safe }}</span>
+      </a>
+    </article>
+    {% endfor %}
+    <script defer>
+      function truncateContent(content, maxLength) {
+        if (content.length > maxLength) {
+          return content.substring(0, maxLength) + "..."
+        } else {
+          return content
+        }
+      }
+
+      // Znajdź wszystkie elementy .newsContent
+      var newsContents = document.querySelectorAll(".newsContent")
+
+      // Iteruj przez każdy element .newsContent i skróć zawartość
+      newsContents.forEach(function (newsContent) {
+        var content = newsContent.textContent
+        var truncatedContent = truncateContent(content, 200)
+        newsContent.textContent = truncatedContent
+      })
+
+      function formatTime(timeStr) {
+        return timeStr.substring(0, 16)
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        let timeCells = document.querySelectorAll(".time-cell")
+        timeCells.forEach(function (cell) {
+          cell.textContent = formatTime(cell.textContent)
+        })
+      })
+    </script>
+  </body>
+</html>

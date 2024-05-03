@@ -12,12 +12,24 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
     </style>
+    <script
+      defer
+      src="https://unpkg.com/htmx.org@1.9.12"
+      integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <a href="/dashboard" class="button" style="margin-bottom: 20px">wróć</a>
-    <h3>Dodaj post:</h3>
+    <header>
+      <h1><a href="/dashboard">Bezpieczni</a></h1>
+      <div class="menu">
+        <a href="/add/post" id="activeLink">Dodaj artykuł</a>
+        <a href="/admin/news">Aktualności</a>
+      </div>
+    </header>
+    <h3 style="margin-top: 100px">Dodaj artykuł:</h3>
     <div class="createFormDiv">
-      <form id="createForm" method="POST" action="/add/post">
+      <form id="createForm" hx-post="/add/post" hx-swap="beforeend">
         <label for="title">Tytuł:</label><br />
         <textarea id="title" name="title" rows="1"></textarea><br />
 
@@ -27,7 +39,7 @@
 
         <textarea id="content" name="content" style="display: none"></textarea>
 
-        <button id="addButton" class="button" type="submit">Dodaj</button>
+        <button id="addButton" class="button">Dodaj</button>
       </form>
     </div>
 
