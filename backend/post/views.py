@@ -40,9 +40,11 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, t
         db.add(post)
         db.commit()
         db.refresh(post)
-        return '<div id="info><p>Post został dodany</p></div>'
+        content = """Artykuł został dodany poprawnie"""
+        return HTMLResponse(content=content)
     except HTTPException as e:
-        return f'<div id="info"><p>Błąd: {e.detail}</p></div>'
+        content = f'Błąd: {e.detail}'
+        return HTMLResponse(content=content)
     
 
 @router.get("/admin/news", response_class=HTMLResponse)

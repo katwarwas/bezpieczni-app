@@ -1,0 +1,55 @@
+#logout {
+  background-color: #8ebbff40;
+  color: #e2eeff;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  font-style: normal;
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 0px solid #000;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 12px;
+  margin-right: 12px;
+  float: right;
+}
+
+.menuGrid {
+  display: grid;
+  align-content: center;
+  justify-items: end;
+}
+
+.menuAdmin {
+  display: flex;
+  margin-top: 12px;
+}
+
+.menuAdmin a {
+  color: #8ebbff80;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  font-size: 24px;
+  margin: 0 12px;
+}
+
+#activeLink {
+  color: #8ebbff;
+}
+
+#activeLink:active {
+  color: #8ebbff80;
+}
+
+.menuAdmin a:hover {
+  color: #8ebbff;
+  transform: scale(0.95);
+}
+
+.menuAdmin a:active {
+  color: #8ebbff80;
+}

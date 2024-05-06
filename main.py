@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.gzip import GZipMiddleware
 from database import engine
 from basic.views import router as basic_router
 from backend.admin.views import router as admin_router
@@ -19,6 +20,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins
 )
+app.add_middleware(GZipMiddleware)
 
 app.include_router(basic_router)
 app.include_router(admin_router)

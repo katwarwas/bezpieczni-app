@@ -82,7 +82,8 @@ async def login(db: DbSession, email: str = Form(...), password: str = Form(...)
     user = get_by_email(db=db, email=user.email)
 
     if not user or not user.check_password(password):
-        return """<div><p>Blędne hasło lub email.</p></div>""" 
+        content = "<p>Blędne hasło lub email.</p>"
+        return HTMLResponse(content=content)
     
     redirect = RedirectResponse(url="/dashboard", status_code=status.HTTP_302_FOUND)
 
@@ -90,7 +91,7 @@ async def login(db: DbSession, email: str = Form(...), password: str = Form(...)
         key="jwt",
         value=user.refresh_token,
         httponly=True,
-        secure=True,
+        # secure=True,
         samesite=None,
         max_age=60 * 60 * settings.refresh_token_expire_hours,
     )
