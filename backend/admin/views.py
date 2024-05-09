@@ -28,7 +28,7 @@ async def register_html(request: Request):
     return templates.TemplateResponse("admin/register.html", {"request": request})
 
 
-@router.post("/register", dependencies=[Depends(get_current_user)])
+@router.post("/register")
 async def register(db: DbSession, 
                    name: str = Form(...), 
                    surname: str = Form(...), 
