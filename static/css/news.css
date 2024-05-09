@@ -11,7 +11,7 @@
 
 .gridContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 500px);
+  grid-template-columns: repeat(auto-fill, 400px);
   max-width: 2100px;
   gap: 10px;
   align-self: start;
@@ -44,7 +44,7 @@
 
 .postRow img {
   height: 260px;
-  width: 464px;
+  width: 364px;
   opacity: 0.8;
   border-radius: 8px 8px 0px 0px;
   object-fit: cover;
@@ -57,7 +57,7 @@
   font-weight: 400;
   font-style: normal;
   text-align: left;
-  font-size: 20px;
+  font-size: 18px;
   padding: 8px;
   max-height: 30%;
 }
@@ -76,4 +76,17 @@
 
 hr {
   margin: 4px 0px;
+}
+
+.postRow span {
+  line-height: 0.9;
+  display: block;
+}
+
+.newsTitle {
+  height: 48px;
+}
+
+.newsTitle p {
+  color: red;
 }

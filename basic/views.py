@@ -31,15 +31,12 @@ async def cyberattacks_page(request: Request):
 async def posts(request: Request, db: DbSession, page: int = 0):
     posts = db.query(Posts).order_by(desc(Posts.created_at)).limit(12).offset((page-1)*12).all()
     pages = ceil(db.query(Posts).count() / 12)
-    print('liczba stron:',pages)
     post_ids = []
-    
     for post in posts:
         post_ids.append(post.id)
-
     photos = get_photos_in_range(post_ids=post_ids)
 
-    return templates.TemplateResponse("subpages/news.html", {"request": request, "posts": posts, "photos": photos, "pages": pages})
+    return templates.TemplateResponse("subpages/news.html", {"request": request, "posts": posts, "photos": photos, "pages": pages, "actual_page": page})
 
 
 @router.get("/news/{id}", response_class=HTMLResponse)

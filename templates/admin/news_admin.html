@@ -118,7 +118,7 @@
       // Iteruj przez każdy element .newsContent i skróć zawartość
       newsTitles.forEach(function (newsTitle) {
         var title = newsTitle.textContent
-        var truncatedTitle = truncateContent(title, 42)
+        var truncatedTitle = truncateContent(title, 72)
         newsTitle.textContent = truncatedTitle
       })
 
