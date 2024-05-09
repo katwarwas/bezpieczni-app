@@ -26,20 +26,74 @@
         <a id="logout" href="/logout">Wyloguj się</a>
         <nav class="menuAdmin">
           <a href="/add/post">Dodaj artykuł</a>
-          <a href="/admin/news" id="activeLink">Aktualności</a>
+          <a href="/admin/news/page-1" id="activeLink">Aktualności</a>
         </nav>
       </div>
     </header>
-    {% for post in posts %}
-    <article id="post-{{ post.id }}" class="postRow">
+    <div class="space"></div>
+    <h2 class="newsHeading">Aktualności</h2>
+    <div class="gridContainer">
+      {% for post in posts %}
       <a href="/admin/news/{{post.id}}">
-        {{ post.title }}
-        <hr />
-        <p class="time-cell">{{ post.created_at}}</p>
-        <span class="newsContent"> {{ post.content | safe }}</span>
+        <article id="post-{{ post.id }}" class="postRow">
+          {% for photo, post_id in photos %} {% if post_id == post.id %}
+          <img src="data:image/jpeg;base64,{{ photo }}" alt="Photo" />
+          {% endif %} {% endfor %}
+          <div class="linkClick">
+            <div class="newsTitle">{{ post.title }}</div>
+            <hr />
+            <p class="time-cell">{{ post.created_at}}</p>
+            <span class="newsContent"> {{ post.content | safe }}</span>
+          </div>
+        </article>
       </a>
-    </article>
-    {% endfor %}
+      {% endfor %}
+    </div>
+    <nav data-pagination>
+
+      {% if actual_page > 1  %}
+      <a href="/admin/news/page-{{ actual_page - 1 }}"><i class="ion-chevron-right"><</i></a>
+      {% endif %}
+
+      <ul>
+        	<li {% if actual_page == 1 %} class="current" {% endif %}><a href="/admin/news/page-1" >1</a></li>
+		{% if pages > 6 %}
+			{% if actual_page >= 4 and actual_page <= (pages-3) %}
+				<li><p>…</p></li>
+				<li><a href="/admin/news/page-{{ actual_page - 1 }}"">{{ actual_page - 1 }}</a></li>
+        			<li class="current" ><a  href="/admin/news/page-{{ actual_page }}" >{{ actual_page }}</a></li>
+				<li><a href="/admin/news/page-{{ actual_page + 1 }}">{{ actual_page + 1 }}</a></li>
+        			<li><p>...</p></li>
+        			<li><a href="/admin/news/page-{{ pages }}">{{ pages }}</a></li>
+			{% endif %}
+			{% if actual_page < 4 %}
+   				<li {% if actual_page == 2 %} class="current" {% endif %}><a href="/admin/news/page-2">2</a></li>
+        			<li {% if actual_page == 3 %} class="current" {% endif %}><a  href="/admin/news/page-3" >3</a></li>
+				<li {% if actual_page == 4 %} class="current" {% endif %}><a href="/admin/news/page-4">4</a></li>
+				<li><p>...</p></li>
+        			<li><a href="/admin/news/page-{{ pages }}">{{ pages }}</a></li>
+      {% endif %}
+			{% if actual_page > (pages - 3) %}
+				<li><p>...</p></li>
+        <li {% if actual_page == (pages - 3) %} class="current" {% endif %}><a href="/admin/news/page-{{ pages - 3 }}">{{ pages - 3 }}</a></li>
+   				<li {% if actual_page == (pages - 2) %} class="current" {% endif %}><a href="/admin/news/page-{{ pages - 2 }}">{{ pages - 2 }}</a></li>
+        			<li {% if actual_page == (pages - 1) %} class="current" {% endif %}><a  href="/admin/news/page-{{ pages - 1 }}">{{ pages - 1 }}</a></li>
+				<li {% if actual_page == pages %} class="current" {% endif %}><a href="/admin/news/page-{{ pages }}">{{ pages }}</a></li>
+			{% endif %}
+		{% endif %}
+		{% if pages > 1 and pages <= 6%}
+			{% for page in range(pages - 2) %}
+				<li {% if (page + 2) == actual_page %} class="current" {% endif %}><a href="/admin/news/page-{{ page + 2 }}">{{ page + 2}}</a></li>
+			{% endfor %}	
+      <li {% if actual_page == pages %} class="current" {% endif %}><a href="/admin/news/page-{{ pages }}">{{ pages }}</a></li>
+		{% endif %}		
+      </ul>
+		{% if actual_page < pages %}
+			<a href="/admin/news/page-{{ actual_page + 1 }}"><i class="ion-chevron-right">></i></a>
+		{% endif %}	
+
+    </nav>
+
     <script defer>
       function truncateContent(content, maxLength) {
         if (content.length > maxLength) {
@@ -55,8 +109,17 @@
       // Iteruj przez każdy element .newsContent i skróć zawartość
       newsContents.forEach(function (newsContent) {
         var content = newsContent.textContent
-        var truncatedContent = truncateContent(content, 200)
+        var truncatedContent = truncateContent(content, 150)
         newsContent.textContent = truncatedContent
+      })
+
+      var newsTitles = document.querySelectorAll(".newsTitle")
+
+      // Iteruj przez każdy element .newsContent i skróć zawartość
+      newsTitles.forEach(function (newsTitle) {
+        var title = newsTitle.textContent
+        var truncatedTitle = truncateContent(title, 35)
+        newsTitle.textContent = truncatedTitle
       })
 
       function formatTime(timeStr) {
@@ -69,6 +132,7 @@
           cell.textContent = formatTime(cell.textContent)
         })
       })
+
     </script>
   </body>
 </html>

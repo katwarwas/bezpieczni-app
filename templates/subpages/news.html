@@ -24,7 +24,7 @@
       <h1 class="mainPage"><a href="/">Bezpieczni</a></h1>
       <div class="menu">
         <a href="/cyberattacks">Cyber Ataki</a>
-        <a href="/news" id="activeLink">Aktualności</a>
+        <a href="/news/page-1" id="activeLink">Aktualności</a>
         <a href="/analysis">Analiza</a>
         <a href="/map">Mapa</a>
         <a href="/links">Linki</a>
@@ -34,15 +34,20 @@
     <h2 class="newsHeading">Aktualności</h2>
     <div class="gridContainer">
       {% for post in posts %}
-      <article id="post-{{ post.id }}" class="postRow">
-        <img src="{{ photo_url }}" alt="KotKot" />
-        <a href="/news/{{post.id}}">
-          {{ post.title }}
-          <hr />
-          <p class="time-cell">{{ post.created_at}}</p>
-          <span class="newsContent"> {{ post.content | safe }}</span>
-        </a>
-      </article>
+      <a href="/news/{{post.id}}">
+        <article id="post-{{ post.id }}" class="postRow">
+          {% for photo, post_id in photos %} {% if post_id == post.id %}
+          <img src="data:image/jpeg;base64,{{ photo }}" alt="Photo" />
+          {% endif %} {% endfor %}
+          <div class="linkClick">
+            <div class="newsTitle">{{ post.title }}</div>
+            <hr />
+            <p class="time-cell">{{ post.created_at}}</p>
+            <span class="newsContent"> {{ post.content | safe }}</span>
+          </div>
+        </article>
+      </a>
+
       {% endfor %}
     </div>
     <script defer>
@@ -60,8 +65,17 @@
       // Iteruj przez każdy element .newsContent i skróć zawartość
       newsContents.forEach(function (newsContent) {
         var content = newsContent.textContent
-        var truncatedContent = truncateContent(content, 200)
+        var truncatedContent = truncateContent(content, 150)
         newsContent.textContent = truncatedContent
+      })
+
+      var newsTitles = document.querySelectorAll(".newsTitle")
+
+      // Iteruj przez każdy element .newsContent i skróć zawartość
+      newsTitles.forEach(function (newsTitle) {
+        var title = newsTitle.textContent
+        var truncatedTitle = truncateContent(title, 42)
+        newsTitle.textContent = truncatedTitle
       })
 
       function formatTime(timeStr) {

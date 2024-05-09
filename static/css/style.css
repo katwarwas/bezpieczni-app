@@ -1,6 +1,9 @@
 @import url("register.css");
 @import url("header_admin.css");
 @import url("news.css");
+@import url("analysis.css");
+@import url("add_post.css");
+@import url("pagination.css");
 
 body {
   background-color: #24293e;

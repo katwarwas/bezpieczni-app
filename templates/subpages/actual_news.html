@@ -24,12 +24,15 @@
       <h1 class="mainPage"><a href="/">Bezpieczni</a></h1>
       <div class="menu">
         <a href="/cyberattacks">Cyber Ataki</a>
-        <a href="/news" id="activeLink">Aktualności</a>
+        <a href="/news/page-1" id="activeLink">Aktualności</a>
         <a href="/analysis">Analiza</a>
         <a href="/map">Mapa</a>
         <a href="/links">Linki</a>
       </div>
     </header>
+    {% if photo_data %}
+    <img src="data:image/jpeg;base64,{{ photo_data }}" alt="Photo" />
+    {% endif %}
     <h3 style="text-align: center; color: rgb(192, 208, 231)">
       {{ post.title }}
     </h3>

@@ -26,10 +26,13 @@
         <a id="logout" href="/logout">Wyloguj się</a>
         <nav class="menuAdmin">
           <a href="/add/post">Dodaj artykuł</a>
-          <a href="/admin/news">Aktualności</a>
+          <a href="/admin/news/page-1">Aktualności</a>
         </nav>
       </div>
     </header>
+    {% if photo_data %}
+    <img src="data:image/jpeg;base64,{{ photo_data }}" alt="Photo" />
+    {% endif %}
     <h3 style="text-align: center; color: rgb(192, 208, 231)">
       {{ post.title }}
     </h3>

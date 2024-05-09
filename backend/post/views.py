@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request, Response, Form, Depends, HTTPException
+from fastapi import APIRouter, Request, Response, Form, Depends, HTTPException, UploadFile, File
 from database import DbSession
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
@@ -11,7 +11,9 @@ from backend.admin.schemas import User
 from .exceptions import title_exception
 from sqlalchemy import desc
 from backend.admin.models import Users
-
+from .services import get_photos_in_range, get_photo
+from config import s3
+from math import ceil
 
 router = APIRouter(
     tags=["Post"],
@@ -28,18 +30,36 @@ async def add_post_html(request: Request):
 
 
 @router.post("/add/post", dependencies=[Depends(get_current_user)])
-async def add_post(db: DbSession, current_user: CurrentUser, request: Request, title: Optional[str] = Form(None), content: str = Form(...)):
+async def add_post(db: DbSession, current_user: CurrentUser, request: Request, file: Optional[UploadFile] = File(None), title: Optional[str] = Form(None), content: str = Form(...)):
     try:
-        if not title:
-            raise HTTPException(status_code=422, detail="Tytuł jest wymagany.")
+        if not title or not file:
+            raise HTTPException(status_code=422, detail="Tytuł i zdjęcie są wymagane.")
+        
+
         post = Posts()
         post.title = title
         post.content = content
         post.user_id = current_user.id
-
         db.add(post)
         db.commit()
         db.refresh(post)
+
+        post = db.query(Posts).order_by(desc(Posts.created_at)).first()
+        if file.content_type == 'image/png':
+            file.filename = f'post-{post.id}.png'
+        elif file.content_type == 'image/jpg':
+            file.filename = f'post-{post.id}.jpg'
+        elif file.content_type == 'image/jpeg':
+            file.filename = f'post-{post.id}.jpeg'
+
+        print(file.filename, 'nazwa pliku')
+        contents = await file.read()
+        if len(contents) >= 8388608:
+            content = """Plik może mieć maksymalnie 8MB"""
+            return HTMLResponse(content=content)
+        s3.put_object(Bucket='cyberbucket-s3', Key=file.filename, Body=contents)
+        print(file.filename)
+
         content = """Artykuł został dodany poprawnie"""
         return HTMLResponse(content=content)
     except HTTPException as e:
@@ -47,14 +67,24 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, t
         return HTMLResponse(content=content)
     
 
-@router.get("/admin/news", response_class=HTMLResponse)
-async def posts(request: Request, db: DbSession):
-    posts = db.query(Posts).order_by(desc(Posts.created_at)).all()
-    return templates.TemplateResponse("admin/news_admin.html", {"request": request, "posts": posts})
+@router.get("/admin/news/page-{page}", response_class=HTMLResponse)
+async def posts(request: Request, db: DbSession, page: int = 0):
+    posts = db.query(Posts).order_by(desc(Posts.created_at)).limit(12).offset((page-1)*12).all()
+    pages = ceil(db.query(Posts).count() / 12)
+    post_ids = []
+    for post in posts:
+        post_ids.append(post.id)
+    photos = get_photos_in_range(post_ids=post_ids)
+
+    return templates.TemplateResponse("admin/news_admin.html", {"request": request, "posts": posts, "photos": photos, "pages": pages, "actual_page": page})
 
 
 @router.get("/admin/news/{id}", response_class=HTMLResponse)
 async def posts(request: Request, db: DbSession, id: int):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
     author = db.query(Users).filter(Users.id == post.user_id).one_or_none()
-    return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author})
+    photo_data = get_photo(post.id)
+    if photo_data:
+        return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author, "photo_data": photo_data})
+    else:
+        return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author})
