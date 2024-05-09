@@ -23,12 +23,12 @@ async def admin_page(request: Request):
     return templates.TemplateResponse("admin/dashboard.html", {"request": request})
 
 
-@router.get("/register", response_class=HTMLResponse)
+@router.get("/register", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
 async def register_html(request: Request):
     return templates.TemplateResponse("admin/register.html", {"request": request})
 
 
-@router.post("/register")
+@router.post("/register", dependencies=[Depends(get_current_user)])
 async def register(db: DbSession, 
                    name: str = Form(...), 
                    surname: str = Form(...), 
