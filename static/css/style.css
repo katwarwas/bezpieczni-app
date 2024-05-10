@@ -44,7 +44,7 @@ h2 {
   font-weight: 400;
   font-style: normal;
   text-align: left;
-  font-size: 60px;
+  font-size: clamp(20px, 3vw, 39px);
   margin-top: 0px;
 }
 
@@ -64,7 +64,7 @@ h3 {
   font-weight: 400;
   font-style: normal;
   text-align: left;
-  font-size: 144px;
+  font-size: clamp(66px, 10vw, 131px);
   background-image: linear-gradient(45deg, #8ebbff, #2f3651);
   background-clip: text;
   -webkit-background-clip: text;
@@ -85,7 +85,7 @@ header {
 
 .menu {
   display: flex;
-  margin-top: 56px;
+  margin-top: 64px;
 }
 
 .menu a {
@@ -250,4 +250,41 @@ div.htmx-swapping {
 
 .space {
   padding: 50px;
+}
+
+.menu2 {
+  display: none;
+}
+
+.mainPage2 {
+  display: none;
+}
+
+@media (max-width: 53rem) {
+  .menu {
+    display: none;
+  }
+
+  .menu2 {
+    display: flex;
+    margin-top: 8px;
+    color: #8ebbff80;
+    text-decoration: none;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    font-size: 16px;
+  }
+  .mainPage {
+    font-size: clamp(40px, 10vw, 80px);
+  }
+
+  /* .mainPage2 {
+    display: block;
+  }
+
+  .mainPage2:hover {
+    background-image: linear-gradient(45deg, #2f365180, #8ebbff80);
+  } */
 }
