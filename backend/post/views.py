@@ -1,19 +1,16 @@
-from fastapi import APIRouter, Request, Response, Form, Depends, HTTPException, UploadFile, File
+from fastapi import APIRouter, Request, Form, Depends, HTTPException, UploadFile, File
 from database import DbSession
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-from starlette.responses import RedirectResponse
-from starlette import status
 from typing import Annotated, Optional
 from backend.admin.services import get_current_user
 from .models import Posts
 from backend.admin.schemas import User
-from .exceptions import title_exception
 from sqlalchemy import desc
 from backend.admin.models import Users
-from .services import get_photos_in_range, get_photo
 from config import s3
 from math import ceil
+from uuid import uuid4
 
 router = APIRouter(
     tags=["Post"],
@@ -35,33 +32,33 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, f
         if not title or not file:
             raise HTTPException(status_code=422, detail="Tytuł i zdjęcie są wymagane.")
         
-
+        contents = await file.read()
+        if len(contents) >= 26214400:
+            content = """Plik może mieć maksymalnie 8MB"""
+            return HTMLResponse(content=content)
+        
         post = Posts()
         post.title = title
         post.content = content
         post.user_id = current_user.id
+
+        while True:
+            new_uuid = str(uuid4())
+            new_img_url = "https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/" + new_uuid
+            existing_post = db.query(Posts).filter_by(img_url=new_img_url).first()
+            if not existing_post:
+                file.filename = new_uuid
+                s3.put_object(Bucket='cyberbucket-s3', Key=file.filename, Body=contents)
+                post.img_url = new_img_url
+                break
+
         db.add(post)
         db.commit()
         db.refresh(post)
-
-        post = db.query(Posts).order_by(desc(Posts.created_at)).first()
-        if file.content_type == 'image/png':
-            file.filename = f'post-{post.id}.png'
-        elif file.content_type == 'image/jpg':
-            file.filename = f'post-{post.id}.jpg'
-        elif file.content_type == 'image/jpeg':
-            file.filename = f'post-{post.id}.jpeg'
-
-        print(file.filename, 'nazwa pliku')
-        contents = await file.read()
-        if len(contents) >= 8388608:
-            content = """Plik może mieć maksymalnie 8MB"""
-            return HTMLResponse(content=content)
-        s3.put_object(Bucket='cyberbucket-s3', Key=file.filename, Body=contents)
-        print(file.filename)
-
+        
         content = """Artykuł został dodany poprawnie"""
         return HTMLResponse(content=content)
+        
     except HTTPException as e:
         content = f'Błąd: {e.detail}'
         return HTMLResponse(content=content)
@@ -71,20 +68,11 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, f
 async def posts(request: Request, db: DbSession, page: int = 0):
     posts = db.query(Posts).order_by(desc(Posts.created_at)).limit(12).offset((page-1)*12).all()
     pages = ceil(db.query(Posts).count() / 12)
-    post_ids = []
-    for post in posts:
-        post_ids.append(post.id)
-    photos = get_photos_in_range(post_ids=post_ids)
-
-    return templates.TemplateResponse("admin/news_admin.html", {"request": request, "posts": posts, "photos": photos, "pages": pages, "actual_page": page})
+    return templates.TemplateResponse("admin/news_admin.html", {"request": request, "posts": posts, "pages": pages, "actual_page": page})
 
 
 @router.get("/admin/news/{id}", response_class=HTMLResponse)
 async def posts(request: Request, db: DbSession, id: int):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
     author = db.query(Users).filter(Users.id == post.user_id).one_or_none()
-    photo_data = get_photo(post.id)
-    if photo_data:
-        return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author, "photo_data": photo_data})
-    else:
-        return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author})
+    return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author})

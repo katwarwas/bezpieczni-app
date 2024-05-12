@@ -51,9 +51,7 @@
       {% for post in posts %}
       <a href="/news/{{post.id}}">
         <article id="post-{{ post.id }}" class="postRow">
-          {% for photo, post_id in photos %} {% if post_id == post.id %}
-          <img src="data:image/jpeg;base64,{{ photo }}" alt="Photo" />
-          {% endif %} {% endfor %}
+          <img src="{{ post.img_url }}" alt="Photo-{{ post.id }}" />
           <div class="linkClick">
             <div class="newsTitle">{{ post.title }}</div>
             <hr />
@@ -123,7 +121,7 @@
       // Iteruj przez każdy element .newsContent i skróć zawartość
       newsContents.forEach(function (newsContent) {
         var content = newsContent.textContent
-        var truncatedContent = truncateContent(content, 150)
+        var truncatedContent = truncateContent(content, 200)
         newsContent.textContent = truncatedContent
       })
 
@@ -132,7 +130,7 @@
       // Iteruj przez każdy element .newsContent i skróć zawartość
       newsTitles.forEach(function (newsTitle) {
         var title = newsTitle.textContent
-        var truncatedTitle = truncateContent(title, 72)
+        var truncatedTitle = truncateContent(title, 100)
         newsTitle.textContent = truncatedTitle
       })
 

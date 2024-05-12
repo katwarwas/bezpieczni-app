@@ -19,4 +19,4 @@ class Settings(BaseSettings):
 
 settings=Settings()
 
-s3 = boto3.client('s3', aws_access_key_id=settings.aws_access_key_id, aws_secret_access_key=settings.aws_secret_access_key_id)
+s3 = boto3.client('s3', aws_access_key_id=settings.aws_access_key_id, aws_secret_access_key=settings.aws_secret_access_key_id, config=boto3.session.Config(signature_version='s3v4'), region_name='eu-north-1')

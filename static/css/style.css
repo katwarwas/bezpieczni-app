@@ -4,6 +4,8 @@
 @import url("analysis.css");
 @import url("add_post.css");
 @import url("pagination.css");
+@import url("actual_news.css");
+@import url("css_reset.css");
 
 body {
   background-color: #24293e;
@@ -22,9 +24,10 @@ h1 {
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
-  margin-top: 0px;
-  margin-left: 2%;
-  margin-bottom: 0px;
+}
+
+.mainPage {
+  margin-left: 10px;
 }
 
 .mainPage:hover {
@@ -79,7 +82,7 @@ header {
   justify-content: space-between;
   width: 100%;
   height: 100px;
-
+  align-items: baseline;
   /* align-items: center; */
 }
 

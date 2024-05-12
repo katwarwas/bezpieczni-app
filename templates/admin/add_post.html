@@ -37,7 +37,7 @@
         id="createForm"
         hx-post="/add/post"
         hx-target="#info"
-        hx-swap="outerHtml swap:1s"
+        hx-swap="outerHtml swap:0.1s"
         hx-on:submit="document.querySelector('#fileName').textContent=''; document.querySelector('form').reset() ; document.querySelector('.ql-editor').textContent=''"
         enctype="multipart/form-data"
       >
