@@ -93,3 +93,18 @@ hr {
 .newsTitle p {
   color: red;
 }
+
+@media (max-width: 40rem) {
+  .gridContainer {
+    grid-template-columns: repeat(auto-fill, 300px);
+  }
+  .newsHeading {
+    font-size: 40px;
+  }
+  .postRow img {
+    height: 160px;
+  }
+  .postRow {
+    height: 300px;
+  }
+}
