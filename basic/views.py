@@ -46,3 +46,79 @@ async def posts(request: Request, db: DbSession, id: int):
 async def analysis_page(request: Request):
     fig = image_base64()
     return templates.TemplateResponse("subpages/analysis.html", {"request": request, "fig": fig})
+
+
+@router.get("/open-navbar")
+async def open_navbar():
+    content = '''<header>
+      <h1 class="mainPage"><a href="/">Bezpieczni</a></h1>
+      <div class="menu">
+        <a href="/cyberattacks">Cyber Ataki</a>
+        <a href="/news/page-1" id="activeLink">Aktualności</a>
+        <a href="/analysis">Analiza</a>
+        <a href="/map">Mapa</a>
+        <a href="/links">Linki</a>
+      </div>
+      <div
+        class="menu2"
+        hx-get="/close-navbar"
+        hx-swap="outerHTML"
+        hx-target="header"
+        hx-on:click="document.getElementById('navbar').remove()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          class="bi bi-list"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+          />
+        </svg>
+      </div>
+    </header>
+    <div id="navbar"><a href="/cyberattacks">Cyber Ataki</a>
+        <a href="/news/page-1">Aktualności</a>
+        <a href="/analysis">Analiza</a>
+        <a href="/map">Mapa</a>
+        <a href="/links">Linki</a></div>'''
+    return (HTMLResponse(content=content))
+
+
+@router.get("/close-navbar")
+async def close_navbar():
+    content = '''<header>
+      <h1 class="mainPage"><a href="/">Bezpieczni</a></h1>
+      <div class="menu">
+        <a href="/cyberattacks">Cyber Ataki</a>
+        <a href="/news/page-1" id="activeLink">Aktualności</a>
+        <a href="/analysis">Analiza</a>
+        <a href="/map">Mapa</a>
+        <a href="/links">Linki</a>
+      </div>
+      <div
+        class="menu2"
+        hx-get="/open-navbar"
+        hx-swap="outerHTML"
+        hx-target="header"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          class="bi bi-list"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+          />
+        </svg>
+      </div>
+    </header>'''
+    return (HTMLResponse(content=content))
