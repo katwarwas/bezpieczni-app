@@ -84,7 +84,7 @@
         			<li {% if actual_page == 3 %} class="current" {% endif %}><a  href="/news/page-3" >3</a></li>
 				<li {% if actual_page == 4 %} class="current" {% endif %}><a href="/news/page-4">4</a></li>
 				<li><p>...</p></li>
-        			<li><a href="/page-{{ pages }}">{{ pages }}</a></li>
+        			<li><a href="/news/page-{{ pages }}">{{ pages }}</a></li>
       {% endif %}
 			{% if actual_page > (pages - 3) %}
 				<li><p>...</p></li>

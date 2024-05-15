@@ -20,6 +20,11 @@ templates = Jinja2Templates(directory="templates", autoescape=False)
 
 CurrentUser = Annotated[User, Depends(get_current_user)]
 
+@router.get("/afterswap", response_class=HTMLResponse)
+async def afterswap():
+    content = ''
+    return HTMLResponse(content=content)
+
 
 @router.get("/add/post", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
 async def add_post_html(request: Request):
@@ -62,7 +67,7 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, f
     except HTTPException as e:
         content = f'Błąd: {e.detail}'
         return HTMLResponse(content=content)
-    
+  
 
 @router.get("/admin/news/page-{page}", response_class=HTMLResponse)
 async def posts(request: Request, db: DbSession, page: int = 0):

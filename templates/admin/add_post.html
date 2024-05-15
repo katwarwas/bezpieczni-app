@@ -22,13 +22,26 @@
   <body>
     <header>
       <h1 class="mainPage"><a href="/dashboard">Bezpieczni</a></h1>
-      <div class="menuGrid">
-        <nav class="menuAdmin">
-          <a href="/add/post" id="activeLink">Dodaj artykuł</a>
-          <a href="/admin/news/page-1">Aktualności</a>
-          <p>|</p>
-          <a id="logout" href="/logout">Wyloguj się</a>
-        </nav>
+      <div class="menu">
+        <a href="/add/post" id="activeLink">Dodaj artykuł</a>
+        <a href="/admin/news/page-1">Aktualności</a>
+        <p>|</p>
+        <a id="logout" href="/logout">Wyloguj się</a>
+      </div>
+      <div class="menu2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          class="bi bi-list"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+          />
+        </svg>
       </div>
     </header>
     <h3 style="margin-top: 100px">Dodaj artykuł:</h3>
@@ -37,7 +50,7 @@
         id="createForm"
         hx-post="/add/post"
         hx-target="#info"
-        hx-swap="outerHtml swap:0.1s"
+        hx-swap="outerHtml"
         hx-on:submit="document.querySelector('#fileName').textContent=''; document.querySelector('form').reset() ; document.querySelector('.ql-editor').textContent=''"
         enctype="multipart/form-data"
       >
@@ -73,7 +86,7 @@
         <button id="addButton" class="button" type="submit">Dodaj</button>
       </form>
     </div>
-    <div id="info"></div>
+    <div id="info" hx-on::after-swap="hideContent()"></div>
 
     <!-- Podłączanie Quill z CDN -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
@@ -101,6 +114,11 @@
         const file = event.target.files[0]
         fileNameDisplay.textContent = file ? file.name : ""
       })
+      function hideContent() {
+        setTimeout(function () {
+          document.getElementById("info").textContent = ""
+        }, 2000) // Ukryj zawartość po 2 sekundach
+      }
     </script>
   </body>
 </html>

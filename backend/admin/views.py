@@ -23,6 +23,77 @@ async def admin_page(request: Request):
     return templates.TemplateResponse("admin/dashboard.html", {"request": request})
 
 
+@router.get("/open-navbar-admin")
+async def open_navbar():
+    content ='''<header>
+      <h1 class="mainPage"><a href="/dashboard">Bezpieczni</a></h1>
+      <div class="menu">
+        <a href="/add/post">Dodaj artykuł</a>
+        <a href="/admin/news/page-1">Aktualności</a>
+        <p>|</p>
+        <a id="logout" href="/logout">Wyloguj się</a>
+      </div>
+      <div
+        class="menu2"
+        hx-get="/close-navbar-admin"
+        hx-swap="outerHTML"
+        hx-target="header"
+        hx-on:click="document.getElementById('navbar').remove()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          class="bi bi-list"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+          />
+        </svg>
+      </div>
+    </header>
+    <div id="navbar"><a href="/add/post">Dodaj artykuł</a>
+        <a href="/admin/news/page-1">Aktualności</a>
+        <a href="/logout">Wyloguj się</a></div>'''
+    return(HTMLResponse(content=content))
+    
+
+@router.get("/close-navbar-admin")
+async def close_navbar():
+    content ='''<header>
+      <h1 class="mainPage"><a href="/dashboard">Bezpieczni</a></h1>
+      <div class="menu">
+        <a href="/add/post">Dodaj artykuł</a>
+        <a href="/admin/news/page-1">Aktualności</a>
+        <p>|</p>
+        <a id="logout" href="/logout">Wyloguj się</a>
+      </div>
+      <div
+        class="menu2"
+        hx-get="/open-navbar-admin"
+        hx-swap="outerHTML"
+        hx-target="header"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          class="bi bi-list"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+          />
+        </svg>
+      </div>
+    </header>'''
+    return(HTMLResponse(content=content))
+
 @router.get("/register", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
 async def register_html(request: Request):
     return templates.TemplateResponse("admin/register.html", {"request": request})
