@@ -44,7 +44,7 @@
 }
 [data-pagination] a,
 [data-pagination] p {
-  color: #c2daff6b;
+  color: #afc5e16b;
   font-size: 100%;
   padding: 0.5em;
   text-decoration: none;
@@ -52,10 +52,10 @@
 }
 [data-pagination] a:focus,
 [data-pagination] a:hover {
-  color: #c2daffbb;
+  color: #afc5e1bb;
 }
 [data-pagination] li.current a {
-  color: #c2daff;
+  color: #afc5e1;
 }
 /* Disabled & Hidden Styles */
 [data-pagination] .disabled,

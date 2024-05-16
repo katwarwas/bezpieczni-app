@@ -23,6 +23,44 @@ async def admin_page(request: Request):
     return templates.TemplateResponse("admin/dashboard.html", {"request": request})
 
 
+@router.get("/login", response_class=HTMLResponse)
+async def login_html(request: Request):
+    return templates.TemplateResponse("admin/login.html", {"request": request})
+    
+
+@router.post("/login")
+async def login(db: DbSession, email: str = Form(...), password: str = Form(...)):
+    user = Users()
+    user.email = email
+    user.password = password
+    user = get_by_email(db=db, email=user.email)
+
+    if not user or not user.check_password(password):
+        content = "<p>Blędne hasło lub email.</p>"
+        return HTMLResponse(content=content)
+    
+    redirect = RedirectResponse(url="/dashboard", status_code=status.HTTP_302_FOUND)
+
+    redirect.set_cookie(
+        key="jwt",
+        value=user.refresh_token,
+        httponly=True,
+        # secure=True,
+        samesite=None,
+        max_age=60 * 60 * settings.refresh_token_expire_hours,
+    )
+
+    return redirect
+
+
+@router.get("/logout", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
+async def logout(response: Response, request: Request):
+    redirect = RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
+    redirect.delete_cookie(key="jwt")
+    return redirect
+
+
+
 @router.get("/open-navbar-admin")
 async def open_navbar():
     content ='''<header>
@@ -137,41 +175,3 @@ async def register(db: DbSession,
     await simple_send([user_in.email], random_password)
 
     return """<div id=info>Zarejestrowano.</div>"""
-
-
-
-@router.get("/login", response_class=HTMLResponse)
-async def login_html(request: Request):
-    return templates.TemplateResponse("admin/login.html", {"request": request})
-    
-
-@router.post("/login")
-async def login(db: DbSession, email: str = Form(...), password: str = Form(...)):
-    user = Users()
-    user.email = email
-    user.password = password
-    user = get_by_email(db=db, email=user.email)
-
-    if not user or not user.check_password(password):
-        content = "<p>Blędne hasło lub email.</p>"
-        return HTMLResponse(content=content)
-    
-    redirect = RedirectResponse(url="/dashboard", status_code=status.HTTP_302_FOUND)
-
-    redirect.set_cookie(
-        key="jwt",
-        value=user.refresh_token,
-        httponly=True,
-        # secure=True,
-        samesite=None,
-        max_age=60 * 60 * settings.refresh_token_expire_hours,
-    )
-
-    return redirect
-
-
-@router.get("/logout", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
-async def logout(response: Response, request: Request):
-    redirect = RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
-    redirect.delete_cookie(key="jwt")
-    return redirect

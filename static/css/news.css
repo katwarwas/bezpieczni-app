@@ -1,5 +1,5 @@
 .newsHeading {
-  color: #e2eeff;
+  color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -35,7 +35,7 @@
 .postRow {
   margin: 10px 10px 10px 10px;
   display: flex;
-  background-color: #3e4668;
+  background-color: #3b466d;
   border-radius: 16px;
   height: 400px;
   flex-direction: column;
@@ -51,7 +51,7 @@
 
 .linkClick {
   display: block;
-  color: #e2eeff;
+  color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -62,7 +62,7 @@
 
 .postRow p {
   text-align: right;
-  color: #8ebbff80;
+  color: #89a6d180;
   font-size: clamp(8px, 0.5vw, 10px);
   margin: 0px;
 }
@@ -73,7 +73,7 @@ hr {
 
 .postRow span {
   line-height: 1.2;
-  color: #8ebbff50;
+  color: #89a6d150;
   font-size: 14px;
   overflow: hidden;
   display: -webkit-box;
@@ -88,10 +88,6 @@ hr {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-}
-
-.newsTitle p {
-  color: red;
 }
 
 @media (max-width: 40rem) {

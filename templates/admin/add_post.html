@@ -48,14 +48,39 @@
     <div class="createFormDiv">
       <form
         id="createForm"
+        {%
+        if
+        post
+        %}
+        hx-patch="/update/news-{{post.id}}"
+        hx-confirm="Czy na pewno chcesz zaaktualizować?"
+        {%
+        else
+        %}
         hx-post="/add/post"
-        hx-target="#info"
-        hx-swap="outerHtml"
         hx-on:submit="document.querySelector('#fileName').textContent=''; document.querySelector('form').reset() ; document.querySelector('.ql-editor').textContent=''"
+        hx-swap="outerHtml"
+        {%
+        endif
+        %}
         enctype="multipart/form-data"
       >
         <label for="title">Tytuł:</label><br />
-        <textarea id="title" name="title" rows="1"></textarea><br />
+        {% if post %}
+        <textarea id="title" name="title" rows="1">{{post.title}}</textarea>
+        {% endif %}<br />
+        {% if post %}
+        <div class="photo">
+          <p>Aktualne zdjęcie:</p>
+          <br />
+          <img
+            src="{{ post.img_url }}"
+            alt="Photo-{{ post.id }}"
+            style="border-radius: 8px; height: 200px"
+          />
+        </div>
+        <br />
+        {% endif %}
 
         <p class="file">Zdjęcie(max. 8MB):</p>
         <input id="file" type="file" name="file" accept=".jpg, .png" />
@@ -78,15 +103,18 @@
         ><br />
 
         <label for="content">Treść:</label><br />
-        <div id="editor"></div>
+        <div id="editor">{% if post %}{{post.content}}{% endif %}</div>
         <br />
 
         <textarea id="content" name="content" style="display: none"></textarea>
 
-        <button id="addButton" class="button" type="submit">Dodaj</button>
+        <button id="addButton" class="button" type="submit">
+          Zaaktualizuj
+        </button>
       </form>
     </div>
     <div id="info" hx-on::after-swap="hideContent()"></div>
+    <div class="space"></div>
 
     <!-- Podłączanie Quill z CDN -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>

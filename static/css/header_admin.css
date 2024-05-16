@@ -1,6 +1,6 @@
 #logout {
-  background-color: #8ebbff40;
-  color: #e2eeff;
+  background-color: #89a6d140;
+  color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-size: 12px;
   font-weight: 800;
@@ -25,7 +25,7 @@
 }
 
 .menuAdmin a {
-  color: #8ebbff80;
+  color: #89a6d180;
   text-decoration: none;
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -36,24 +36,24 @@
 }
 
 #activeLink {
-  color: #8ebbff;
+  color: #89a6d1;
 }
 
 #activeLink:active {
-  color: #8ebbff80;
+  color: #89a6d180;
 }
 
 .menuAdmin a:hover {
-  color: #8ebbff;
+  color: #89a6d1;
   transform: scale(0.95);
 }
 
 .menuAdmin a:active {
-  color: #8ebbff80;
+  color: #89a6d180;
 }
 
 .menu p {
-  color: #8ebbff80;
+  color: #89a6d180;
   text-decoration: none;
   font-family: "Lato", sans-serif;
   font-weight: 400;

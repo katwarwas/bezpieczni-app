@@ -6,6 +6,7 @@
 @import url("pagination.css");
 @import url("actual_news.css");
 @import url("css_reset.css");
+@import url("cyberattacks.css");
 
 body {
   background-color: #24293e;
@@ -18,7 +19,7 @@ h1 {
   font-style: normal;
   text-align: center;
   font-size: 80px;
-  background-image: linear-gradient(45deg, #2f3651, #8ebbff);
+  background-image: linear-gradient(45deg, #3b466d, #89a6d1);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -31,7 +32,7 @@ h1 {
 }
 
 .mainPage:hover {
-  background-image: linear-gradient(45deg, #2f365180, #8ebbff80);
+  background-image: linear-gradient(45deg, #3b466d80, #89a6d180);
 }
 
 figure {
@@ -42,7 +43,7 @@ figure {
 }
 
 h2 {
-  color: #e2eeff;
+  color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -52,7 +53,7 @@ h2 {
 }
 
 h3 {
-  color: #e2eeff;
+  color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -62,13 +63,13 @@ h3 {
 }
 
 .content {
-  color: #e2eeff;
+  color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
   text-align: left;
   font-size: clamp(66px, 10vw, 131px);
-  background-image: linear-gradient(45deg, #8ebbff, #2f3651);
+  background-image: linear-gradient(45deg, #89a6d1, #3b466d);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -92,7 +93,7 @@ header {
 }
 
 .menu a {
-  color: #d0e3ff80;
+  color: #d0dced80;
   text-decoration: none;
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -103,20 +104,20 @@ header {
 }
 
 #activeLink {
-  color: #8ebbff;
+  color: #89a6d1;
 }
 
 #activeLink:active {
-  color: #8ebbff80;
+  color: #89a6d180;
 }
 
 .menu a:hover {
-  color: #8ebbff;
+  color: #89a6d1;
   transform: scale(0.95);
 }
 
 .menu a:active {
-  color: #8ebbff80;
+  color: #89a6d180;
 }
 
 .createFormDiv {
@@ -135,7 +136,7 @@ header {
 
 #createForm {
   text-align: left;
-  color: #e2eeff;
+  color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -148,7 +149,7 @@ header {
 #registerForm,
 #loginForm {
   text-align: left;
-  color: #e2eeff;
+  color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -157,7 +158,7 @@ header {
 }
 
 textarea {
-  color: #e2eeff;
+  color: #e4eaf5;
   background-color: transparent;
   font-family: "Lato", sans-serif;
   font-size: 16px;
@@ -175,7 +176,7 @@ textarea {
 
 input,
 select {
-  color: #e2eeff;
+  color: #e4eaf5;
   background-color: transparent;
   font-family: "Lato", sans-serif;
   font-size: 16px;
@@ -191,8 +192,8 @@ select {
 }
 
 .button {
-  background-color: #8ebbff40;
-  color: #e2eeff;
+  background-color: #89a6d140;
+  color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-size: 16px;
   font-weight: 800;
@@ -211,7 +212,7 @@ select {
 }
 
 .button:active {
-  background: linear-gradient(to right, #8ebbff80, #2f365120);
+  background: linear-gradient(to right, #89a6d180, #3b466d20);
   background-color: #8ebbff;
 }
 
@@ -221,7 +222,7 @@ select {
 
 #info {
   display: block;
-  color: #e2eeff;
+  color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -259,11 +260,11 @@ select {
   display: none;
   margin-top: 8px;
   margin-right: 8px;
-  color: #8ebbff80;
+  color: #89a6d180;
 }
 
 #navbar a {
-  color: #cee2ff90;
+  color: #d0dced80;
   text-decoration: none;
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -275,19 +276,19 @@ select {
 }
 
 #navbar a:hover {
-  color: #cee2ff;
+  color: #89a6d1;
   transform: scale(0.95);
 }
 
 #navbar a:active {
-  color: #cee2ff80;
+  color: #89a6d180;
 }
 
 #navbar {
   display: none;
   align-items: center;
   flex-direction: column;
-  background-color: #8ebbff10;
+  background-color: #89a6d110;
   border-radius: 0px 0px 8px 8px;
 }
 

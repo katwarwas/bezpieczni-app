@@ -11,7 +11,7 @@
 }
 
 .actual-news-content p {
-  color: #c6c5c5;
+  color: #e4eaf5;
   text-decoration: none;
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -24,7 +24,7 @@
 }
 
 .actual-news-content h3 {
-  color: #e0e0e0;
+  color: #d0dced;
   text-decoration: none;
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -36,7 +36,7 @@
 
 .actual-news-content ul li,
 .actual-news-content ol li {
-  color: #c6c5c5;
+  color: #e4eaf5;
   text-decoration: none;
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -49,13 +49,13 @@
 }
 
 .actual-news-title {
-  color: #e0e0e0;
+  color: #e4eaf5;
   text-decoration: none;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
   text-align: center;
-  font-size: clamp(32px, 3vw, 48px);
+  font-size: clamp(32px, 4vw, 48px);
   margin: 10px;
 }
 
@@ -71,4 +71,29 @@
     margin-left: 10%;
     margin-right: 10%;
   }
+}
+
+.update-delete-button button {
+  background-color: #89a6d140;
+  color: #e4eaf5;
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  font-style: normal;
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 0px solid #000;
+  border-radius: 8px;
+  margin-right: 12px;
+}
+
+.update-delete-button a {
+  text-decoration: none;
+  color: #e4eaf5;
+}
+
+.update-delete-button {
+  display: flex;
+  margin-left: 10px;
+  justify-content: flex-end;
 }
