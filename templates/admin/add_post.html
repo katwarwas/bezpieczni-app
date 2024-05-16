@@ -60,6 +60,7 @@
         hx-post="/add/post"
         hx-on:submit="document.querySelector('#fileName').textContent=''; document.querySelector('form').reset() ; document.querySelector('.ql-editor').textContent=''"
         hx-swap="outerHtml"
+        hx-target="#info"
         {%
         endif
         %}
@@ -110,7 +111,7 @@
         <textarea id="content" name="content" style="display: none"></textarea>
 
         <button id="addButton" class="button" type="submit">
-          Zaaktualizuj
+          {% if post %}Zaaktualizuj{% else %}Dodaj{% endif %}
         </button>
       </form>
     </div>
