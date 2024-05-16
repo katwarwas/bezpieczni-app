@@ -67,8 +67,10 @@
       >
         <label for="title">Tytuł:</label><br />
         {% if post %}
-        <textarea id="title" name="title" rows="1">{{post.title}}</textarea>
-        {% endif %}<br />
+        <textarea id="title" name="title" rows="1">
+{% if post %}{{post.title}}{% endif %}</textarea
+        >
+        <br />
         {% if post %}
         <div class="photo">
           <p>Aktualne zdjęcie:</p>
