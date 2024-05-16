@@ -28,7 +28,12 @@
         <p>|</p>
         <a id="logout" href="/logout">Wyloguj się</a>
       </div>
-      <div class="menu2">
+      <div
+        class="menu2"
+        hx-get="/open-navbar-admin"
+        hx-swap="outerHTML"
+        hx-target="header"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
