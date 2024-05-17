@@ -50,27 +50,78 @@
         </svg>
       </div>
     </header>
-    <h2 id="cyberattacks-title">
-      Zagrożenia z Ukrycia: Wnikliwe Spojrzenie na Cyberataki
-    </h2>
-    <article class="cyberattacks">
-      <h3>Czym są?</h3>
-      <p>
-        Cyberataki to dzisiaj jedno z najbardziej palących zagrożeń dla
-        społeczeństwa, gospodarki i instytucji na całym świecie. W dzisiejszym
-        zglobalizowanym i zdigitalizowanym środowisku, gdzie wiele aspektów
-        życia przenosi się do przestrzeni online, cyberatak może przyjąć wiele
-        różnych form i mieć bardzo poważne konsekwencje.
-      </p>
-      <p>
-        Na ogół można określić cyberatak jako celowe działania przeprowadzane
-        przez jednostki, grupy lub nawet państwa, które wykorzystują technologie
-        informatyczne do nieuprawnionego dostępu, zakłócania, manipulowania lub
-        niszczenia danych, systemów informatycznych lub sieci komputerowych.
-        Cyberatak może być skierowany przeciwko różnym celom, w tym przeciwko
-        instytucjom rządowym, firmom, organizacjom pozarządowym, a nawet
-        przeciwko pojedynczym użytkownikom.
-      </p>
-    </article>
+    <div class="img-container">
+      <img
+        src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyber-attack-photo-1.jpg"
+        alt="Haker"
+      />
+      <h2>Cyber Ataki - najważniejsze informacje</h2>
+    </div>
+    <div class="cyberattacks">
+      <article id="v1">
+        <img
+          src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/whats-cyberattacks.jpeg"
+          alt="Haker"
+        />
+
+        <div>
+          <h3>Czym są?</h3>
+          <br />
+          <p>
+            Cyberataki to dzisiaj jedno z najbardziej palących zagrożeń dla
+            społeczeństwa, gospodarki i instytucji na całym świecie. W
+            dzisiejszym zglobalizowanym i zdigitalizowanym środowisku, gdzie
+            wiele aspektów życia przenosi się do przestrzeni online, cyberatak
+            może przyjąć wiele różnych form i mieć bardzo poważne
+            konsekwencje.<br /><br />
+            Na ogół można określić cyberatak jako celowe działania
+            przeprowadzane przez jednostki, grupy lub nawet państwa, które
+            wykorzystują technologie informatyczne do nieuprawnionego dostępu,
+            zakłócania, manipulowania lub niszczenia danych, systemów
+            informatycznych lub sieci komputerowych. Cyberatak może być
+            skierowany przeciwko różnym celom, w tym przeciwko instytucjom
+            rządowym, firmom, organizacjom pozarządowym, a nawet przeciwko
+            pojedynczym użytkownikom.
+          </p>
+        </div>
+      </article>
+      <article id="v2">
+        <div id="list-attacks">
+          <h3>Najpopularniejsze rodzaje:</h3>
+          <br />
+          <ul>
+            <li
+              hx-get="/phishing"
+              hx-target="#attack-content"
+              hx-trigger="click"
+              hx-swap="innerHTML"
+            >
+              Ataki typu phishing
+            </li>
+            <li
+              hx-get="/malware"
+              hx-target="#attack-content"
+              hx-trigger="click"
+              hx-swap="innerHTML"
+            >
+              Malware
+            </li>
+            <li>Ataki typu DDoS</li>
+            <li>Ataki typu man-in-the-middle</li>
+            <li>Ataki na słabe punkty oprogramowania</li>
+            <li>Spear phishing</li>
+            <li>Ataki typu SQL Injection</li>
+            <li>Ataki typu Zero-day</li>
+          </ul>
+        </div>
+        <div id="attack-content"></div>
+
+        <!-- <img
+          src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyberattacks-types.jpeg"
+          alt="Haker"
+        /> -->
+      </article>
+    </div>
+    <div class="space"></div>
   </body>
 </html>

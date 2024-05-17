@@ -7,3 +7,171 @@
   font-size: 40px;
   margin-top: 50px;
 }
+
+.img-container img {
+  object-fit: cover;
+  max-height: 200px;
+  width: 100%;
+  opacity: 0.1;
+}
+
+.cyberattacks {
+  margin-top: 50px;
+  display: grid;
+  gap: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.img-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.img-container h2 {
+  font-size: 40px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cyberattacks p {
+  color: #e2eeff;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  font-size: 16px;
+}
+
+.cyberattacks article {
+  border: 0px solid black;
+  background-color: #3b466d30;
+  border-radius: 16px;
+  padding: 8px;
+  display: flex;
+  align-items: flex-start;
+
+  gap: 20px;
+}
+
+#v1 h3,
+#v1 p {
+  text-align: left;
+}
+
+#v2 ul {
+  padding-left: 0px;
+}
+
+#v2 li {
+  color: #e4eaf5;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  list-style-type: none;
+  background-color: #3b466d70;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#v2 li:hover {
+  transform: scale(0.98);
+  color: #89a6d1;
+}
+
+#v2 li:active {
+  transform: scale(1);
+}
+
+#v1 img {
+  border-radius: 8px;
+  opacity: 0.7;
+  max-width: 30%;
+  object-fit: cover;
+  height: 100%;
+}
+
+#v1 div {
+  width: 70%;
+}
+
+#list-attacks {
+  width: 30%;
+  min-width: 30%;
+}
+
+#attack-type {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  max-width: 100%;
+  max-height: 100%;
+  gap: 10px;
+}
+
+#attack-type div {
+  position: relative;
+  text-align: center;
+  color: white;
+  padding: 8px;
+}
+
+#attack-type p {
+  max-width: 80%;
+  text-align: justify;
+  padding: 8px 8px 0px 0px;
+}
+
+#attack-type div img {
+  opacity: 0.1;
+  object-fit: cover;
+  max-width: 200px;
+  border: 2px solid #e4eaf5;
+  border-radius: 8px;
+}
+
+#attack-type div h3 {
+  font-size: 30px;
+  text-align: center;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#attack-content {
+  display: grid;
+  gap: 10px;
+}
+
+#about-type {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#about-type p {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+h4 {
+  color: #e2eeff;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: oblique;
+  text-align: center;
+  font-size: 16px;
+}
+
+#about-type div {
+  max-width: 30%;
+}
