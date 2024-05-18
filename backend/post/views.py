@@ -23,11 +23,6 @@ templates = Jinja2Templates(directory="templates", autoescape=False)
 
 CurrentUser = Annotated[User, Depends(get_current_user)]
 
-# @router.get("/afterswap", response_class=HTMLResponse)
-# async def afterswap():
-#     content = ''
-#     return HTMLResponse(content=content)
-
 
 @router.get("/add/post", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
 async def add_post_html(request: Request):
