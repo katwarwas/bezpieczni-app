@@ -56,7 +56,6 @@ async def open_navbar():
         <a href="/cyberattacks">Cyber Ataki</a>
         <a href="/news/page-1" id="activeLink">Aktualności</a>
         <a href="/analysis">Analiza</a>
-        <a href="/map">Mapa</a>
         <a href="/links">Linki</a>
       </div>
       <div
@@ -84,7 +83,6 @@ async def open_navbar():
     <div id="navbar"><a href="/cyberattacks">Cyber Ataki</a>
         <a href="/news/page-1">Aktualności</a>
         <a href="/analysis">Analiza</a>
-        <a href="/map">Mapa</a>
         <a href="/links">Linki</a></div>'''
     return (HTMLResponse(content=content))
 
@@ -97,7 +95,6 @@ async def close_navbar():
         <a href="/cyberattacks">Cyber Ataki</a>
         <a href="/news/page-1" id="activeLink">Aktualności</a>
         <a href="/analysis">Analiza</a>
-        <a href="/map">Mapa</a>
         <a href="/links">Linki</a>
       </div>
       <div
