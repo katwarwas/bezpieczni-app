@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Request
 from sqlalchemy import desc
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from database import DbSession
 from backend.post.models import Posts
 from backend.admin.models import Users
@@ -126,49 +126,8 @@ async def close_navbar():
 
 @router.get('/phishing')
 async def phishing():
-    content = '''<div id="attack-type"><div><h3>Phishing</h3>
-    <img
-          src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyberattacks-types.jpeg"
-          alt="Phishing"
-          /></div>
-    <p>Phishing to jedna z najczęstszych i najbardziej podstępnych form cyberataków. Jego celem jest oszukanie użytkowników i skłonienie ich do ujawnienia wrażliwych informacji, takich jak hasła, numery kart kredytowych czy inne dane osobowe. Ataki phishingowe są zwykle przeprowadzane za pomocą fałszywych e-maili, wiadomości SMS, czy stron internetowych, które na pierwszy rzut oka wyglądają na wiarygodne i pochodzące od zaufanych źródeł.</p>
-       </div> '''
-    return HTMLResponse(content=content)
+    return FileResponse("templates/htmx/phishing.html")
 
 @router.get('/malware')
-async def malware():
-    content = '''<div id="attack-type"><div><h3>Malware</h3>
-    <img
-          src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/malware.jpeg"
-          alt="Malware"
-        /> </div>
-    <p>Malware to skrót od "malicious software" (złośliwe oprogramowanie), które jest zaprojektowane w celu uszkodzenia, zakłócenia, kradzieży lub ogólnego przejęcia kontroli nad systemami komputerowymi, sieciami, tabletami i telefonami komórkowymi. Malware może przybierać wiele form, w tym wirusy, robaki, konie trojańskie, ransomware, spyware i adware. Malware jest nieustannym zagrożeniem w cyfrowym świecie, ale poprzez stosowanie odpowiednich środków ostrożności i utrzymanie systemów zabezpieczeń, można znacznie zmniejszyć ryzyko infekcji.</p>
-       </div> 
-       <div id="about-type">
-       <div>
-       <h4>Wirusy</h4>
-          <p>Programy, które przyczepiają się do zdrowych plików i programów oraz rozprzestrzeniają się na inne pliki. Wymagają one działania użytkownika, aby mogły się aktywować, takie jak otwarcie zainfekowanego pliku.</p>
-        </div>
-        <div>
-       <h4>Robaki</h4>
-          <p>Samoreplikujące się programy, które rozprzestrzeniają się bez interwencji użytkownika, często przez sieci.Mogą powodować przeciążenie sieci i systemów, co prowadzi do spowolnienia ich działania lub całkowitego wyłączenia.</p>
-        </div>
-        <div>
-       <h4>Konie trojańskie</h4>
-          <p>Programy, które podszywają się pod legalne oprogramowanie, ale wykonują złośliwe działania po ich zainstalowaniu. Mogą otwierać tylnie drzwi (backdoors) dla innych malware, kraść dane lub przejmować kontrolę nad systemem.</p>
-        </div>
-        <div>
-       <h4>Ransomware</h4>
-          <p>Oprogramowanie, które szyfruje dane na komputerze ofiary i żąda okupu za ich odszyfrowanie. Blokuje dostęp do ważnych plików i danych, żądając zapłaty, zwykle w kryptowalutach, w zamian za klucz deszyfrujący.</p>
-        </div>
-        <div>
-       <h4>Spyware</h4>
-          <p>Oprogramowanie, które potajemnie śledzi aktywność użytkownika i zbiera informacje bez jego wiedzy. Może rejestrować naciśnięcia klawiszy (keylogging), przechwytywać dane logowania i monitorować przeglądane strony internetowe.</p>
-        </div>
-        <div>
-       <h4>Adware</h4>
-          <p>Oprogramowanie, które wyświetla niechciane reklamy na urządzeniu użytkownika. Może śledzić nawyki przeglądania w celu wyświetlania ukierunkowanych reklam, a czasem prowadzić do innych form malware.</p>
-        </div>
-       </div>
-       '''
-    return HTMLResponse(content=content)
+async def malware():   
+    return FileResponse("templates/htmx/malware.html")

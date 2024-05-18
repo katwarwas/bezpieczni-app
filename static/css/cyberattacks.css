@@ -16,7 +16,7 @@
 }
 
 .cyberattacks {
-  margin-top: 50px;
+  margin-top: 20px;
   display: grid;
   gap: 20px;
   margin-left: 20px;
@@ -41,7 +41,7 @@
 .cyberattacks p {
   color: #e2eeff;
   font-family: "Lato", sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
   text-align: center;
   font-size: 16px;
@@ -54,8 +54,6 @@
   padding: 8px;
   display: flex;
   align-items: flex-start;
-
-  gap: 20px;
 }
 
 #v1 h3,
@@ -68,9 +66,10 @@
 }
 
 #v2 li {
+  display: inline-block;
   color: #e4eaf5;
   font-family: "Lato", sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 16px;
   list-style-type: none;
   background-color: #3b466d70;
@@ -91,19 +90,23 @@
 
 #v1 img {
   border-radius: 8px;
-  opacity: 0.7;
-  max-width: 30%;
+  opacity: 0.6;
+  max-width: 20%;
   object-fit: cover;
   height: 100%;
 }
 
 #v1 div {
-  width: 70%;
+  width: 80%;
+  padding: 8px 0px 8px 16px;
 }
 
-#list-attacks {
-  width: 30%;
-  min-width: 30%;
+#v2 {
+  flex-direction: column;
+}
+
+#v2 h3 {
+  text-align: left;
 }
 
 #attack-type {
@@ -123,9 +126,8 @@
 }
 
 #attack-type p {
-  max-width: 80%;
+  max-width: 100%;
   text-align: justify;
-  padding: 8px 8px 0px 0px;
 }
 
 #attack-type div img {
@@ -147,31 +149,48 @@
 
 #attack-content {
   display: grid;
-  gap: 10px;
+  gap: 20px;
+}
+
+#attack-content hr {
+  opacity: 0.2;
 }
 
 #about-type {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
 }
 
 #about-type p {
-  font-size: 12px;
-  text-align: center;
+  font-size: 16px;
+  text-align: left;
   margin-bottom: 5px;
+  padding: 12px;
+  background-color: #3b466d30;
+  border-radius: 0px 0px 8px 8px;
 }
 
 h4 {
   color: #e2eeff;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: oblique;
   text-align: center;
-  font-size: 16px;
+  font-size: 24px;
+  background-color: #3b466d70;
+  border-radius: 8px 8px 0px 0px;
+  padding: 10px;
 }
 
-#about-type div {
-  max-width: 30%;
+#about-type {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40ch, 50ch));
+}
+
+#about-type div img {
+  height: 80px;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.5;
 }
