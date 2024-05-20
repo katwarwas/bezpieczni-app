@@ -122,14 +122,6 @@
               Man-in-the-middle
             </li>
             <li
-              hx-get="/spear-phishing"
-              hx-target="#attack-content"
-              hx-trigger="click"
-              hx-swap="innerHTML"
-            >
-              Spear phishing
-            </li>
-            <li
               hx-get="/sql"
               hx-target="#attack-content"
               hx-trigger="click"
@@ -150,12 +142,47 @@
         <div
           id="attack-content"
           hx-on::after-swap="document.querySelector('ul').scrollIntoView({ behavior: 'smooth'})"
-        ></div>
+        >
+          {% include 'htmx/phishing.html' %}
+        </div>
 
         <!-- <img
           src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyberattacks-types.jpeg"
           alt="Haker"
         /> -->
+      </article>
+      <article id="v3">
+        <div>
+          <h3>Pierwszy cyberatak: Creeper Worm (1971)</h3>
+          <br />
+          <img
+            src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/creeper.jpg"
+            alt="Creeper Worm"
+          />
+          <br />
+          <p>
+            <strong>Tło</strong><br />
+            Pierwszy znany cyberatak przeprowadzono w 1971 roku. Nosił nazwę
+            Creeper Worm i został stworzony przez Boba Thomasa, pracownika firmy
+            BBN Technologies. ARPANET, sieć komputerowa sponsorowana przez
+            Agencję Zaawansowanych Projektów Badawczych Departamentu Obrony
+            Stanów Zjednoczonych (DARPA), była wtedy wczesnym prekursorem
+            dzisiejszego Internetu.<br /><br /><strong>Jak działał?</strong
+            ><br />
+            Creeper Worm był eksperymentalnym programem zaprojektowanym do
+            demonstracji koncepcji mobilnych programów, które mogą przemieszczać
+            się między komputerami w sieci. Creeper był w stanie przemieszczać
+            się między komputerami DEC PDP-10 w sieci ARPANET. Gdy infekował
+            komputer, wyświetlał wiadomość. Creeper Worm nie wyrządzał żadnych
+            szkód i nie zawierał złośliwego kodu, ale jego zdolność do
+            przemieszczania się autonomicznie między komputerami była
+            nowatorska.<br /><br /><strong>Reakcja i Konsekwencje</strong
+            ><br />Aby przeciwdziałać Creeper Worm, Ray Tomlinson, ten sam
+            programista, który wynalazł e-mail, stworzył pierwszy program
+            antywirusowy, o nazwie Reaper. Reaper był zaprojektowany do ścigania
+            i usuwania Creeper Worm z zainfekowanych systemów.<br />
+          </p>
+        </div>
       </article>
     </div>
     <div class="space"></div>

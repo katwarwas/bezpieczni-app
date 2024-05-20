@@ -83,11 +83,6 @@ async def mitm():
     return FileResponse("templates/htmx/mitm.html")
 
 
-@router.get('/spear-phishing')
-async def spear_phishing():
-    return FileResponse("templates/htmx/spear-phishing.html")
-
-
 @router.get('/sql')
 async def sql():
     return FileResponse("templates/htmx/sql.html")
