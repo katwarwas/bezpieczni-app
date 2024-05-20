@@ -147,7 +147,10 @@
             </li>
           </ul>
         </div>
-        <div id="attack-content"></div>
+        <div
+          id="attack-content"
+          hx-on::after-swap="document.querySelector('ul').scrollIntoView({ behavior: 'smooth'})"
+        ></div>
 
         <!-- <img
           src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyberattacks-types.jpeg"

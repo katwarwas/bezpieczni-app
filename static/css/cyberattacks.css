@@ -1,4 +1,5 @@
 #cyberattacks-title {
+  user-select: none;
   color: #afc5e1;
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -16,6 +17,7 @@
 }
 
 .cyberattacks {
+  user-select: none;
   margin-top: 20px;
   display: grid;
   gap: 20px;
@@ -24,6 +26,7 @@
 }
 
 .img-container {
+  user-select: none;
   position: relative;
   text-align: center;
   color: white;
@@ -80,6 +83,7 @@
 }
 
 #v2 li:hover {
+  cursor: pointer;
   transform: scale(0.98);
   color: #89a6d1;
 }
@@ -110,6 +114,7 @@
 }
 
 #attack-type {
+  user-select: none;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -148,6 +153,7 @@
 }
 
 #attack-content {
+  user-select: none;
   display: grid;
   gap: 20px;
 }
@@ -175,6 +181,7 @@ h4 {
 }
 
 .attack-type-img {
+  user-select: none;
   display: grid;
   justify-items: center;
   gap: 10px;
@@ -189,6 +196,7 @@ h4 {
 }
 
 .attack-info {
+  user-select: none;
   display: grid;
   justify-content: space-around;
   grid-template-columns: minmax(40ch, 120ch);

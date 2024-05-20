@@ -36,6 +36,7 @@ h1 {
 }
 
 figure {
+  user-select: none;
   margin-left: 24px;
   margin-right: 24px;
   position: absolute;
@@ -63,6 +64,7 @@ h3 {
 }
 
 .content {
+  user-select: none;
   color: #e4eaf5;
   font-family: "Lato", sans-serif;
   font-weight: 400;
