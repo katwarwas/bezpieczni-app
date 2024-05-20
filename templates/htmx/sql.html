@@ -1,0 +1,92 @@
+<div id="attack-type">
+  <div>
+    <p>
+      <strong style="font-size: 20px">SQL Injection </strong>
+      to rodzaj cyberataku, który polega na wstrzyknięciu złośliwego kodu SQL do
+      zapytania kierowanego do bazy danych. Celem ataku jest manipulacja
+      zapytaniami SQL w taki sposób, aby uzyskać nieautoryzowany dostęp do
+      danych, ich modyfikację lub usunięcie.
+    </p>
+  </div>
+</div>
+<hr />
+<div class="attack-type-img">
+  <h3 style="text-align: center; font-size: 30px">Jak działa SQL Injection?</h3>
+  <img
+    src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/sql.jpg"
+    alt="sql injection"
+  />
+</div>
+<div class="attack-info">
+  <div>
+    <h4>Manipulacja zapytaniami SQL</h4>
+    <p>
+      Złośliwy kod zmienia pierwotne zapytanie SQL w taki sposób, że baza danych
+      wykonuje nieautoryzowane polecenia. <br /><br />
+      <strong>Przykład:</strong><br />Zapytanie SQL:
+      <i
+        >"SELECT * FROM users WHERE username = 'admin' AND password =
+        'password';"</i
+      >
+      <br />może zostać zmienione na:
+      <i
+        >"SELECT * FROM users WHERE username = 'admin' OR '1'='1' AND password =
+        'password';</i
+      ><br />
+      co zawsze zwróci prawdziwy wynik, pozwalając na zalogowanie bez poprawnego
+      hasła.
+    </p>
+  </div>
+  <div>
+    <h4>Wstrzyknięcie kodu</h4>
+    <p>
+      Atakujący wprowadza złośliwy kod SQL w polach wejściowych aplikacji,
+      takich jak formularze logowania, pola wyszukiwania, URL-e lub nagłówki
+      HTTP. <br /><br />
+      <strong>Przykład:</strong><br />
+      W polu login użytkownik zamiast standardowego „admin” wpisuje: admin' OR
+      '1'='1
+    </p>
+  </div>
+  <div>
+    <h4>Uzyskanie dostępu do danych</h4>
+    <p>
+      Atakujący może wykorzystać SQL Injection do przeglądania tabel,
+      wydobywania danych, wstawiania nowych rekordów, modyfikowania istniejących
+      danych lub usuwania danych.
+    </p>
+  </div>
+</div>
+<hr />
+<h3 style="text-align: center; font-size: 30px">Typy SQL Injection</h3>
+<div class="attack-info twocolumn">
+  <div>
+    <h4>Classic SQL Injection</h4>
+    <p>
+      Wstrzyknięcie kodu w polach wejściowych, które następnie są bezpośrednio
+      używane w zapytaniach SQL.
+    </p>
+  </div>
+  <div>
+    <h4>Blind SQL Injection</h4>
+    <p>
+      Stosowany, gdy aplikacja nie zwraca wyników zapytań SQL, ale odpowiedzi
+      serwera (np. czas odpowiedzi lub różne kody błędów) mogą pomóc w dedukcji
+      struktury bazy danych.
+    </p>
+  </div>
+  <div>
+    <h4>Error-based SQL Injection</h4>
+    <p>
+      Atakujący wstrzykuje kod SQL, który celowo powoduje błędy w bazie danych,
+      aby uzyskać informacje o jej strukturze.
+    </p>
+  </div>
+  <div>
+    <h4>Union-based SQL Injection</h4>
+    <p>
+      Wykorzystanie operatora SQL UNION do łączenia wyników zapytań, co pozwala
+      na wydobycie dodatkowych danych.
+    </p>
+  </div>
+</div>

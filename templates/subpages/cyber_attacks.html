@@ -105,11 +105,46 @@
             >
               Malware
             </li>
-            <li>DDoS</li>
-            <li>Man-in-the-middle</li>
-            <li>Spear phishing</li>
-            <li>SQL Injection</li>
-            <li>Zero-day</li>
+            <li
+              hx-get="/ddos"
+              hx-target="#attack-content"
+              hx-trigger="click"
+              hx-swap="innerHTML"
+            >
+              DDoS
+            </li>
+            <li
+              hx-get="/mitm"
+              hx-target="#attack-content"
+              hx-trigger="click"
+              hx-swap="innerHTML"
+            >
+              Man-in-the-middle
+            </li>
+            <li
+              hx-get="/spear-phishing"
+              hx-target="#attack-content"
+              hx-trigger="click"
+              hx-swap="innerHTML"
+            >
+              Spear phishing
+            </li>
+            <li
+              hx-get="/sql"
+              hx-target="#attack-content"
+              hx-trigger="click"
+              hx-swap="innerHTML"
+            >
+              SQL Injection
+            </li>
+            <li
+              hx-get="/zero-day"
+              hx-target="#attack-content"
+              hx-trigger="click"
+              hx-swap="innerHTML"
+            >
+              Zero-day
+            </li>
           </ul>
         </div>
         <div id="attack-content"></div>

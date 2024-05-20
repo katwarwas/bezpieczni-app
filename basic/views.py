@@ -48,6 +48,11 @@ async def analysis_page(request: Request):
     return templates.TemplateResponse("subpages/analysis.html", {"request": request, "fig": fig})
 
 
+@router.get("/links", response_class=HTMLResponse)
+async def links(request: Request):
+    return templates.TemplateResponse("subpages/links.html", {"request": request})
+
+
 @router.get("/open-navbar")
 async def open_navbar():
     return FileResponse("templates/htmx/open-navbar.html")
@@ -62,11 +67,32 @@ async def close_navbar():
 async def phishing():
     return FileResponse("templates/htmx/phishing.html")
 
+
 @router.get('/malware')
 async def malware():   
     return FileResponse("templates/htmx/malware.html")
 
 
-@router.get("/links", response_class=HTMLResponse)
-async def links(request: Request):
-    return templates.TemplateResponse("subpages/links.html", {"request": request})
+@router.get('/ddos')
+async def ddos():
+    return FileResponse("templates/htmx/ddos.html")
+
+
+@router.get('/mitm')
+async def mitm():
+    return FileResponse("templates/htmx/mitm.html")
+
+
+@router.get('/spear-phishing')
+async def spear_phishing():
+    return FileResponse("templates/htmx/spear-phishing.html")
+
+
+@router.get('/sql')
+async def sql():
+    return FileResponse("templates/htmx/sql.html")
+
+
+@router.get('/zero-day')
+async def zero_day():
+    return FileResponse("templates/htmx/zero-day.html")

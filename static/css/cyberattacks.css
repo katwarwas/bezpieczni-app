@@ -156,22 +156,6 @@
   opacity: 0.2;
 }
 
-#about-type {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-#about-type p {
-  font-size: 16px;
-  text-align: left;
-  margin-bottom: 5px;
-  padding: 12px;
-  background-color: #3b466d30;
-  border-radius: 0px 0px 8px 8px;
-}
-
 h4 {
   color: #e2eeff;
   font-family: "Lato", sans-serif;
@@ -183,14 +167,47 @@ h4 {
   padding: 10px;
 }
 
-#about-type {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(40ch, 50ch));
-}
-
-#about-type div img {
+.attack-info div img {
   height: 80px;
   width: 100%;
   object-fit: cover;
   opacity: 0.5;
+}
+
+.attack-type-img {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.attack-type-img img {
+  border: 8px solid #000000;
+  max-height: 300px;
+  object-fit: cover;
+  opacity: 0.8;
+  border-radius: 16px;
+}
+
+.attack-info {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: minmax(40ch, 120ch);
+  gap: 20px;
+}
+
+.attack-info p {
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: 5px;
+  padding: 12px;
+  background-color: #3b466d30;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.twocolumn {
+  grid-template-columns: repeat(auto-fill, minmax(40ch, 80ch));
+}
+
+.threecolumn {
+  grid-template-columns: repeat(auto-fill, minmax(40ch, 50ch));
 }
