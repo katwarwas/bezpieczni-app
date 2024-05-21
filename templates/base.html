@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bezpieczni</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', path='css/style.css') }}"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+    </style>
+    <script
+      defer
+      src="https://unpkg.com/htmx.org@1.9.12"
+      integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="mainPage"><a href="/">Bezpieczni</a></h1>
+      <h1 class="mainPage2"><a href="/">B</a></h1>
+      <div class="menu">
+        <a href="/cyberattacks" id="{{ 'activeLink' if active_page == 'cyberattacks' else '' }}"">Cyber Ataki</a>
+        <a href="/news/page-1" id="{{ 'activeLink' if active_page == 'news' else '' }}">Aktualności</a>
+        <a href="/analysis" id="{{ 'activeLink' if active_page == 'analysis' else '' }}">Analiza</a>
+        <a href="/map" id="{{ 'activeLink' if active_page == 'map' else '' }}">Mapa</a>
+        <a href="/links" id="{{ 'activeLink' if active_page == 'links' else '' }}">Linki</a>
+      </div>
+      <div
+        class="menu2"
+        hx-get="/open-navbar"
+        hx-swap="outerHTML"
+        hx-target="header"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          class="bi bi-list"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+          />
+        </svg>
+      </div>
+    </header>
+    {% block content %} {% endblock %}
+  </body>
+</html>

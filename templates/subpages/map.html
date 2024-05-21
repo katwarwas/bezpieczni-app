@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% set active_page = 'map' %} {% block content %}
+<h3 style="margin: 50px 0px 50px 0px">Mapa Ataków</h3>
+<div class="attack-map">
+  <ul class="map-ul">
+    <li
+      hx-get="/map-actor-country"
+      hx-target="#map"
+      hx-trigger="click"
+      hx-swap="outerHTML"
+    >
+      Kraje atakujące
+    </li>
+    <li
+      hx-get="/map-motive"
+      hx-target="#map"
+      hx-trigger="click"
+      hx-swap="outerHTML"
+    >
+      Motywy ataków
+    </li>
+    <li
+      hx-get="/map-type"
+      hx-target="#map"
+      hx-trigger="click"
+      hx-swap="outerHTML"
+    >
+      Typy ataków
+    </li>
+  </ul>
+
+  <iframe
+    id="map"
+    src="/static/map/map-actor-country.html"
+    width="80%"
+    height="500px"
+  ></iframe>
+</div>
+{% endblock %}

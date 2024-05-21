@@ -1,190 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bezpieczni</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', path='css/style.css') }}"
+{% extends "base.html" %} {% set active_page = 'cyberattacks' %} {% block
+content %}
+<div class="img-container">
+  <img
+    src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyber-attack-photo-1.jpg"
+    alt="Haker"
+  />
+  <h2>Cyber Ataki - najważniejsze informacje</h2>
+</div>
+<div class="cyberattacks">
+  <article id="v1">
+    <img
+      src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/whats-cyberattacks.jpeg"
+      alt="Haker"
     />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
-    </style>
-    <script
-      defer
-      src="https://unpkg.com/htmx.org@1.9.12"
-      integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <header>
-      <h1 class="mainPage"><a href="/">Bezpieczni</a></h1>
-      <div class="menu">
-        <a href="/cyberattacks" id="activeLink">Cyber Ataki</a>
-        <a href="/news/page-1">Aktualności</a>
-        <a href="/analysis">Analiza</a>
-        <a href="/links">Linki</a>
-      </div>
-      <div
-        class="menu2"
-        hx-get="/open-navbar"
-        hx-swap="outerHTML"
-        hx-target="header"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          fill="currentColor"
-          class="bi bi-list"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-          />
-        </svg>
-      </div>
-    </header>
-    <div class="img-container">
-      <img
-        src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyber-attack-photo-1.jpg"
-        alt="Haker"
-      />
-      <h2>Cyber Ataki - najważniejsze informacje</h2>
+
+    <div>
+      <h3>Czym są?</h3>
+      <br />
+      <p>
+        Cyberataki to dzisiaj jedno z najbardziej palących zagrożeń dla
+        społeczeństwa, gospodarki i instytucji na całym świecie. W dzisiejszym
+        zglobalizowanym i zdigitalizowanym środowisku, gdzie wiele aspektów
+        życia przenosi się do przestrzeni online, cyberatak może przyjąć wiele
+        różnych form i mieć bardzo poważne konsekwencje.<br /><br />
+        Na ogół można określić cyberatak jako celowe działania przeprowadzane
+        przez jednostki, grupy lub nawet państwa, które wykorzystują technologie
+        informatyczne do nieuprawnionego dostępu, zakłócania, manipulowania lub
+        niszczenia danych, systemów informatycznych lub sieci komputerowych.
+        Cyberatak może być skierowany przeciwko różnym celom, w tym przeciwko
+        instytucjom rządowym, firmom, organizacjom pozarządowym, a nawet
+        przeciwko pojedynczym użytkownikom.
+      </p>
     </div>
-    <div class="cyberattacks">
-      <article id="v1">
-        <img
-          src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/whats-cyberattacks.jpeg"
-          alt="Haker"
-        />
-
-        <div>
-          <h3>Czym są?</h3>
-          <br />
-          <p>
-            Cyberataki to dzisiaj jedno z najbardziej palących zagrożeń dla
-            społeczeństwa, gospodarki i instytucji na całym świecie. W
-            dzisiejszym zglobalizowanym i zdigitalizowanym środowisku, gdzie
-            wiele aspektów życia przenosi się do przestrzeni online, cyberatak
-            może przyjąć wiele różnych form i mieć bardzo poważne
-            konsekwencje.<br /><br />
-            Na ogół można określić cyberatak jako celowe działania
-            przeprowadzane przez jednostki, grupy lub nawet państwa, które
-            wykorzystują technologie informatyczne do nieuprawnionego dostępu,
-            zakłócania, manipulowania lub niszczenia danych, systemów
-            informatycznych lub sieci komputerowych. Cyberatak może być
-            skierowany przeciwko różnym celom, w tym przeciwko instytucjom
-            rządowym, firmom, organizacjom pozarządowym, a nawet przeciwko
-            pojedynczym użytkownikom.
-          </p>
-        </div>
-      </article>
-      <article id="v2">
-        <div id="list-attacks">
-          <h3>Najpopularniejsze rodzaje:</h3>
-          <br />
-          <ul>
-            <li
-              hx-get="/phishing"
-              hx-target="#attack-content"
-              hx-trigger="click"
-              hx-swap="innerHTML"
-            >
-              Phishing
-            </li>
-            <li
-              hx-get="/malware"
-              hx-target="#attack-content"
-              hx-trigger="click"
-              hx-swap="innerHTML"
-            >
-              Malware
-            </li>
-            <li
-              hx-get="/ddos"
-              hx-target="#attack-content"
-              hx-trigger="click"
-              hx-swap="innerHTML"
-            >
-              DDoS
-            </li>
-            <li
-              hx-get="/mitm"
-              hx-target="#attack-content"
-              hx-trigger="click"
-              hx-swap="innerHTML"
-            >
-              Man-in-the-middle
-            </li>
-            <li
-              hx-get="/sql"
-              hx-target="#attack-content"
-              hx-trigger="click"
-              hx-swap="innerHTML"
-            >
-              SQL Injection
-            </li>
-            <li
-              hx-get="/zero-day"
-              hx-target="#attack-content"
-              hx-trigger="click"
-              hx-swap="innerHTML"
-            >
-              Zero-day
-            </li>
-          </ul>
-        </div>
-        <div
-          id="attack-content"
-          hx-on::after-swap="document.querySelector('ul').scrollIntoView({ behavior: 'smooth'})"
+  </article>
+  <article id="v2">
+    <div id="list-attacks">
+      <h3>Najpopularniejsze rodzaje:</h3>
+      <br />
+      <ul>
+        <li
+          hx-get="/phishing"
+          hx-target="#attack-content"
+          hx-trigger="click"
+          hx-swap="innerHTML"
         >
-          {% include 'htmx/phishing.html' %}
-        </div>
+          Phishing
+        </li>
+        <li
+          hx-get="/malware"
+          hx-target="#attack-content"
+          hx-trigger="click"
+          hx-swap="innerHTML"
+        >
+          Malware
+        </li>
+        <li
+          hx-get="/ddos"
+          hx-target="#attack-content"
+          hx-trigger="click"
+          hx-swap="innerHTML"
+        >
+          DDoS
+        </li>
+        <li
+          hx-get="/mitm"
+          hx-target="#attack-content"
+          hx-trigger="click"
+          hx-swap="innerHTML"
+        >
+          Man-in-the-middle
+        </li>
+        <li
+          hx-get="/sql"
+          hx-target="#attack-content"
+          hx-trigger="click"
+          hx-swap="innerHTML"
+        >
+          SQL Injection
+        </li>
+        <li
+          hx-get="/zero-day"
+          hx-target="#attack-content"
+          hx-trigger="click"
+          hx-swap="innerHTML"
+        >
+          Zero-day
+        </li>
+      </ul>
+    </div>
+    <div
+      id="attack-content"
+      hx-on::after-swap="document.querySelector('ul').scrollIntoView({ behavior: 'smooth'})"
+    >
+      {% include 'htmx/phishing.html' %}
+    </div>
 
-        <!-- <img
+    <!-- <img
           src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyberattacks-types.jpeg"
           alt="Haker"
         /> -->
-      </article>
-      <article id="v3">
-        <div>
-          <h3>Pierwszy cyberatak: Creeper Worm (1971)</h3>
-          <br />
-          <img
-            src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/creeper.jpg"
-            alt="Creeper Worm"
-          />
-          <br />
-          <p>
-            <strong>Tło</strong><br />
-            Pierwszy znany cyberatak przeprowadzono w 1971 roku. Nosił nazwę
-            Creeper Worm i został stworzony przez Boba Thomasa, pracownika firmy
-            BBN Technologies. ARPANET, sieć komputerowa sponsorowana przez
-            Agencję Zaawansowanych Projektów Badawczych Departamentu Obrony
-            Stanów Zjednoczonych (DARPA), była wtedy wczesnym prekursorem
-            dzisiejszego Internetu.<br /><br /><strong>Jak działał?</strong
-            ><br />
-            Creeper Worm był eksperymentalnym programem zaprojektowanym do
-            demonstracji koncepcji mobilnych programów, które mogą przemieszczać
-            się między komputerami w sieci. Creeper był w stanie przemieszczać
-            się między komputerami DEC PDP-10 w sieci ARPANET. Gdy infekował
-            komputer, wyświetlał wiadomość. Creeper Worm nie wyrządzał żadnych
-            szkód i nie zawierał złośliwego kodu, ale jego zdolność do
-            przemieszczania się autonomicznie między komputerami była
-            nowatorska.<br /><br /><strong>Reakcja i Konsekwencje</strong
-            ><br />Aby przeciwdziałać Creeper Worm, Ray Tomlinson, ten sam
-            programista, który wynalazł e-mail, stworzył pierwszy program
-            antywirusowy, o nazwie Reaper. Reaper był zaprojektowany do ścigania
-            i usuwania Creeper Worm z zainfekowanych systemów.<br />
-          </p>
-        </div>
-      </article>
+  </article>
+  <article id="v3">
+    <div>
+      <h3>Pierwszy cyberatak: Creeper Worm (1971)</h3>
+      <br />
+      <img
+        src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/creeper.jpg"
+        alt="Creeper Worm"
+      />
+      <br />
+      <p>
+        <strong>Tło</strong><br />
+        Pierwszy znany cyberatak przeprowadzono w 1971 roku. Nosił nazwę Creeper
+        Worm i został stworzony przez Boba Thomasa, pracownika firmy BBN
+        Technologies. ARPANET, sieć komputerowa sponsorowana przez Agencję
+        Zaawansowanych Projektów Badawczych Departamentu Obrony Stanów
+        Zjednoczonych (DARPA), była wtedy wczesnym prekursorem dzisiejszego
+        Internetu.<br /><br /><strong>Jak działał?</strong><br />
+        Creeper Worm był eksperymentalnym programem zaprojektowanym do
+        demonstracji koncepcji mobilnych programów, które mogą przemieszczać się
+        między komputerami w sieci. Creeper był w stanie przemieszczać się
+        między komputerami DEC PDP-10 w sieci ARPANET. Gdy infekował komputer,
+        wyświetlał wiadomość. Creeper Worm nie wyrządzał żadnych szkód i nie
+        zawierał złośliwego kodu, ale jego zdolność do przemieszczania się
+        autonomicznie między komputerami była nowatorska.<br /><br /><strong
+          >Reakcja i Konsekwencje</strong
+        ><br />Aby przeciwdziałać Creeper Worm, Ray Tomlinson, ten sam
+        programista, który wynalazł e-mail, stworzył pierwszy program
+        antywirusowy, o nazwie Reaper. Reaper był zaprojektowany do ścigania i
+        usuwania Creeper Worm z zainfekowanych systemów.<br />
+      </p>
     </div>
-    <div class="space"></div>
-  </body>
-</html>
+  </article>
+</div>
+<div class="space"></div>
+{% endblock %}

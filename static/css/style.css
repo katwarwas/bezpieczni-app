@@ -7,6 +7,7 @@
 @import url("actual_news.css");
 @import url("css_reset.css");
 @import url("cyberattacks.css");
+@import url("map.css");
 
 body {
   background-color: #24293e;

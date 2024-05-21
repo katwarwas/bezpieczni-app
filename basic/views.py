@@ -48,6 +48,29 @@ async def analysis_page(request: Request):
     return templates.TemplateResponse("subpages/analysis.html", {"request": request, "fig": fig})
 
 
+@router.get("/map", response_class=HTMLResponse)
+async def mapa(request: Request):
+    return templates.TemplateResponse("subpages/map.html", {"request": request})
+
+
+@router.get("/map-actor-country", response_class=HTMLResponse)
+async def map_actor_country(request: Request):
+    content = '''<iframe id="map" src="/static/map/map-actor-country.html" width="80%" height="500px"></iframe>'''
+    return HTMLResponse(content=content)
+
+
+@router.get("/map-motive", response_class=HTMLResponse)
+async def map_actor_country(request: Request):
+    content = '''<iframe id="map" src="/static/map/map-motive.html" width="80%" height="500px"></iframe>'''
+    return HTMLResponse(content=content)
+
+
+@router.get("/map-type", response_class=HTMLResponse)
+async def map_actor_country(request: Request):
+    content = '''<iframe id="map" src="/static/map/map-type.html" width="80%" height="500px"></iframe>'''
+    return HTMLResponse(content=content)
+
+
 @router.get("/links", response_class=HTMLResponse)
 async def links(request: Request):
     return templates.TemplateResponse("subpages/links.html", {"request": request})
