@@ -26,6 +26,11 @@
   transform: scale(1);
 }
 
+.map-item.active {
+  transform: scale(0.98);
+  color: #89a6d1;
+}
+
 iframe {
   border-radius: 16px;
 }
