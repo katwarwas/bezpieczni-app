@@ -3,33 +3,30 @@
 <div class="attack-map">
   <ul class="map-ul">
     <li
-      id="l1"
       hx-get="/map-actor-country"
       hx-target="#map"
       hx-trigger="click"
       hx-swap="outerHTML"
-      hx-on:click="document.querySelector('#l1').classList.add('active'); document.querySelectorAll('li').forEach(el => { if (el.id !== 'l1') el.classList.remove('active'); })"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
       class="map-item active"
     >
       Kraje atakujące
     </li>
     <li
-      id="l2"
       hx-get="/map-motive"
       hx-target="#map"
       hx-trigger="click"
-      hx-on:click="document.querySelector('#l2').classList.add('active'); document.querySelectorAll('li').forEach(el => { if (el.id !== 'l2') el.classList.remove('active'); })"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
       hx-swap="outerHTML"
       class="map-item"
     >
       Motywy ataków
     </li>
     <li
-      id="l3"
       hx-get="/map-type"
       hx-target="#map"
       hx-trigger="click"
-      hx-on:click="document.querySelector('#l3').classList.add('active'); document.querySelectorAll('li').forEach(el => { if (el.id !== 'l3') el.classList.remove('active'); })"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
       hx-swap="outerHTML"
       class="map-item"
     >

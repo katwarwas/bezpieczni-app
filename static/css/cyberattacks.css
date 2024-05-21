@@ -67,7 +67,7 @@
   padding-left: 0px;
 }
 
-#v2 li {
+.list-item {
   display: inline-block;
   color: #e4eaf5;
   font-family: "Lato", sans-serif;
@@ -81,14 +81,19 @@
   text-align: center;
 }
 
-#v2 li:hover {
+.list-item:hover {
   cursor: pointer;
   transform: scale(0.98);
   color: #89a6d1;
 }
 
-#v2 li:active {
+.list-item:active {
   transform: scale(1);
+}
+
+.list-item.active {
+  transform: scale(0.98);
+  color: #89a6d1;
 }
 
 #v1 img {

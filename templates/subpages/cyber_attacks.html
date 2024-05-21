@@ -42,7 +42,9 @@ content %}
           hx-get="/phishing"
           hx-target="#attack-content"
           hx-trigger="click"
+          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
           hx-swap="innerHTML"
+          class="list-item active"
         >
           Phishing
         </li>
@@ -50,7 +52,9 @@ content %}
           hx-get="/malware"
           hx-target="#attack-content"
           hx-trigger="click"
+          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
           hx-swap="innerHTML"
+          class="list-item"
         >
           Malware
         </li>
@@ -58,7 +62,9 @@ content %}
           hx-get="/ddos"
           hx-target="#attack-content"
           hx-trigger="click"
+          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
           hx-swap="innerHTML"
+          class="list-item"
         >
           DDoS
         </li>
@@ -66,7 +72,9 @@ content %}
           hx-get="/mitm"
           hx-target="#attack-content"
           hx-trigger="click"
+          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
           hx-swap="innerHTML"
+          class="list-item"
         >
           Man-in-the-middle
         </li>
@@ -74,7 +82,9 @@ content %}
           hx-get="/sql"
           hx-target="#attack-content"
           hx-trigger="click"
+          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
           hx-swap="innerHTML"
+          class="list-item"
         >
           SQL Injection
         </li>
@@ -82,7 +92,9 @@ content %}
           hx-get="/zero-day"
           hx-target="#attack-content"
           hx-trigger="click"
+          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
           hx-swap="innerHTML"
+          class="list-item"
         >
           Zero-day
         </li>
