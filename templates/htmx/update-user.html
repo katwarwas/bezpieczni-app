@@ -1,0 +1,44 @@
+<div class="registerFormDiv">
+  <form
+  id="registerForm"
+  hx-patch="/user/{{user.id}}"
+  hx-target="#info"
+  hx-swap="outerHtml"
+  >
+    <label for="name">Imię:</label><br />
+    <input type="text" id="name" name="name" value="{{ user.name }}" required/><br />
+
+    <label for="surname">Nazwisko:</label><br />
+    <input type="text" id="surname" name="surname" value="{{ user.surname }}" required/><br />
+
+    <label for="email">Email:</label><br />
+    <input type="email" id="email" name="email" value="{{ user.email }}" required/><br />
+
+    <label for="role">Rola:</label><br />
+    <select id="role" name="role" required>
+      <option value="1" {% if user.role_id == '1'%} selected {% endif %}/>Administrator</option>
+      <option value="2" {% if user.role_id == '2'%} selected {% endif %}>Moderator</option>
+      <br /></select
+    ><br />
+    {% if user %}
+    <p style="margin-bottom: 8px; font-weight: 400;">Zmienić hasło?</p>
+    <div class="checkbox-wrapper-34">
+      <input class='tgl tgl-ios' id='toggle-34' type='checkbox' name="change_password">
+      <label class='tgl-btn' for='toggle-34'></label>
+    </div><br>
+    {% endif %}
+
+    <button class="button">Zaaktualizuj</button>
+  </form>
+</div>
+<div
+  id="info"
+  hx-on::after-swap="hideContent()"
+></div>
+<script>
+  function hideContent() {
+    setTimeout(function () {
+      document.getElementById("info").textContent = ""
+    }, 5000) // Ukryj zawartość po 2 sekundach
+  }
+</script>

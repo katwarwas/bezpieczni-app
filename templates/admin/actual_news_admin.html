@@ -19,6 +19,7 @@
   </p>
 </div>
 <br />
+{% if author_post %}
 <div class="update-delete-button">
   <button><a href="/update/news-{{post.id}}">Zaaktualizuj</a></button>
   <button
@@ -28,5 +29,6 @@
     Usuń
   </button>
 </div>
+{% endif %}
 <div class="space"></div>
 {% endblock %}

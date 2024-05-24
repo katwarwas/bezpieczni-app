@@ -1,0 +1,24 @@
+<ul>
+  {% for user in users %}
+  <li id="user-{{user.id}}">
+    <strong>{{ user.name }} {{ user.surname }}: </strong>{{ user.email }}<br />{%
+    if user.role_id == 1 %}admin{% else %}moderator{% endif %}<br />
+    <div class="list-button">
+      <button
+        hx-get="/edit-user/{{ user.id }}"
+        hx-target="#admin-panel"
+        hx-swap="innerHTML"
+      >
+        edytuj</button
+      ><button
+        hx-delete="/user/{{ user.id }}"
+        hx-target="#user-{{user.id}}"
+        hx-swap="outerHTML swap:1s"
+        hx-confirm="Czy na pewno chcesz usunąc użytkownika?"
+      >
+        usuń
+      </button>
+    </div>
+  </li>
+  {% endfor %}
+</ul>

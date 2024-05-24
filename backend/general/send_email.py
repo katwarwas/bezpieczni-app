@@ -25,7 +25,7 @@ async def simple_send(email: EmailSchema, password) -> JSONResponse:
     message = MessageSchema(
         subject="Password",
         recipients=email,
-        body=f"Twoje hasło to: {password}, zaloguj się na stronie http://127.0.0.1:8000/login",
+        body=f"Twoje hasło to: {password}, zaloguj się na stronie https://bezpieczni-app.onrender.com/login",
         subtype=MessageType.html)
 
     fm = FastMail(conf)

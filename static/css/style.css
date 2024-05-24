@@ -8,6 +8,7 @@
 @import url("css_reset.css");
 @import url("cyberattacks.css");
 @import url("map.css");
+@import url("dashboard.css");
 
 body {
   background-color: #24293e;
@@ -26,6 +27,15 @@ h1 {
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
+}
+
+p {
+  color: #e2eeff;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  text-align: left;
+  font-size: 16px;
 }
 
 .mainPage {
@@ -130,11 +140,14 @@ header {
   width: 100%;
 }
 
-.registerFormDiv,
 .loginFormDiv {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.registerFormDiv button {
+  margin: 8px 0px 0px 0px;
 }
 
 #createForm {
@@ -156,8 +169,6 @@ header {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
-  margin-right: 10px;
-  margin-left: 10px;
 }
 
 textarea {
