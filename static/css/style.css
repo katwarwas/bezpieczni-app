@@ -1,4 +1,5 @@
 @import url("register.css");
+@import url("dashboard.css");
 @import url("header_admin.css");
 @import url("news.css");
 @import url("analysis.css");
@@ -8,7 +9,6 @@
 @import url("css_reset.css");
 @import url("cyberattacks.css");
 @import url("map.css");
-@import url("dashboard.css");
 
 body {
   background-color: #24293e;
