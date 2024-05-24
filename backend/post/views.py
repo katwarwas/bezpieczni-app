@@ -78,10 +78,10 @@ async def posts(request: Request, db: DbSession, page: int = 0):
 async def posts(request: Request, db: DbSession, id: int, current_user: CurrentUser):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
     author = db.query(Users).filter(Users.id == post.user_id).one_or_none()
-    
-    if author.id == current_user.id or author.role_id == 1:
+
+    if author.id == current_user.id or current_user.role_id == 1:
         return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author, "author_post": True})
-    return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author})
+    return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author,"author_post": False})
 
 
 @router.get("/update/news-{id}", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
