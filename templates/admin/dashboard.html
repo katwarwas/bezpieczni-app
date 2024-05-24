@@ -1,10 +1,5 @@
 {% extends "admin_base.html" %} {% block content %}
 <div class="dashboard-div">
-  <div class="info-dashboard">
-    <h3>Liczba postów</h3>
-    <p class="n-posts">{{ posts_number }}</p>
-    <p>w tym twoich: <span>{{ my_posts_number }}</span></p>
-  </div>
   {% if admin %}
   <div class="info-dashboard">
     <div>
@@ -37,6 +32,11 @@
     </div>
   </div>
   {% endif %}
+  <div class="info-dashboard">
+    <h3>Liczba postów</h3>
+    <p class="n-posts">{{ posts_number }}</p>
+    <p>w tym twoich: <span>{{ my_posts_number }}</span></p>
+  </div>
 </div>
 <div class="space"></div>
 
