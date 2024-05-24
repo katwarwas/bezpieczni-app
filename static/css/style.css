@@ -205,6 +205,21 @@ select {
   box-sizing: border-box;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  padding: 5px 40px 5px 10px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10"><path fill="none" stroke="white" stroke-width="1.5" d="M1 3 l4 4 l4 -4"/></svg>')
+    no-repeat right 5px center;
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
 .button {
   background-color: #89a6d140;
   color: #e4eaf5;
