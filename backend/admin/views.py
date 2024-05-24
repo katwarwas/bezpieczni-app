@@ -136,9 +136,12 @@ async def user_list(request: Request, db: DbSession):
 @router.get("/edit-user/{id}", dependencies=[Depends(get_current_user)])
 async def edit_user(request: Request, db: DbSession, id: int):
     user = db.query(Users).filter(Users.id == id).one_or_none()
+    if user.role_id != 1:
+        return HTMLResponse(status_code=401)
     if user is None:
         raise get_user_exist_exception()
     return templates.TemplateResponse("htmx/update-user.html", {"request": request, "user": user})
+    
 
 
 @router.patch("/user/{id}", dependencies=[Depends(get_current_user)])
