@@ -17,13 +17,13 @@
   padding: 8px;
 }
 
-.info-dashboard p {
-  text-align: center;
-}
-
 .info-dashboard span {
   font-style: oblique;
   font-weight: 600;
+}
+
+.info-dashboard p {
+  text-align: center;
 }
 
 .info-dashboard h3 {
