@@ -14,6 +14,5 @@ class Posts(Base, SoftDeleteMixin):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     created_at = Column(TIMESTAMP, server_default=text("CURRENT_TIMESTAMP"), nullable=False)
     updated_at = Column(TIMESTAMP, server_default=text("CURRENT_TIMESTAMP"), nullable=False)
-    deleted_at = Column(DateTime(timezone=True), nullable=True)
 
     user = relationship("Users", foreign_keys=[user_id])

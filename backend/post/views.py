@@ -3,7 +3,7 @@ from database import DbSession
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from typing import Annotated, Optional
-from backend.admin.services import get_current_user
+from backend.admin.services import get_current_user, get_current_admin
 from .models import Posts
 from backend.admin.schemas import User
 from sqlalchemy import desc

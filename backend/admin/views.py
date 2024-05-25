@@ -5,7 +5,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, FileResponse
 from starlette.responses import RedirectResponse
 from starlette import status
-from .services import hash_password, get_by_email, generate_random_password, get_current_user
+from .services import hash_password, get_by_email, generate_random_password, get_current_user, get_current_admin
 from ..general.send_email import simple_send
 from .exception import get_user_exist_exception
 from .models import Users
@@ -69,21 +69,21 @@ async def logout(response: Response, request: Request):
 
 
 
-@router.get("/open-navbar-admin")
+@router.get("/open-navbar-admin", dependencies=[Depends(get_current_user)])
 async def open_navbar():
     return FileResponse("templates/htmx/open-navbar-admin.html")
     
 
-@router.get("/close-navbar-admin")
+@router.get("/close-navbar-admin", dependencies=[Depends(get_current_user)])
 async def close_navbar():
     return FileResponse("templates/htmx/close-navbar-admin.html")
 
-@router.get("/register", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
+@router.get("/register", response_class=HTMLResponse, dependencies=[Depends(get_current_admin)])
 async def register_html(request: Request):
     return templates.TemplateResponse("admin/register.html", {"request": request})
 
 
-@router.post("/register", dependencies=[Depends(get_current_user)])
+@router.post("/register", dependencies=[Depends(get_current_admin)])
 async def register(db: DbSession, 
                    name: str = Form(...), 
                    surname: str = Form(...), 
@@ -127,7 +127,7 @@ async def register(db: DbSession,
     return HTMLResponse(content=content)
 
 
-@router.get("/user-list", dependencies=[Depends(get_current_user)])
+@router.get("/user-list", dependencies=[Depends(get_current_admin)])
 async def user_list(request: Request, db: DbSession):
     users = db.query(Users).all()
     return templates.TemplateResponse("htmx/user-list.html", {"request": request, "users": users})
@@ -144,7 +144,7 @@ async def edit_user(request: Request, db: DbSession, id: int):
     
 
 
-@router.patch("/user/{id}", dependencies=[Depends(get_current_user)])
+@router.patch("/user/{id}", dependencies=[Depends(get_current_admin)])
 async def update_user(db: DbSession, id: int,name: str = Form(...), 
                    surname: str = Form(...), 
                    email: str = Form(...), 
@@ -173,7 +173,7 @@ async def update_user(db: DbSession, id: int,name: str = Form(...),
     return HTMLResponse(content=content)
 
 
-@router.delete("/user/{id}", dependencies=[Depends(get_current_user)])
+@router.delete("/user/{id}", dependencies=[Depends(get_current_admin)])
 async def delete_user(db: DbSession, id: int):
     user = db.query(Users).filter(Users.id == id).one_or_none()
 
