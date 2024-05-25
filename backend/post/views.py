@@ -123,7 +123,6 @@ async def update_post(request:Request, db: DbSession, id: int, file: Optional[Up
 
         db.commit()
         db.refresh(post)
-        update=True
 
         redirect = templates.TemplateResponse('main.html', {'request': request})
         redirect.headers['HX-Redirect'] = f"/admin/news/{post.id}"

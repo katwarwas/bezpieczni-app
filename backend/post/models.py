@@ -4,7 +4,7 @@ from database import Base
 from ..general.soft_delete import SoftDeleteMixin
 
 
-class Posts(Base, SoftDeleteMixin):
+class Posts(Base):
     __tablename__ = "posts"
 
     id = Column(Integer, primary_key=True, index=True)
