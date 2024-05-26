@@ -62,7 +62,8 @@
 
 .postRow p {
   text-align: right;
-  color: #89a6d180;
+  color: #d0dced80;
+  font-weight: 400;
   font-size: clamp(8px, 0.5vw, 10px);
   margin: 0px;
 }
@@ -73,8 +74,9 @@ hr {
 
 .postRow span {
   line-height: 1.2;
-  color: #89a6d150;
+  color: #d0dcedaa;
   font-size: 14px;
+  font-weight: 300;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;

@@ -14,13 +14,15 @@
   color: #e4eaf5;
   text-decoration: none;
   font-family: "Lato", sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
-  text-align: center;
+  text-align: justify;
   font-size: clamp(16px, 1.2vw, 24px);
+  text-indent: 5%;
   margin: 5px;
   margin-left: 20%;
   margin-right: 20%;
+  margin-bottom: 20px;
 }
 
 .actual-news-content h3 {
@@ -29,7 +31,7 @@
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
-  text-align: center;
+  text-align: left;
   font-size: clamp(20px, 2vw, 38px);
   margin: 10px;
 }
@@ -39,7 +41,7 @@
   color: #e4eaf5;
   text-decoration: none;
   font-family: "Lato", sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   font-style: oblique;
   text-align: left;
   font-size: clamp(16px, 1.2vw, 24px);
