@@ -40,9 +40,17 @@
     align-items: stretch;
     flex-direction: column;
     margin-right: 10px;
+    gap: 0px;
+  }
+
+  .links a {
+    border-radius: 8px 8px 0px 0px;
   }
 
   .links p {
+    padding: 8px;
     text-align: center;
+    background-color: #3b466d20;
+    border-radius: 0px 0px 8px 8px;
   }
 }
