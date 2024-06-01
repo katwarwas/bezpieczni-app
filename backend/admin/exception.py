@@ -28,3 +28,5 @@ def get_admin_exception():
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
+
+

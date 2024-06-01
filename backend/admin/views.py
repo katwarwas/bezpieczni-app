@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request, Response, Form, Depends
+from fastapi import APIRouter, Request, Response, Form, Depends, HTTPException
 from typing import Annotated
 from database import DbSession
 from fastapi.templating import Jinja2Templates
@@ -37,7 +37,7 @@ async def login_html(request: Request):
     
 
 @router.post("/login")
-async def login(db: DbSession, email: str = Form(...), password: str = Form(...)):
+async def login(request: Request, db: DbSession, email: str = Form(...), password: str = Form(...)):
     user = Users()
     user.email = email
     user.password = password
@@ -47,8 +47,7 @@ async def login(db: DbSession, email: str = Form(...), password: str = Form(...)
         content = "<p>Blędne hasło lub email.</p>"
         return HTMLResponse(content=content)
     
-    redirect = RedirectResponse(url="/dashboard", status_code=status.HTTP_302_FOUND)
-
+    redirect = templates.TemplateResponse('admin/dashboard.html', {'request': request})
     redirect.set_cookie(
         key="jwt",
         value=user.refresh_token,
@@ -57,7 +56,8 @@ async def login(db: DbSession, email: str = Form(...), password: str = Form(...)
         samesite=None,
         max_age=60 * 60 * settings.refresh_token_expire_hours,
     )
-
+    
+    redirect.headers['HX-Redirect'] = f"/dashboard"
     return redirect
 
 
@@ -183,4 +183,5 @@ async def delete_user(db: DbSession, id: int):
     user.delete()
     db.commit()
     return HTMLResponse(status_code=200)
+
 

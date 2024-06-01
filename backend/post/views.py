@@ -70,7 +70,11 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, f
 @router.get("/admin/news/page-{page}", response_class=HTMLResponse,dependencies=[Depends(get_current_user)])
 async def posts(request: Request, db: DbSession, page: int = 0):
     posts = db.query(Posts).order_by(desc(Posts.created_at)).limit(12).offset((page-1)*12).all()
+    if posts is None:
+        raise post_exception()
     pages = ceil(db.query(Posts).count() / 12)
+    if pages is None:
+        raise post_exception()
     return templates.TemplateResponse("admin/news_admin.html", {"request": request, "posts": posts, "pages": pages, "actual_page": page})
 
 

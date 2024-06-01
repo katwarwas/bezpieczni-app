@@ -8,6 +8,9 @@ from backend.admin.views import router as admin_router
 from backend.post.views import router as post_router
 from backend.admin import models as admin_models
 from backend.post import models as post_models
+from backend.exceptions import http_exception_handler
+from starlette.exceptions import HTTPException 
+
 
 admin_models.Base.metadata.create_all(bind=engine)
 post_models.Base.metadata.create_all(bind=engine)
@@ -27,3 +30,5 @@ app.include_router(admin_router)
 app.include_router(post_router)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+app.add_exception_handler(HTTPException, http_exception_handler)

@@ -19,11 +19,16 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body id="bodyLogin">
+  <body id="bodyCenter">
     <div class="loginPage">
       <h1>Zaloguj:</h1>
       <div class="loginFormDiv">
-        <form id="loginForm" method="POST" action="/login">
+        <form
+          id="loginForm"
+          hx-post="/login"
+          hx-target="#info"
+          hx-swap="outerHtml"
+        >
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required />
 
@@ -32,6 +37,17 @@
           <button class="button" type="submit">Zaloguj</button>
         </form>
       </div>
+      <div
+        id="info"
+        hx-on::after-swap="hideContent(); document.querySelector('form').reset()"
+      ></div>
     </div>
+    <script>
+      function hideContent() {
+        setTimeout(function () {
+          document.getElementById("info").textContent = ""
+        }, 5000) // Ukryj zawartość po 2 sekundach
+      }
+    </script>
   </body>
 </html>

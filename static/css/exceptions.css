@@ -1,0 +1,7 @@
+.error {
+  display: grid;
+}
+
+.error #status {
+  font-weight: 900;
+}
