@@ -104,6 +104,7 @@ header {
 .menu {
   display: flex;
   margin-top: 64px;
+  margin-right: 8px;
   align-items: center;
 }
 
