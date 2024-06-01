@@ -10,6 +10,7 @@
 @import url("cyberattacks.css");
 @import url("map.css");
 @import url("links.css");
+@import url("login.css");
 
 body {
   background-color: #24293e;
@@ -141,12 +142,6 @@ header {
   width: 100%;
 }
 
-.loginFormDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .registerFormDiv button {
   margin: 8px 0px 0px 0px;
 }
@@ -163,8 +158,7 @@ header {
   /* box-sizing: border-box; */
 }
 
-#registerForm,
-#loginForm {
+#registerForm {
   text-align: left;
   color: #e4eaf5;
   font-family: "Lato", sans-serif;

@@ -1,0 +1,38 @@
+#bodyLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  margin: 0;
+}
+
+.loginPage {
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+}
+
+.loginPage h1 {
+  font-size: 60px;
+  text-align: center;
+}
+
+.loginFormDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+#loginForm {
+  text-align: left;
+  color: #e4eaf5;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+}
+
+#loginForm button {
+  margin: 10px 0px 0px 0px;
+  width: 100%;
+}
