@@ -1,6 +1,9 @@
 {% extends "admin_base.html" %} {% set active_page = 'add_post' %} {% block
-content %}
+content %} {% if post %}
+<h3 style="margin-top: 100px">Zaaktualizuj artykuł:</h3>
+{% else %}
 <h3 style="margin-top: 100px">Dodaj artykuł:</h3>
+{% endif %}
 <div class="createFormDiv">
   <form
     id="createForm"

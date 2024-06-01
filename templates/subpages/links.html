@@ -1,2 +1,44 @@
-{% extends "base.html" %} {% set active_page = 'links' %} {% block content %} {%
-endblock %}
+{% extends "base.html" %} {% set active_page = 'links' %} {% block content %}
+<div class="img-container">
+  <img
+    class="important-links-img"
+    src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/url.jpeg"
+    alt="Url"
+  />
+  <h2>Ważne linki</h2>
+</div>
+<div class="links">
+  <div>
+    <a href="https://haveibeenpwned.com">Have I Been Pwned?</a>
+    <p>
+      Strona, która pozwala sprawdzić, czy Twoje dane zostały ujawnione w wyniku
+      wycieku.
+    </p>
+  </div>
+  <div>
+    <a href="https://www.kaspersky.com/threat-intelligence"
+      >Kaspersky Threat Intelligence Portal</a
+    >
+    <p>Informacje o zagrożeniach cybernetycznych i narzędzia do analizy.</p>
+  </div>
+  <div>
+    <a href="https://www.cyberthreatalliance.org">Cyber Threat Alliance</a>
+    <p>Współpraca firm w walce z cyberzagrożeniami.</p>
+  </div>
+  <div>
+    <a href="https://www.ncsc.gov.uk">National Cyber Security Centre (NCSC)</a>
+    <p>
+      Brytyjska agencja ds. cyberbezpieczeństwa, oferująca porady i analizy.
+    </p>
+  </div>
+  <div>
+    <a href="https://owasp.org">OWASP</a>
+    <p>Zasoby do poprawy bezpieczeństwa aplikacji webowych.</p>
+  </div>
+  <div>
+    <a href="https://us-cert.cisa.gov">US-CERT</a>
+    <p>Amerykańska agencja ds. cyberbezpieczeństwa.</p>
+  </div>
+</div>
+
+{% endblock %}

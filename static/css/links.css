@@ -1,0 +1,48 @@
+.links {
+  margin-top: 30px;
+  margin-left: 10px;
+  display: grid;
+  gap: 30px;
+}
+
+.links a {
+  color: #e4eaf5;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  background-color: #3b466d70;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+}
+
+.links a:hover {
+  cursor: pointer;
+  transform: scale(0.98);
+  color: #89a6d1;
+}
+
+.links a:active {
+  transform: scale(1);
+}
+
+.links div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+@media (max-width: 53rem) {
+  .links div {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    margin-right: 10px;
+  }
+
+  .links p {
+    text-align: center;
+  }
+}
