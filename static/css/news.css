@@ -19,6 +19,10 @@
   justify-content: center;
 }
 
+.gridContainer a {
+  color: #d0dced80;
+}
+
 .gridContainer a:hover {
   transform: scale(1.02);
 }
@@ -68,11 +72,12 @@
   margin: 0px;
 }
 
-hr {
+.linkClick hr {
   margin: 4px 0px;
+  color: #d0dced80;
 }
 
-.postRow span {
+.newsContent {
   line-height: 1.2;
   color: #d0dcedaa;
   font-size: 14px;
@@ -81,6 +86,14 @@ hr {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+.newsContent p {
+  text-align: right;
+  color: #d0dced80;
+  font-weight: 400;
+  font-size: clamp(8px, 0.5vw, 10px);
+  margin: 0px;
 }
 
 .newsTitle {

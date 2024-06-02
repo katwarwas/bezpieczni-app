@@ -10,7 +10,7 @@
             <div class="newsTitle">{{ post.title }}</div>
             <hr />
             <p class="time-cell">{{ post.created_at}}</p>
-            <span class="newsContent"> {{ post.content | safe }}</span>
+            <div class="newsContent"> {{ post.content | safe }}</div>
           </div>
         </article>
       </a>
@@ -58,35 +58,11 @@
 		{% if actual_page < pages %}
 			<a href="/news/page-{{ actual_page + 1 }}"><i class="ion-chevron-right">></i></a>
 		{% endif %}	
+    
 
     </nav>
     <script defer>
-      function truncateContent(content, maxLength) {
-        if (content.length > maxLength) {
-          return content.substring(0, maxLength) + "..."
-        } else {
-          return content
-        }
-      }
-
-      // Znajdź wszystkie elementy .newsContent
-      var newsContents = document.querySelectorAll(".newsContent")
-
-      // Iteruj przez każdy element .newsContent i skróć zawartość
-      newsContents.forEach(function (newsContent) {
-        var content = newsContent.textContent
-        var truncatedContent = truncateContent(content, 200)
-        newsContent.textContent = truncatedContent
-      })
-
-      var newsTitles = document.querySelectorAll(".newsTitle")
-
-      // Iteruj przez każdy element .newsContent i skróć zawartość
-      newsTitles.forEach(function (newsTitle) {
-        var title = newsTitle.textContent
-        var truncatedTitle = truncateContent(title, 100)
-        newsTitle.textContent = truncatedTitle
-      })
+      
 
       function formatTime(timeStr) {
         return timeStr.substring(0, 16)

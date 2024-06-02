@@ -1,6 +1,5 @@
-{% extends "admin_base.html" %} {% set active_page = 'add_post' %} {% block
-content %}
-<h3 style="margin-top: 100px">Dodaj artykuł:</h3>
+{% extends "admin_base.html" %} {% block content %}
+<h3 style="margin-top: 100px">Zaaktualizuj artykuł:</h3>
 <div class="createFormDiv">
   <form
     id="createForm"
@@ -14,6 +13,7 @@ content %}
     else
     %}
     hx-post="/add/post"
+    hx-on:submit="document.querySelector('#fileName').textContent=''; document.querySelector('form').reset() ; document.querySelector('.ql-editor').textContent=''"
     hx-swap="outerHtml"
     hx-target="#info"
     {%
@@ -22,7 +22,17 @@ content %}
     enctype="multipart/form-data"
   >
     <label for="title">Tytuł:</label><br />
-    <textarea id="title" name="title" rows="1"></textarea>
+    <textarea id="title" name="title" rows="1">{{post.title}}</textarea>
+    <br />
+    <div class="photo">
+      <p>Aktualne zdjęcie:</p>
+      <br />
+      <img
+        src="{{ post.img_url }}"
+        alt="Photo-{{ post.id }}"
+        style="border-radius: 8px; height: 200px"
+      />
+    </div>
     <br />
 
     <p class="file">Zdjęcie(max. 8MB):</p>
@@ -46,12 +56,12 @@ content %}
     ><br />
 
     <label for="content">Treść:</label><br />
-    <div id="editor"></div>
+    <div id="editor">{{post.content}}</div>
     <br />
 
     <textarea id="content" name="content" style="display: none"></textarea>
 
-    <button id="addButton" class="button" type="submit">Dodaj</button>
+    <button id="addButton" class="button" type="submit">Zaaktualizuj</button>
   </form>
 </div>
 <div id="info" hx-on::after-swap="hideContent()"></div>
@@ -83,15 +93,6 @@ content %}
     setTimeout(function () {
       document.getElementById("info").textContent = ""
     }, 2000) // Ukryj zawartość po 2 sekundach
-
-    if (
-      document.getElementById("info").textContent ===
-      "Artykuł został dodany poprawnie"
-    ) {
-      document.querySelector("#fileName").textContent = ""
-      document.querySelector("form").reset()
-      document.querySelector(".ql-editor").textContent = ""
-    }
   }
 </script>
 {% endblock %}

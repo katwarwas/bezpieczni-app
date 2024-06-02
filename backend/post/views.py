@@ -14,6 +14,7 @@ from uuid import uuid4
 from .exceptions import post_exception, admin_exception
 from datetime import datetime
 import json
+from .services import remove_html_tags
 
 router = APIRouter(
     tags=["Post"],
@@ -72,6 +73,10 @@ async def posts(request: Request, db: DbSession, page: int = 0):
     posts = db.query(Posts).order_by(desc(Posts.created_at)).limit(12).offset((page-1)*12).all()
     if posts is None:
         raise post_exception()
+    for post in posts:
+        clean_post_content = remove_html_tags(post.content)[:200]
+        post.title = post.title[:100]
+        post.content = clean_post_content
     pages = ceil(db.query(Posts).count() / 12)
     if pages is None:
         raise post_exception()
@@ -93,7 +98,7 @@ async def update_post(request:Request, db: DbSession, id: int):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
     if post is None:
             raise post_exception()
-    return templates.TemplateResponse('admin/add_post.html', {'request': request, 'post': post })
+    return templates.TemplateResponse('admin/edit_post.html', {'request': request, 'post': post })
 
 
 @router.patch("/update/news-{id}", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])

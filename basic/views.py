@@ -6,9 +6,9 @@ from database import DbSession
 from backend.post.models import Posts
 from backend.admin.models import Users
 from .services import image_base64
-from backend.post.services import get_photos_in_range, get_photo
 from math import ceil
-from uuid import uuid4
+from backend.post.services import remove_html_tags
+from .exceptions import post_exception
 
 
 router = APIRouter(
@@ -31,7 +31,15 @@ async def cyberattacks_page(request: Request):
 @router.get("/news/page-{page}", response_class=HTMLResponse)
 async def posts(request: Request, db: DbSession, page: int = 0):
     posts = db.query(Posts).order_by(desc(Posts.created_at)).limit(12).offset((page-1)*12).all()
+    if posts is None:
+        raise post_exception()
+    for post in posts:
+        clean_post_content = remove_html_tags(post.content)[:200]
+        post.title = post.title[:100]
+        post.content = clean_post_content
     pages = ceil(db.query(Posts).count() / 12)
+    if pages is None:
+        raise post_exception()
     return templates.TemplateResponse("subpages/news.html", {"request": request, "posts": posts, "pages": pages, "actual_page": page})
 
 
