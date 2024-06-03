@@ -74,6 +74,9 @@
     margin-left: 10%;
     margin-right: 10%;
   }
+  .actual-news-content p {
+    text-align: left;
+  }
 }
 
 .update-delete-button button {
