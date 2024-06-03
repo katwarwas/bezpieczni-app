@@ -70,9 +70,7 @@
     max-height: 200px;
     margin: 50px;
   }
-  .actual-news-content p,
-  .actual-news-content ol li,
-  .actual-news-content ul li {
+  .actual-news-content {
     margin-left: 10%;
     margin-right: 10%;
   }
