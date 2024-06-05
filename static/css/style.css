@@ -17,6 +17,11 @@ body {
   background-color: #24293e;
 }
 
+.mainContent {
+  position: relative;
+  top: clamp(40px, 9vw, 80px);
+}
+
 h1 {
   color: #e2eeff;
   font-family: "Lato", sans-serif;
@@ -111,7 +116,7 @@ header {
   width: 100%;
   align-items: baseline;
   /* align-items: center; */
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
   background-color: #24293e;
