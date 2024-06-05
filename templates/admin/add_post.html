@@ -1,6 +1,6 @@
 {% extends "admin_base.html" %} {% set active_page = 'add_post' %} {% block
 content %}
-<h3 style="margin-top: 100px">Dodaj artykuł:</h3>
+<h2 class="pageHeading">Dodaj artykuł:</h2>
 <div class="createFormDiv">
   <form
     id="createForm"
@@ -82,7 +82,7 @@ content %}
   function hideContent() {
     setTimeout(function () {
       document.getElementById("info").textContent = ""
-    }, 2000) // Ukryj zawartość po 2 sekundach
+    }, 5000) // Ukryj zawartość po 5 sekundach
 
     if (
       document.getElementById("info").textContent ===

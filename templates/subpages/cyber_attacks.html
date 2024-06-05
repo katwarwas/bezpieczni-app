@@ -1,12 +1,8 @@
 {% extends "base.html" %} {% set active_page = 'cyberattacks' %} {% block
 content %}
-<div class="img-container">
-  <img
-    src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyber-attack-photo-1.jpg"
-    alt="Haker"
-  />
-  <h2>Cyber Ataki - najważniejsze informacje</h2>
-</div>
+
+<h2 class="pageHeading">Cyber Ataki - najważniejsze informacje</h2>
+
 <div class="cyberattacks">
   <article id="v1">
     <img
@@ -100,10 +96,7 @@ content %}
         </li>
       </ul>
     </div>
-    <div
-      id="attack-content"
-      hx-on::after-swap="document.querySelector('ul').scrollIntoView({ behavior: 'smooth'})"
-    >
+    <div id="attack-content" hx-on::after-swap="scrollToElement('ul')">
       {% include 'htmx/phishing.html' %}
     </div>
 
@@ -145,4 +138,17 @@ content %}
     </div>
   </article>
 </div>
+<script>
+  function scrollToElement(selector) {
+    const element = document.querySelector(selector)
+    const headerOffset = document.querySelector("header").offsetHeight // Pobieranie wysokości nagłówka
+    const elementPosition = element.getBoundingClientRect().top // Pozycja elementu względem viewport
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset // Obliczenie końcowej pozycji z uwzględnieniem nagłówka
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    })
+  }
+</script>
 {% endblock %}

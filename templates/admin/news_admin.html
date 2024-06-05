@@ -1,7 +1,6 @@
 {% extends "admin_base.html" %} {% set active_page = 'admin_news' %} {% block content %}
     <div id="navbar"></div>
-    <div class="space"></div>
-    <h2 class="newsHeading">Aktualności</h2>
+    <h2 class="pageHeading">Aktualności</h2>
     <div class="gridContainer">
       {% for post in posts %}
       <a href="/admin/news/{{post.id}}">

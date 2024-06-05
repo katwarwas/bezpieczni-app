@@ -1,6 +1,5 @@
 {% extends "base.html" %} {% set active_page = 'news' %} {% block content %}
-    <div class="space"></div>
-    <h2 class="newsHeading">Aktualności</h2>
+    <h2 class="pageHeading">Aktualności</h2>
     <div class="gridContainer">
       {% for post in posts %}
       <a href="/news/{{post.id}}">

@@ -5,6 +5,10 @@
   gap: 30px;
 }
 
+.links p {
+  font-size: 20px;
+}
+
 .links a {
   color: #e4eaf5;
   font-family: "Lato", sans-serif;
@@ -18,39 +22,36 @@
 
 .links a:hover {
   cursor: pointer;
-  transform: scale(0.98);
-  color: #89a6d1;
+  color: #3e6fb9;
 }
 
 .links a:active {
   transform: scale(1);
 }
 
-.links div {
+/* .links div {
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
   flex-direction: row;
+} */
+
+.links div {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  margin-right: 10px;
+  gap: 0px;
 }
 
-@media (max-width: 53rem) {
-  .links div {
-    display: flex;
-    align-items: stretch;
-    flex-direction: column;
-    margin-right: 10px;
-    gap: 0px;
-  }
+.links a {
+  border-radius: 8px 8px 0px 0px;
+}
 
-  .links a {
-    border-radius: 8px 8px 0px 0px;
-  }
-
-  .links p {
-    padding: 8px;
-    text-align: center;
-    background-color: #3b466d20;
-    border-radius: 0px 0px 8px 8px;
-  }
+.links p {
+  padding: 8px;
+  text-align: center;
+  background-color: #3b466d20;
+  border-radius: 0px 0px 8px 8px;
 }

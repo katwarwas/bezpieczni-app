@@ -1,5 +1,5 @@
 {% extends "admin_base.html" %} {% block content %}
-<h3 style="margin-top: 100px">Zaaktualizuj artykuł:</h3>
+<h2 class="pageHeading">Zaaktualizuj artykuł:</h2>
 <div class="createFormDiv">
   <form
     id="createForm"
@@ -64,7 +64,6 @@
     <button id="addButton" class="button" type="submit">Zaaktualizuj</button>
   </form>
 </div>
-<div id="info" hx-on::after-swap="hideContent()"></div>
 
 <!-- Podłączanie Quill z CDN -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
@@ -89,10 +88,5 @@
     const file = event.target.files[0]
     fileNameDisplay.textContent = file ? file.name : ""
   })
-  function hideContent() {
-    setTimeout(function () {
-      document.getElementById("info").textContent = ""
-    }, 2000) // Ukryj zawartość po 2 sekundach
-  }
 </script>
 {% endblock %}
