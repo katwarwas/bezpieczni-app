@@ -334,7 +334,7 @@ select {
 
 #navbar {
   position: fixed;
-  top: clamp(48px, 11vw, 96px);
+  top: clamp(40px, 9vw, 80px);
   width: 100%;
   z-index: 999;
 }
