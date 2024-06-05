@@ -58,8 +58,7 @@ figure {
   user-select: none;
   margin-left: 24px;
   margin-right: 24px;
-  position: absolute;
-  top: 40%;
+  margin-top: 25vh;
 }
 
 h2 {
