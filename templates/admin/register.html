@@ -26,12 +26,19 @@
 </div>
 <div
   id="info"
-  hx-on::after-swap="hideContent(); document.querySelector('form').reset()"
+  hx-on::after-swap="hideContent()"
 ></div>
 <script>
   function hideContent() {
     setTimeout(function () {
       document.getElementById("info").textContent = ""
     }, 5000) // Ukryj zawartość po 2 sekundach
+    if (
+      document.getElementById("info").textContent ===
+      "Zarejestrowano."
+    ) {
+      document.querySelector("form").reset()
+    }
   }
+
 </script>
