@@ -1,4 +1,3 @@
-@import url("register.css");
 @import url("dashboard.css");
 @import url("header_admin.css");
 @import url("news.css");
@@ -12,6 +11,8 @@
 @import url("links.css");
 @import url("login.css");
 @import url("exceptions.css");
+@import url("header.css");
+@import url("form.css");
 
 body {
   background-color: #24293e;
@@ -46,14 +47,6 @@ p {
   font-size: 16px;
 }
 
-.mainPage {
-  margin-left: 10px;
-}
-
-.mainPage:hover {
-  background-image: linear-gradient(45deg, #3b466d80, #89a6d180);
-}
-
 figure {
   user-select: none;
   margin-left: 24px;
@@ -81,17 +74,6 @@ h3 {
   margin-top: 0px;
 }
 
-.pageHeading {
-  color: #e4eaf5;
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  text-align: center;
-  font-size: 60px;
-  margin-top: 5vw;
-  margin-bottom: 5vw;
-}
-
 .content {
   user-select: none;
   color: #e4eaf5;
@@ -107,133 +89,6 @@ h3 {
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
   margin-top: 0px;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: baseline;
-  /* align-items: center; */
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  background-color: #24293e;
-}
-
-.menu {
-  display: flex;
-  margin-top: 46px;
-  margin-right: 8px;
-  align-items: center;
-}
-
-.menu a {
-  color: #d0dced80;
-  text-decoration: none;
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: center;
-  font-size: 16px;
-  margin: 0 12px;
-}
-
-#activeLink {
-  color: #89a6d1;
-}
-
-#activeLink:active {
-  color: #89a6d180;
-}
-
-.menu a:hover {
-  color: #89a6d1;
-  transform: scale(0.95);
-}
-
-.menu a:active {
-  color: #89a6d180;
-}
-
-.createFormDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.registerFormDiv button {
-  margin: 8px 0px 0px 0px;
-}
-
-#createForm {
-  text-align: left;
-  color: #e4eaf5;
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  margin-right: 10px;
-  margin-left: 10px;
-  width: 100%;
-  /* box-sizing: border-box; */
-}
-
-#registerForm {
-  text-align: left;
-  color: #e4eaf5;
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-textarea {
-  color: #e4eaf5;
-  background-color: transparent;
-  font-family: "Lato", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
-  text-decoration: none;
-  padding: 5px 5px;
-  border: 1px solid rgb(188, 188, 188);
-  border-radius: 0px;
-  margin-bottom: 20px;
-  margin-top: 5px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-input,
-select {
-  color: #e4eaf5;
-  background-color: transparent;
-  font-family: "Lato", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
-  text-decoration: none;
-  padding: 5px 5px;
-  border: 1px solid rgb(188, 188, 188);
-  border-radius: 8px;
-  margin-bottom: 20px;
-  margin-top: 5px;
-  box-sizing: border-box;
-}
-
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  position: relative;
-  padding: 5px 40px 5px 10px;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10"><path fill="none" stroke="white" stroke-width="1.5" d="M1 3 l4 4 l4 -4"/></svg>')
-    no-repeat right 5px center;
-  &:active,
-  &:focus {
-    outline: none;
-    box-shadow: none;
-  }
 }
 
 .button {
@@ -261,123 +116,6 @@ select {
   background-color: #8ebbff;
 }
 
-#addButton {
-  float: right;
-}
-
-#info {
-  display: block;
-  color: #e4eaf5;
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
-  font-size: 24px;
-}
-
-.ql-toolbar.ql-snow {
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  padding: 8px;
-  background-color: #dee3ea;
-  padding: 5px 5px;
-  border: 1px solid rgb(188, 188, 188);
-  border-radius: 8px 8px 0px 0px;
-  margin-top: 10px;
-}
-
-.ql-snow .ql-tooltip.ql-editing input[type="text"] {
-  display: inline-block;
-  color: black;
-}
-
-/* div.htmx-swapping {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-} */
-
 .space {
   padding: 50px;
-}
-
-.menu2 {
-  display: none;
-  margin-top: 8px;
-  margin-right: 8px;
-  color: #89a6d180;
-}
-
-#navbar a {
-  color: #d0dced80;
-  text-decoration: none;
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: center;
-  font-size: 20px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-#navbar a:hover {
-  color: #89a6d1;
-  transform: scale(0.95);
-}
-
-#navbar a:active {
-  color: #89a6d180;
-}
-
-#navbar {
-  display: none;
-  align-items: center;
-  flex-direction: column;
-  background-color: #24293eee;
-}
-
-#navbar {
-  position: fixed;
-  top: clamp(40px, 9vw, 80px);
-  width: 100%;
-  z-index: 999;
-}
-
-.menu2:hover {
-  transform: scale(1.05);
-}
-
-.mainPage2 {
-  display: none;
-}
-
-@media (max-width: 53rem) {
-  .menu {
-    display: none;
-  }
-
-  .menu2 {
-    display: block;
-  }
-
-  .mainPage {
-    font-size: clamp(36px, 8vw, 64px);
-  }
-  header {
-    align-items: flex-start;
-  }
-
-  #navbar {
-    display: flex;
-  }
-  .pageHeading {
-    font-size: clamp(40px, 8vw, 60px);
-  }
-  /* .mainPage2 {
-    display: block;
-  }
-
-  .mainPage2:hover {
-    background-image: linear-gradient(45deg, #2f365180, #8ebbff80);
-  } */
 }

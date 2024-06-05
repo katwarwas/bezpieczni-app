@@ -29,14 +29,6 @@
   transform: scale(1);
 }
 
-/* .links div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  flex-direction: row;
-} */
-
 .links div {
   display: flex;
   align-items: stretch;

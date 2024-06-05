@@ -1,0 +1,113 @@
+.createFormDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.registerFormDiv button {
+  margin: 8px 0px 0px 0px;
+}
+#role {
+  background-color: #455388;
+}
+
+#createForm {
+  text-align: left;
+  color: #e4eaf5;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 100%;
+  /* box-sizing: border-box; */
+}
+
+#registerForm {
+  text-align: left;
+  color: #e4eaf5;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+textarea {
+  color: #e4eaf5;
+  background-color: transparent;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  padding: 5px 5px;
+  border: 1px solid rgb(188, 188, 188);
+  border-radius: 0px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input,
+select {
+  color: #e4eaf5;
+  background-color: transparent;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  padding: 5px 5px;
+  border: 1px solid rgb(188, 188, 188);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  padding: 5px 40px 5px 10px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10"><path fill="none" stroke="white" stroke-width="1.5" d="M1 3 l4 4 l4 -4"/></svg>')
+    no-repeat right 5px center;
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+#addButton {
+  float: right;
+}
+
+#info {
+  display: block;
+  color: #e4eaf5;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  font-size: 24px;
+}
+
+.ql-toolbar.ql-snow {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  padding: 8px;
+  background-color: #dee3ea;
+  padding: 5px 5px;
+  border: 1px solid rgb(188, 188, 188);
+  border-radius: 8px 8px 0px 0px;
+  margin-top: 10px;
+}
+
+.ql-snow .ql-tooltip.ql-editing input[type="text"] {
+  display: inline-block;
+  color: black;
+}

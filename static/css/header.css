@@ -1,0 +1,133 @@
+.pageHeading {
+  color: #e4eaf5;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+  font-size: 60px;
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+}
+
+.mainPage {
+  margin-left: 10px;
+}
+
+.mainPage:hover {
+  background-image: linear-gradient(45deg, #3b466d80, #89a6d180);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: baseline;
+  /* align-items: center; */
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: #24293e;
+}
+
+.menu {
+  display: flex;
+  margin-top: 46px;
+  margin-right: 8px;
+  align-items: center;
+}
+
+.menu a {
+  color: #d0dced80;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 12px;
+}
+
+#activeLink {
+  color: #89a6d1;
+}
+
+#activeLink:active {
+  color: #89a6d180;
+}
+
+.menu a:hover {
+  color: #89a6d1;
+  transform: scale(0.95);
+}
+
+.menu a:active {
+  color: #89a6d180;
+}
+
+.menu2 {
+  display: none;
+  margin-top: 8px;
+  margin-right: 8px;
+  color: #89a6d180;
+}
+
+#navbar a {
+  color: #d0dced80;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  font-size: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+#navbar a:hover {
+  color: #89a6d1;
+  transform: scale(0.95);
+}
+
+#navbar a:active {
+  color: #89a6d180;
+}
+
+#navbar {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  background-color: #292e47ee;
+  position: fixed;
+  top: clamp(40px, 9vw, 80px);
+  width: 100%;
+  z-index: 999;
+}
+
+.menu2:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 53rem) {
+  .menu {
+    display: none;
+  }
+
+  .menu2 {
+    display: block;
+  }
+
+  .mainPage {
+    font-size: clamp(36px, 8vw, 64px);
+  }
+  header {
+    align-items: flex-start;
+  }
+
+  #navbar {
+    display: flex;
+  }
+  .pageHeading {
+    font-size: clamp(40px, 8vw, 60px);
+  }
+}
