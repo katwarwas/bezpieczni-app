@@ -1,579 +1,106 @@
 {% extends "base.html" %} {% set active_page = 'analysis' %} {% block content %}
 <h2 class="pageHeading">Analiza</h2>
-<div class="analysis">
-  <div class="analysis_chart">
-    <img
-      class="analysisChart-img"
-      src="{{ url_for('static', path='/photos/most_actor_country.png') }}"
-      alt="Wykres"
-    />
-
-    <div class="analysis-content">
-      <h3>Najczęściej Atakujące Kraje</h3>
-      <p>
-        Na podstawie wykresu, możemy zidentyfikować kraje, które najczęściej
-        przeprowadzają cyberataki. Oto kluczowe spostrzeżenia:
-      </p>
-      <ul>
-        <li>
-          <h4>Rosja na Pierwszym Miejscu</h4>
-          <p>
-            Rosja jest zdecydowanym liderem, przeprowadzając 1741 cyberataków.
-            Ta liczba znacząco przewyższa inne kraje, co wskazuje na intensywną
-            działalność w cyberprzestrzeni, mającą na celu szpiegostwo, sabotaż
-            gospodarczy, czy destabilizację polityczną.
-          </p>
-        </li>
-        <li>
-          <h4>Aktywność Chin i Korei Północnej</h4>
-          <p>
-            Chiny i Korea Północna zajmują drugie i trzecie miejsce z
-            odpowiednio 157 i 149 atakami. Te kraje również angażują się w
-            działania cybernetyczne, które mogą obejmować kradzież technologii i
-            danych, a także działania propagandowe.
-          </p>
-        </li>
-        <li>
-          <h4>Stany Zjednoczone i Ukraina</h4>
-          <p>
-            Stany Zjednoczone (139 ataków) i Ukraina (125 ataków) również są
-            znaczącymi aktorami w przestrzeni cybernetycznej. Działalność
-            Ukrainy może być szczególnie związana z konfliktem z Rosją,
-            natomiast USA często prowadzi działania obronne i ofensywne w
-            odpowiedzi na globalne zagrożenia.
-          </p>
-        </li>
-        <li>
-          <h4>Inne Kraje</h4>
-          <p>
-            Iran (87 ataków), Arabia Saudyjska (87 ataków), Azerbejdżan (68
-            ataków), Indie (68 ataków), Pakistan (61 ataków), Syria (58 ataków)
-            i Wielka Brytania (51 ataków) także przyczyniają się do globalnej
-            liczby cyberataków. Ich motywacje mogą obejmować regionalne
-            konflikty, zdobywanie przewagi technologicznej czy politycznej.
-          </p>
-        </li>
-      </ul>
-    </div>
-    <div class="conclusions">
-      <h4>Wnioski</h4>
-      <ol>
-        <li>
-          <strong>Geopolityczne Napięcia:</strong> Aktywność cybernetyczna
-          Rosji, Chin i Korei Północnej jest odzwierciedleniem globalnych napięć
-          i rywalizacji. Te kraje, mając napięte relacje z wieloma państwami,
-          intensyfikują swoje działania w cyberprzestrzeni.
-        </li>
-        <li>
-          <strong>Cele Ataków:</strong> Cyberataki mogą mieć różne cele, od
-          kradzieży danych przez wpływanie na procesy polityczne po zakłócanie
-          działalności gospodarczej. Ataki te są często ukierunkowane na
-          zdobycie strategicznych przewag lub destabilizację przeciwników.
-        </li>
-        <li>
-          <strong>Globalna Skala Problemów:</strong> Problem cyberataków jest
-          globalny, dotykający zarówno kraje rozwinięte, jak i rozwijające się.
-          Kraje takie jak Iran, Arabia Saudyjska, Indie, Pakistan i inne, mimo
-          mniejszej liczby ataków, wciąż mają znaczący wpływ na globalne
-          bezpieczeństwo cybernetyczne.
-        </li>
-      </ol>
-    </div>
-  </div>
-
-  <div class="analysis_chart">
-    <img
-      class="analysisChart-img"
-      src="{{ url_for('static', path='/photos/most_attacked_country.png') }}"
-      alt="Wykres"
-    />
-
-    <div class="analysis-content">
-      <h3>Najczęściej Atakowane Kraje</h3>
-      <p>
-        Wykres przedstawia kraje, które najczęściej padają ofiarą cyberataków.
-        Oto kluczowe wnioski:
-      </p>
-      <ul>
-        <li>
-          <h4>Stany Zjednoczone na Pierwszym Miejscu</h4>
-          <p>
-            Stany Zjednoczone są zdecydowanym liderem z 6479 atakami, co
-            wskazuje na intensywne działania cybernetyczne skierowane przeciwko
-            temu krajowi.
-          </p>
-        </li>
-        <li>
-          <h4>Wielka Brytania i Włochy</h4>
-          <p>
-            Wielka Brytania (729 ataków) i Włochy (409 ataków) również często
-            padają ofiarą cyberataków. Te kraje, będąc kluczowymi graczami na
-            arenie międzynarodowej, są atrakcyjnymi celami dla cyberprzestępców.
-          </p>
-        </li>
-        <li>
-          <h4>Ukraina i Rosja</h4>
-          <p>
-            Ukraina (383 ataków) i Rosja (370 ataków) znajdują się na kolejnych
-            miejscach. Wysoka liczba ataków na Ukrainę może być związana z
-            konfliktem z Rosją, natomiast Rosja jest zarówno atakującym, jak i
-            atakowanym krajem.
-          </p>
-        </li>
-        <li>
-          <h4>Inne Kraje</h4>
-          <p>
-            IKanada (345 ataków), Indie (316 ataków), Australia (251 ataków),
-            Francja (249 ataków), Niemcy (229 ataków), Izrael (191 ataków),
-            Chiny (156 ataków), Japonia (149 ataków), Brazylia (145 ataków) i
-            Polska (128 ataków) również znajdują się na liście często
-            atakowanych krajów.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="conclusions">
-    <h4>Wnioski</h4>
-    <ol>
-      <li>
-        <strong>Celowane Ataki na Kraje Zachodnie:</strong> Stany Zjednoczone,
-        Wielka Brytania i inne kraje zachodnie często stają się celem
-        cyberataków, co może wynikać z ich zaawansowanej infrastruktury
-        technologicznej i znaczenia politycznego.
-      </li>
-      <li>
-        <strong>Konflikty Regionalne:</strong> Wysoka liczba ataków na Ukrainę i
-        Rosję sugeruje, że cyberataki są również narzędziem w regionalnych
-        konfliktach i napięciach.
-      </li>
-      <li>
-        <strong>Globalne Zagrożenie:</strong> Cyberataki są problemem globalnym,
-        dotykającym kraje na wszystkich kontynentach, co wymaga międzynarodowej
-        współpracy w zakresie cyberbezpieczeństwa. cybernetyczne.
-      </li>
-    </ol>
-  </div>
-
-  <div class="analysis_chart">
-    <img
-      class="analysisChart-img"
-      src="{{ url_for('static', path='/photos/most_actor_country_poland.png') }}"
-      alt="Wykres"
-    />
-
-    <div class="analysis-content">
-      <h3>Kraje Atakujące Polskę</h3>
-      <p>
-        Wykres przedstawia kraje, które najczęściej przeprowadzają cyberataki na
-        Polskę. Oto najważniejsze wnioski:
-      </p>
-      <ul>
-        <li>
-          <h4>Rosja na Pierwszym Miejscu</h4>
-          <p>
-            Rosja jest zdecydowanym liderem, przeprowadzając 92 ataki na Polskę.
-            To pokazuje intensywne działania cybernetyczne skierowane przeciwko
-            Polsce, prawdopodobnie związane z geopolitycznymi napięciami i
-            próbami wpływu na politykę i gospodarkę.
-          </p>
-        </li>
-        <li>
-          <h4>Białoruś</h4>
-          <p>
-            Białoruś, z 11 atakami, zajmuje drugie miejsce. Jej działania mogą
-            być związane z bliskimi relacjami z Rosją i wspólnymi interesami w
-            regionie.
-          </p>
-        </li>
-        <li>
-          <h4>Inne Kraje</h4>
-          <p>
-            Brazylia, Japonia i Ukraina przeprowadziły po jednym ataku na
-            Polskę, co wskazuje na sporadyczne, ale zauważalne zagrożenia z tych
-            krajów.
-          </p>
-        </li>
-        <li>
-          <h4>Ataki z Nieokreślonych Krajów</h4>
-          <p>
-            22 ataki pochodzą z nieokreślonych krajów, co utrudnia ich dokładną
-            analizę, ale pokazuje, że cyberataki mogą pochodzić z różnych,
-            często trudnych do zidentyfikowania źródeł.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="conclusions">
-    <h4>Wnioski</h4>
-    <ol>
-      <li>
-        <strong>Geopolityczne Napięcia:</strong> Wysoka liczba ataków z Rosji i
-        Białorusi może być odzwierciedleniem napięć w regionie Europy Wschodniej
-        oraz strategicznej pozycji Polski.
-      </li>
-      <li>
-        <strong>Sporadyczne Zagrożenia:</strong> Ataki z Brazylii, Japonii i
-        Ukrainy wskazują na możliwość wystąpienia zagrożeń z różnych części
-        świata, choć na mniejszą skalę.
-      </li>
-      <li>
-        <strong>Trudność w Identyfikacji:</strong> Znacząca liczba ataków z
-        nieokreślonych źródeł podkreśla trudność w śledzeniu i identyfikacji
-        cyberzagrożeń.
-      </li>
-    </ol>
-  </div>
-
-  <div class="analysis_chart">
-    <img
-      class="analysisChart-img"
-      src="{{ url_for('static', path='/photos/cyber_attack_actor_types.png') }}"
-      alt="Wykres"
-    />
-
-    <div class="analysis-content">
-      <h3>Aktorzy Cyberataków</h3>
-      <p>
-        Wykres przedstawia procentowy udział różnych grup odpowiedzialnych za
-        cyberataki. Oto szczegółowe wnioski:
-      </p>
-      <ul>
-        <li>
-          <h4>Przestępcy – 76.0%</h4>
-          <p>
-            Większość cyberataków (76%) jest przeprowadzana przez przestępców,
-            co sugeruje, że głównym motywem jest zysk finansowy. Przestępcy mogą
-            angażować się w działania takie jak ransomware, kradzież danych czy
-            oszustwa internetowe.
-          </p>
-        </li>
-        <li>
-          <h4>Haktywiści – 13.9%</h4>
-          <p>
-            Haktywiści, którzy często działają z powodów ideologicznych lub
-            politycznych, stanowią 13.9% ataków. Ich celem może być zwrócenie
-            uwagi na konkretne problemy społeczne lub polityczne.
-          </p>
-        </li>
-        <li>
-          <h4>Aktorzy Państwowi – 5.5%</h4>
-          <p>
-            Aktorzy państwowi, reprezentujący interesy swoich krajów,
-            odpowiadają za 5.5% cyberataków. Ich działania mogą obejmować
-            szpiegostwo, sabotaż czy destabilizację polityczną.
-          </p>
-        </li>
-        <li>
-          <h4>Hobbyści – 1.4%</h4>
-          <p>
-            Hobbyści, którzy mogą angażować się w cyberataki dla zabawy lub
-            wyzwania, stanowią 1.4% ataków.
-          </p>
-        </li>
-        <li>
-          <h4>Terroryści – 0.2%</h4>
-          <p>
-            Terroryści są odpowiedzialni za 0.2% cyberataków, co wskazuje na
-            stosunkowo niskie, ale niepomijalne zagrożenie.
-          </p>
-        </li>
-        <li>
-          <h4>Nieokreślony – 3.0%</h4>
-          <p>
-            3% ataków pochodzi z nieokreślonych źródeł, co utrudnia ich dokładną
-            analizę.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="conclusions">
-    <h4>Wnioski</h4>
-    <ol>
-      <li>
-        <strong>Dominacja Przestępców:</strong> Przestępcy są głównymi sprawcami
-        cyberataków, co podkreśla potrzebę zwiększenia zabezpieczeń finansowych
-        i danych osobowych.
-      </li>
-      <li>
-        <strong>Znaczenie Haktywistów i Aktorów Państwowych:</strong> Działania
-        haktywistów i aktorów państwowych wskazują na znaczący wpływ
-        politycznych i ideologicznych motywacji na cyberbezpieczeństwo.
-      </li>
-      <li>
-        <strong>Różnorodność Zagrożeń:</strong> Cyberataki pochodzą z różnych
-        źródeł, co wymaga szerokiego podejścia do obrony i identyfikacji
-        zagrożeń.
-      </li>
-    </ol>
-  </div>
-
-  <div class="analysis_chart">
-    <img
-      class="analysisChart-img"
-      src="{{ url_for('static', path='/photos/cyber_attack_motives.png') }}"
-      alt="Wykres"
-    />
-
-    <div class="analysis-content">
-      <h3>Motywy Cyberataków</h3>
-      <p>
-        Wykres przedstawia różne motywy stojące za cyberatakami. Oto szczegółowe
-        wnioski:
-      </p>
-      <ul>
-        <li>
-          <h4>Motywy Finansowe – 56.3%</h4>
-          <p>
-            Ponad połowa cyberataków (56.3%) ma motywy finansowe. Przestępcy
-            często angażują się w takie działania w celu wyłudzenia pieniędzy,
-            kradzieży danych osobowych czy realizacji oszustw finansowych.
-          </p>
-        </li>
-        <li>
-          <h4>Protest – 12.1%</h4>
-          <p>
-            12.1% cyberataków jest motywowanych przez protesty. Takie ataki są
-            często przeprowadzane przez haktywistów, którzy chcą zwrócić uwagę
-            na określone problemy społeczne lub polityczne.
-          </p>
-        </li>
-        <li>
-          <h4>Szpiegostwo Polityczne – 4.6%</h4>
-          <p>
-            Szpiegostwo polityczne stanowi 4.6% cyberataków. Tego typu działania
-            mają na celu zdobycie wrażliwych informacji politycznych lub
-            rządowych.
-          </p>
-        </li>
-        <li>
-          <h4>Sabotaż – 2.4%</h4>
-          <p>
-            2.4% ataków jest motywowanych sabotażem, który ma na celu zakłócenie
-            działalności technologicznej lub gospodarczej przeciwnika.
-          </p>
-        </li>
-        <li>
-          <h4>Ataki Osobiste i Szpiegostwo Przemysłowe</h4>
-          <p>
-            Ataki osobiste (0.7%) i szpiegostwo przemysłowe (0.7%) są rzadziej
-            spotykane, ale stanowią ważne zagrożenie dla indywidualnych osób
-            oraz firm.
-          </p>
-        </li>
-        <li>
-          <h4>Szpiegostwo ogólne i Nieokreślone Motywy</h4>
-          <p>
-            Szpiegostwo ogólne (0.2%) jest najrzadziej spotykane, natomiast
-            23.1% ataków pochodzi z nieokreślonych źródeł, co utrudnia ich
-            dokładną klasyfikację.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="conclusions">
-    <h4>Wnioski</h4>
-    <ol>
-      <li>
-        <strong>Dominacja Motywów Finansowych:</strong> Cyberataki są głównie
-        napędzane motywami finansowymi, co podkreśla potrzebę wzmożonych
-        zabezpieczeń finansowych.
-      </li>
-      <li>
-        <strong>Znaczenie Protestów:</strong> Znaczny odsetek ataków
-        motywowanych protestami wskazuje na rosnące wykorzystanie
-        cyberprzestrzeni do celów politycznych i społecznych.
-      </li>
-      <li>
-        <strong>Różnorodność Motywacji:</strong> Cyberataki mają różnorodne
-        motywy, co wymaga szerokiego i zróżnicowanego podejścia do obrony przed
-        nimi.
-      </li>
-    </ol>
-  </div>
-
-  <div class="analysis_chart">
-    <img
-      class="analysisChart-img"
-      src="{{ url_for('static', path='/photos/cyber_attack_event_types.png') }}"
-      alt="Wykres"
-    />
-
-    <div class="analysis-content">
-      <h3>Typy Cyberataków</h3>
-      <p>
-        Wykres przedstawia różne typy cyberataków i ich procentowy udział. Oto
-        kluczowe wnioski:
-      </p>
-      <ul>
-        <li>
-          <h4>Wykorzystujący – 49.8%</h4>
-          <p>
-            Prawie połowa cyberataków (49.8%) to ataki wykorzystujące, których
-            celem jest uzyskanie dostępu do zasobów lub informacji ofiary. Może
-            to obejmować kradzież danych, wyłudzenia i inne formy nadużyć.
-          </p>
-        </li>
-        <li>
-          <h4>Zakłócający – 31.0%</h4>
-          <p>
-            31% cyberataków to ataki zakłócające, które mają na celu przerwanie
-            normalnego działania systemów, usług lub sieci. Do tej kategorii
-            należą ataki typu DDoS (Distributed Denial of Service).
-          </p>
-        </li>
-        <li>
-          <h4>Mieszany – 17.9%</h4>
-          <p>
-            Ataki mieszane stanowią 17.9% i łączą cechy ataków wykorzystujących
-            i zakłócających. Tego typu ataki mogą zarówno kradnąć dane, jak i
-            zakłócać działanie systemów.
-          </p>
-        </li>
-        <li>
-          <h4>Nieokreślony – 1.3%</h4>
-          <p>
-            1.3% cyberataków pochodzi z nieokreślonych źródeł, co utrudnia ich
-            dokładną klasyfikację.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="conclusions">
-    <h4>Wnioski</h4>
-    <ol>
-      <li>
-        <strong>Dominacja Ataków Wykorzystujących:</strong> Większość
-        cyberataków ma na celu uzyskanie dostępu do zasobów lub informacji, co
-        podkreśla znaczenie ochrony danych.
-      </li>
-      <li>
-        <strong>Znaczenie Ataków Zakłócających:</strong> Znaczny odsetek ataków
-        zakłócających wskazuje na potrzebę wzmożonych środków zabezpieczających
-        przed zakłóceniami usług.
-      </li>
-      <li>
-        <strong>Różnorodność Typów Ataków:</strong> Różne typy ataków wymagają
-        kompleksowych strategii obronnych, które mogą skutecznie chronić przed
-        różnorodnymi zagrożeniami.
-      </li>
-    </ol>
-  </div>
-
-  <div class="analysis_chart">
-    <img
-      class="analysisChart-img"
-      src="{{ url_for('static', path='/photos/cyber_attack_motives_poland.png') }}"
-      alt="Wykres"
-    />
-
-    <div class="analysis-content">
-      <h3>Motywy Cyberataków na Polskę</h3>
-      <p>
-        Wykres przedstawia motywy cyberataków skierowanych na Polskę. Oto
-        kluczowe wnioski:
-      </p>
-      <ul>
-        <li>
-          <h4>Protest – 72.7%</h4>
-          <p>
-            Zdecydowana większość cyberataków (72.7%) jest motywowana
-            protestami. Ataki te są często przeprowadzane przez haktywistów,
-            którzy chcą zwrócić uwagę na określone problemy społeczne lub
-            polityczne.
-          </p>
-        </li>
-        <li>
-          <h4>Finansowy – 9.4%</h4>
-          <p>
-            9.4% cyberataków ma motywy finansowe, co sugeruje, że przestępcy
-            dążą do zysku poprzez kradzież danych lub oszustwa.
-          </p>
-        </li>
-        <li>
-          <h4>Sabotaż – 8.6%</h4>
-          <p>
-            8.6% ataków jest motywowanych sabotażem, mającym na celu zakłócenie
-            działalności technologicznej lub gospodarczej Polski.
-          </p>
-        </li>
-        <li>
-          <h4>Szpiegostwo Polityczne – 3.1%</h4>
-          <p>
-            Szpiegostwo polityczne stanowi 3.1% cyberataków. Tego typu działania
-            mają na celu zdobycie wrażliwych informacji politycznych lub
-            rządowych.
-          </p>
-        </li>
-        <li>
-          <h4>Nieokreślony – 6.2%</h4>
-          <p>
-            6.2% ataków pochodzi z nieokreślonych źródeł, co utrudnia ich
-            dokładną analizę.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="conclusions">
-    <h4>Wnioski</h4>
-    <ol>
-      <li>
-        <strong>Dominacja Motywów Protestacyjnych:</strong> Znaczący odsetek
-        ataków motywowanych protestami wskazuje na rosnące wykorzystanie
-        cyberprzestrzeni do celów politycznych i społecznych.
-      </li>
-      <li>
-        <strong>Różnorodność Motywacji:</strong> Różne motywy cyberataków
-        wymagają szerokiego podejścia do obrony, które może skutecznie chronić
-        przed różnorodnymi zagrożeniami.
-      </li>
-      <li>
-        <strong>Znaczenie Motywów Finansowych i Sabotażu:</strong> Znaczący
-        udział ataków finansowych i sabotażowych podkreśla potrzebę wzmożonych
-        zabezpieczeń technologicznych i gospodarczych.
-      </li>
-    </ol>
-  </div>
-  <div class="summary">
-    <h3>Podsumowanie:</h3>
-    <p>
-      Analiza globalnych danych dotyczących cyberataków ujawnia kluczowe trendy
-      i wzorce. Rosja przoduje jako kraj najczęściej przeprowadzający
-      cyberataki, a także jeden z najczęściej atakowanych, co odzwierciedla
-      geopolityczne napięcia. Stany Zjednoczone, Wielka Brytania, Włochy i
-      Ukraina są głównymi celami, co wskazuje na ich znaczenie technologiczne i
-      polityczne. Przestępcy dominują jako sprawcy ataków, napędzani głównie
-      motywami finansowymi. Znaczący odsetek ataków jest motywowany protestami,
-      co podkreśla rosnące wykorzystanie cyberprzestrzeni do celów
-      ideologicznych. Ataki zakłócające i wykorzystujące są najczęstsze, co
-      wymaga kompleksowych strategii obronnych.
-    </p>
-    <br />
-    <p>
-      Na tle tych globalnych trendów Polska wyróżnia się specyficznymi wzorcami
-      cyberataków. Większość ataków na Polskę jest motywowana protestami, co
-      odróżnia ją od innych krajów, gdzie dominują motywy finansowe. Ponadto,
-      Polska jest szczególnie narażona na ataki ze strony Rosji i Białorusi, co
-      odzwierciedla regionalne napięcia geopolityczne. Pomimo tego, że motywy
-      finansowe są również obecne, ich udział jest mniejszy w porównaniu do
-      globalnych danych. To wskazuje na konieczność skupienia się na
-      zabezpieczeniach przeciwko atakom motywowanym politycznie oraz na
-      wzmocnieniu współpracy międzynarodowej w zakresie cyberbezpieczeństwa, aby
-      skutecznie przeciwdziałać różnorodnym zagrożeniom.
-    </p>
-    <br /><br />
-    <p style="font-style: oblique; text-align: center">
-      Wykresy powstały na podstawie bazy danych cyberataków z Uniwersytetu
-      "University of Maryland". Baza dostępna jest na stronie:
-      <a href="https://cissm.liquifiedapps.com"
-        >https://cissm.liquifiedapps.com</a
-      >
-    </p>
-  </div>
+<div id="analysis-list">
+  <ul>
+    <li
+      hx-get="/most-actor-country"
+      hx-target="#analysis"
+      hx-trigger="click"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+      hx-swap="innerHTML"
+      class="list-item active"
+    >
+      Atakujące Kraje
+    </li>
+    <li
+      hx-get="/most-attacked-country"
+      hx-target="#analysis"
+      hx-trigger="click"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+      hx-swap="innerHTML"
+      class="list-item"
+    >
+      Atakowane Kraje
+    </li>
+    <li
+      hx-get="/most-actor-country-poland"
+      hx-target="#analysis"
+      hx-trigger="click"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+      hx-swap="innerHTML"
+      class="list-item"
+    >
+      Atakujące Kraje - Polska
+    </li>
+    <li
+      hx-get="/cyber-attack-actor-types"
+      hx-target="#analysis"
+      hx-trigger="click"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+      hx-swap="innerHTML"
+      class="list-item"
+    >
+      Aktorzy Cyberataków
+    </li>
+    <li
+      hx-get="/cyber-attack-motives"
+      hx-target="#analysis"
+      hx-trigger="click"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+      hx-swap="innerHTML"
+      class="list-item"
+    >
+      Motywy Cyberataków
+    </li>
+    <li
+      hx-get="/cyber-attack-event-types"
+      hx-target="#analysis"
+      hx-trigger="click"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+      hx-swap="innerHTML"
+      class="list-item"
+    >
+      Typy Cyberataków
+    </li>
+    <li
+      hx-get="/cyber-attack-motives-poland"
+      hx-target="#analysis"
+      hx-trigger="click"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+      hx-swap="innerHTML"
+      class="list-item"
+    >
+      Motywy Cyberataków - Polska
+    </li>
+    <li
+      hx-get="/number-of-events"
+      hx-target="#analysis"
+      hx-trigger="click"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+      hx-swap="innerHTML"
+      class="list-item"
+    >
+      Liczba Ataków
+    </li>
+    <li
+      hx-get="/summary"
+      hx-target="#analysis"
+      hx-trigger="click"
+      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+      hx-swap="innerHTML"
+      class="list-item"
+    >
+      Podsumowanie
+    </li>
+  </ul>
 </div>
+<div id="analysis" class="analysis">
+  {% include 'htmx/most_actor_country.html' %}
+</div>
+<br />
+<p style="font-style: oblique; text-align: center">
+  Wykresy oraz analiza powstały na podstawie bazy danych cyberataków z
+  Uniwersytetu "University of Maryland". Baza dostępna jest na stronie:
+  <a href="https://cissm.liquifiedapps.com">https://cissm.liquifiedapps.com</a>
+</p>
 {% endblock %}

@@ -122,3 +122,48 @@ async def sql():
 @router.get('/zero-day')
 async def zero_day():
     return FileResponse("templates/htmx/zero-day.html")
+
+
+@router.get('/most-actor-country')
+async def most_actor_country():
+    return FileResponse("templates/htmx/most_actor_country.html")
+
+
+@router.get('/most-attacked-country')
+async def most_attacked_country():
+    return FileResponse("templates/htmx/most_attacked_country.html")
+
+
+@router.get('/most-actor-country-poland')
+async def most_actor_country_poland():
+    return FileResponse("templates/htmx/most_actor_country_poland.html")
+
+
+@router.get('/cyber-attack-actor-types')
+async def cyber_attack_actor_types():
+    return FileResponse("templates/htmx/cyber_attack_actor_types.html")
+
+
+@router.get('/cyber-attack-motives')
+async def cyber_attack_motives():
+    return FileResponse("templates/htmx/cyber_attack_motives.html")
+
+
+@router.get('/cyber-attack-event-types')
+async def cyber_attack_event_types():
+    return FileResponse("templates/htmx/cyber_attack_event_types.html")
+
+
+@router.get('/cyber-attack-motives-poland')
+async def cyber_attack_motives_poland():
+    return FileResponse("templates/htmx/cyber_attack_motives_poland.html")
+
+
+@router.get('/number-of-events')
+async def number_of_events():
+    return FileResponse("templates/htmx/number_of_events_by_year.html")
+
+
+@router.get('/summary')
+async def summary():
+    return FileResponse("templates/htmx/summary.html")
