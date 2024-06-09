@@ -5,7 +5,6 @@ from fastapi.responses import HTMLResponse, FileResponse
 from database import DbSession
 from backend.post.models import Posts
 from backend.admin.models import Users
-from .services import image_base64
 from math import ceil
 from backend.post.services import remove_html_tags
 from .exceptions import post_exception
@@ -58,8 +57,8 @@ async def posts(request: Request, db: DbSession, id: int):
 @router.get("/analysis", response_class=HTMLResponse)
 @limiter.limit("20/minute")
 async def analysis_page(request: Request):
-    fig = image_base64()
-    return templates.TemplateResponse("subpages/analysis.html", {"request": request, "fig": fig})
+
+    return templates.TemplateResponse("subpages/analysis.html", {"request": request})
 
 
 @router.get("/map", response_class=HTMLResponse)

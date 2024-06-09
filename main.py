@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.gzip import GZipMiddleware
 from database import engine
-from basic.views import router as basic_router
+from backend.basic.views import router as basic_router
 from backend.admin.views import router as admin_router
 from backend.post.views import router as post_router
 from backend.admin import models as admin_models
