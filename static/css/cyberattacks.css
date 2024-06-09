@@ -149,7 +149,7 @@
 
 #attack-type p {
   max-width: 100%;
-  text-align: justify;
+  text-align: left;
 }
 
 #attack-type div img {
