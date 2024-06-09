@@ -1,0 +1,22 @@
+style : 
+.leaflet-popup-content,
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background: #24293e;
+    color: #e2eeffbb;
+}
+
+script: 
+var blueMarker = L.AwesomeMarkers.icon({
+    icon: "circle",
+    iconColor: "#24293e",
+    prefix: "fa",
+    markerColor: "darkblue",
+})
+
+replace :
+{}
+{ icon: blueMarker }
+
+
+
