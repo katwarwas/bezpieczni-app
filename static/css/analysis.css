@@ -46,6 +46,12 @@
   grid-row: 1 / 2;
 }
 
+.analysis-content p {
+  margin-bottom: 20px;
+  line-height: 1.5;
+  text-indent: 3vw;
+}
+
 .analysis-content h4 {
   background-color: transparent;
   font-weight: 400;
@@ -85,6 +91,7 @@
 }
 .conclusions li {
   margin-bottom: 8px;
+  line-height: 1.5;
 }
 
 .summary {
@@ -95,6 +102,7 @@
 .summary p {
   text-align: justify;
   text-indent: 5vw;
+  line-height: 1.5;
 }
 
 .summary a {
