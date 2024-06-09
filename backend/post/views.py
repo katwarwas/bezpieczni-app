@@ -3,7 +3,7 @@ from database import DbSession
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from typing import Annotated, Optional
-from backend.admin.services import get_current_user, get_current_admin
+from backend.admin.services import get_current_user
 from .models import Posts
 from backend.admin.schemas import User
 from sqlalchemy import desc
@@ -13,12 +13,13 @@ from math import ceil
 from uuid import uuid4
 from .exceptions import post_exception, admin_exception
 from datetime import datetime
-import json
 from .services import remove_html_tags
+from backend.limiter import limiter
 
 router = APIRouter(
     tags=["Post"],
 )
+
 
 templates = Jinja2Templates(directory="templates", autoescape=False)
 
@@ -26,11 +27,13 @@ CurrentUser = Annotated[User, Depends(get_current_user)]
 
 
 @router.get("/add/post", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
+@limiter.limit("20/minute")
 async def add_post_html(request: Request):
     return templates.TemplateResponse("admin/add_post.html", {"request": request})
 
 
 @router.post("/add/post", dependencies=[Depends(get_current_user)])
+@limiter.limit("20/minute")
 async def add_post(db: DbSession, current_user: CurrentUser, request: Request, file: Optional[UploadFile] = File(None), title: Optional[str] = Form(None), content: str = Form(...)):
     try:
         if not title or not file:
@@ -69,6 +72,7 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, f
   
 
 @router.get("/admin/news/page-{page}", response_class=HTMLResponse,dependencies=[Depends(get_current_user)])
+@limiter.limit("20/minute")
 async def posts(request: Request, db: DbSession, page: int = 0):
     posts = db.query(Posts).order_by(desc(Posts.created_at)).limit(12).offset((page-1)*12).all()
     if posts is None:
@@ -84,6 +88,7 @@ async def posts(request: Request, db: DbSession, page: int = 0):
 
 
 @router.get("/admin/news/{id}", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
+@limiter.limit("20/minute")
 async def posts(request: Request, db: DbSession, id: int, current_user: CurrentUser):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
     author = db.query(Users).filter(Users.id == post.user_id).one_or_none()
@@ -94,6 +99,7 @@ async def posts(request: Request, db: DbSession, id: int, current_user: CurrentU
 
 
 @router.get("/update/news-{id}", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
+@limiter.limit("20/minute")
 async def update_post(request:Request, db: DbSession, id: int):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
     if post is None:
@@ -102,6 +108,7 @@ async def update_post(request:Request, db: DbSession, id: int):
 
 
 @router.patch("/update/news-{id}", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
+@limiter.limit("20/minute")
 async def update_post(request:Request, db: DbSession, id: int, file: Optional[UploadFile] = File(None), title: Optional[str] = Form(None), content: str = Form(...)):
      try:
         if not title:
@@ -142,6 +149,7 @@ async def update_post(request:Request, db: DbSession, id: int, file: Optional[Up
      
 
 @router.delete("/post-{id}", dependencies=[Depends(get_current_user)])
+@limiter.limit("20/minute")
 async def delete_post(request:Request, db: DbSession, id: int, current_user: CurrentUser):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
     if post.user_id != current_user.id:

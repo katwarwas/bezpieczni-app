@@ -12,6 +12,7 @@ from .models import Users
 from ..post.models import Posts
 from ..post.views import CurrentUser
 from config import settings
+from backend.limiter import limiter
 
 
 router = APIRouter(
@@ -23,6 +24,7 @@ templates = Jinja2Templates(directory="templates")
 
 
 @router.get("/dashboard", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
+@limiter.limit("20/minute")
 async def admin_page(request: Request, db: DbSession, current_user: CurrentUser,):
     posts_number = db.query(Posts).count()
     my_posts_number = db.query(Posts).filter(Posts.user_id == current_user.id).count()
@@ -32,11 +34,13 @@ async def admin_page(request: Request, db: DbSession, current_user: CurrentUser,
 
 
 @router.get("/login", response_class=HTMLResponse)
+@limiter.limit("20/minute")
 async def login_html(request: Request):
     return templates.TemplateResponse("admin/login.html", {"request": request})
     
 
 @router.post("/login")
+@limiter.limit("20/minute")
 async def login(request: Request, db: DbSession, email: str = Form(...), password: str = Form(...)):
     user = Users()
     user.email = email
@@ -62,6 +66,7 @@ async def login(request: Request, db: DbSession, email: str = Form(...), passwor
 
 
 @router.get("/logout", response_class=HTMLResponse, dependencies=[Depends(get_current_user)])
+@limiter.limit("20/minute")
 async def logout(response: Response, request: Request):
     redirect = RedirectResponse(url="/", status_code=status.HTTP_302_FOUND)
     redirect.delete_cookie(key="jwt")
@@ -70,21 +75,25 @@ async def logout(response: Response, request: Request):
 
 
 @router.get("/open-navbar-admin", dependencies=[Depends(get_current_user)])
-async def open_navbar():
+@limiter.limit("20/minute")
+async def open_navbar(request: Request):
     return FileResponse("templates/htmx/open-navbar-admin.html")
     
 
 @router.get("/close-navbar-admin", dependencies=[Depends(get_current_user)])
-async def close_navbar():
+@limiter.limit("20/minute")
+async def close_navbar(request: Request):
     return FileResponse("templates/htmx/close-navbar-admin.html")
 
 @router.get("/register", response_class=HTMLResponse, dependencies=[Depends(get_current_admin)])
+@limiter.limit("20/minute")
 async def register_html(request: Request):
     return templates.TemplateResponse("admin/register.html", {"request": request})
 
 
 @router.post("/register", dependencies=[Depends(get_current_admin)])
-async def register(db: DbSession, 
+@limiter.limit("20/minute")
+async def register(request: Request, db: DbSession, 
                    name: str = Form(...), 
                    surname: str = Form(...), 
                    email: str = Form(...), 
@@ -128,12 +137,14 @@ async def register(db: DbSession,
 
 
 @router.get("/user-list", dependencies=[Depends(get_current_admin)])
+@limiter.limit("20/minute")
 async def user_list(request: Request, db: DbSession):
     users = db.query(Users).all()
     return templates.TemplateResponse("htmx/user-list.html", {"request": request, "users": users})
 
 
 @router.get("/edit-user/{id}", dependencies=[Depends(get_current_user)])
+@limiter.limit("20/minute")
 async def edit_user(request: Request, db: DbSession, id: int):
     user = db.query(Users).filter(Users.id == id).one_or_none()
     if user.role_id != 1:
@@ -145,7 +156,8 @@ async def edit_user(request: Request, db: DbSession, id: int):
 
 
 @router.patch("/user/{id}", dependencies=[Depends(get_current_admin)])
-async def update_user(db: DbSession, id: int,name: str = Form(...), 
+@limiter.limit("20/minute")
+async def update_user(request: Request, db: DbSession, id: int,name: str = Form(...), 
                    surname: str = Form(...), 
                    email: str = Form(...), 
                    role: int = Form(...), change_password: bool = Form(False)):
@@ -174,7 +186,8 @@ async def update_user(db: DbSession, id: int,name: str = Form(...),
 
 
 @router.delete("/user/{id}", dependencies=[Depends(get_current_admin)])
-async def delete_user(db: DbSession, id: int):
+@limiter.limit("20/minute")
+async def delete_user(request: Request, db: DbSession, id: int):
     user = db.query(Users).filter(Users.id == id).one_or_none()
 
     if user is None:
