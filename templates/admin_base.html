@@ -20,46 +20,51 @@
     ></script>
   </head>
   <body>
-    <header>
-      <h1 class="mainPage"><a href="/dashboard">Bezpieczni</a></h1>
-      <div class="menu">
-        <a
-          href="/add/post"
-          id="{{ 'activeLink' if active_page == 'add_post' else '' }}"
-          >Dodaj artykuł</a
+    <div class="wrapper">
+      <header>
+        <h1 class="mainPage"><a href="/dashboard">Bezpieczni</a></h1>
+        <div class="menu">
+          <a
+            href="/add/post"
+            id="{{ 'activeLink' if active_page == 'add_post' else '' }}"
+            >Dodaj artykuł</a
+          >
+          <a
+            href="/admin/news/page-1"
+            id="{{ 'activeLink' if active_page == 'admin_news' else '' }}"
+            >Aktualności</a
+          >
+          <p>|</p>
+          <a id="logout" href="/logout">Wyloguj się</a>
+        </div>
+        <div
+          class="menu2"
+          hx-get="/open-navbar-admin"
+          hx-swap="outerHTML"
+          hx-target="header"
         >
-        <a
-          href="/admin/news/page-1"
-          id="{{ 'activeLink' if active_page == 'admin_news' else '' }}"
-          >Aktualności</a
-        >
-        <p>|</p>
-        <a id="logout" href="/logout">Wyloguj się</a>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-list"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+            />
+          </svg>
+        </div>
+      </header>
+      <div class="mainContent">
+        {% block content %} {% endblock %}
+        <div class="space"></div>
       </div>
-      <div
-        class="menu2"
-        hx-get="/open-navbar-admin"
-        hx-swap="outerHTML"
-        hx-target="header"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          fill="currentColor"
-          class="bi bi-list"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-          />
-        </svg>
-      </div>
-    </header>
-    <div class="mainContent">
-      {% block content %} {% endblock %}
-      <div class="space"></div>
+      <footer>
+        2024 Bezpieczni | Strona zaprojektowana przez Katarzynę Warwas
+      </footer>
     </div>
   </body>
 </html>
