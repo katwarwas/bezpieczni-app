@@ -8,6 +8,7 @@ from backend.admin.views import router as admin_router
 from backend.post.views import router as post_router
 from backend.admin import models as admin_models
 from backend.post import models as post_models
+from backend.admin.models import init_roles
 from backend.exceptions import http_exception_handler, custom_http_exception_handler, custom_exception_handler, rate_limit_exceeded_handler
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.exceptions import RequestValidationError
@@ -42,6 +43,10 @@ app.add_exception_handler(Exception, custom_exception_handler)
 
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, rate_limit_exceeded_handler)
+
+@app.on_event("startup")
+def on_startup():
+    init_roles()
 
 @app.get("/trigger-500")
 async def trigger_500():
