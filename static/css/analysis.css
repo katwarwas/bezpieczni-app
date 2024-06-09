@@ -89,6 +89,10 @@
   text-indent: 5vw;
 }
 
+.summary a {
+  color: #89a6d1;
+}
+
 @media (max-width: 70rem) {
   .analysis_chart {
     display: flex;
