@@ -22,7 +22,7 @@
     Helvetica, "Lucida Grande", "DejaVu Sans Condensed", "Liberation Sans",
     "Nimbus Sans L", Tahoma, Geneva, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
-  margin: 1em auto;
+  margin: 0px;
   text-align: center;
   transition: font-size 0.2s ease-in-out;
 }

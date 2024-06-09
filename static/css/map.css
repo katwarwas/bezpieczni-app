@@ -37,7 +37,6 @@ iframe {
 
 .attack-map {
   display: flex;
-  margin-bottom: 50px;
   flex-direction: column;
   align-items: center;
   gap: 20px;

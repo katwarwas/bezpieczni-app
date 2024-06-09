@@ -14,13 +14,22 @@
 @import url("header.css");
 @import url("form.css");
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   background-color: #24293e;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-bottom: 100px;
 }
 
 .mainContent {
-  position: relative;
-  top: clamp(40px, 9vw, 80px);
+  flex: 1;
+  margin-top: clamp(40px, 9vw, 80px);
 }
 
 h1 {
@@ -122,4 +131,24 @@ h3 {
 
 a {
   color: #89a6d1;
+}
+
+footer {
+  width: 100%;
+  color: #e4eaf5;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+  background-color: #3b466d30;
+  padding: 30px;
+  margin-top: auto;
+  margin-top: 20px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
