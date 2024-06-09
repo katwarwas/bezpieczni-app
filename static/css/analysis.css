@@ -135,4 +135,8 @@
   .analysis-content h3 {
     font-size: clamp(28px, 5vw, 32px);
   }
+
+  .analysis h3 {
+    font-size: clamp(28px, 5vw, 32px);
+  }
 }
