@@ -91,7 +91,7 @@ async def posts(request: Request, db: DbSession, page: int = 0):
 @limiter.limit("20/minute")
 async def posts(request: Request, db: DbSession, id: int, current_user: CurrentUser):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
-    author = db.query(Users).filter(Users.id == post.user_id).one_or_none()
+    author = db.query(Users).filter(Users.id == post.user_id).execution_options(include_deleted=True).one_or_none()
 
     if author.id == current_user.id or current_user.role_id == 1:
         return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author, "author_post": True})
