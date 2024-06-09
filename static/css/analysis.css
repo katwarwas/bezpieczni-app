@@ -1,3 +1,8 @@
+.analysis-div-list {
+  display: flex;
+  justify-content: center;
+}
+
 .analysis {
   display: flex;
   flex-direction: column;
@@ -84,6 +89,7 @@
 
 .summary {
   width: 95%;
+  max-width: 1600px;
 }
 
 .summary p {
@@ -98,6 +104,10 @@
 #analysis-list ul {
   padding-left: 10px;
   padding-right: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
 }
 
 @media (max-width: 70rem) {

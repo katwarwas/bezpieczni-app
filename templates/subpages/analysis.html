@@ -1,98 +1,100 @@
 {% extends "base.html" %} {% set active_page = 'analysis' %} {% block content %}
 <h2 class="pageHeading">Analiza</h2>
-<div id="analysis-list">
-  <ul>
-    <li
-      hx-get="/most-actor-country"
-      hx-target="#analysis"
-      hx-trigger="click"
-      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-      hx-swap="innerHTML"
-      class="list-item active"
-    >
-      Atakujące Kraje
-    </li>
-    <li
-      hx-get="/most-attacked-country"
-      hx-target="#analysis"
-      hx-trigger="click"
-      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-      hx-swap="innerHTML"
-      class="list-item"
-    >
-      Atakowane Kraje
-    </li>
-    <li
-      hx-get="/most-actor-country-poland"
-      hx-target="#analysis"
-      hx-trigger="click"
-      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-      hx-swap="innerHTML"
-      class="list-item"
-    >
-      Atakujące Kraje - Polska
-    </li>
-    <li
-      hx-get="/cyber-attack-actor-types"
-      hx-target="#analysis"
-      hx-trigger="click"
-      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-      hx-swap="innerHTML"
-      class="list-item"
-    >
-      Aktorzy Cyberataków
-    </li>
-    <li
-      hx-get="/cyber-attack-motives"
-      hx-target="#analysis"
-      hx-trigger="click"
-      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-      hx-swap="innerHTML"
-      class="list-item"
-    >
-      Motywy Cyberataków
-    </li>
-    <li
-      hx-get="/cyber-attack-event-types"
-      hx-target="#analysis"
-      hx-trigger="click"
-      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-      hx-swap="innerHTML"
-      class="list-item"
-    >
-      Typy Cyberataków
-    </li>
-    <li
-      hx-get="/cyber-attack-motives-poland"
-      hx-target="#analysis"
-      hx-trigger="click"
-      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-      hx-swap="innerHTML"
-      class="list-item"
-    >
-      Motywy Cyberataków - Polska
-    </li>
-    <li
-      hx-get="/number-of-events"
-      hx-target="#analysis"
-      hx-trigger="click"
-      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-      hx-swap="innerHTML"
-      class="list-item"
-    >
-      Liczba Ataków
-    </li>
-    <li
-      hx-get="/summary"
-      hx-target="#analysis"
-      hx-trigger="click"
-      hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-      hx-swap="innerHTML"
-      class="list-item"
-    >
-      Podsumowanie
-    </li>
-  </ul>
+<div class="analysis-div-list">
+  <div id="analysis-list">
+    <ul>
+      <li
+        hx-get="/most-actor-country"
+        hx-target="#analysis"
+        hx-trigger="click"
+        hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+        hx-swap="innerHTML"
+        class="list-item active"
+      >
+        Atakujące Kraje
+      </li>
+      <li
+        hx-get="/most-attacked-country"
+        hx-target="#analysis"
+        hx-trigger="click"
+        hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+        hx-swap="innerHTML"
+        class="list-item"
+      >
+        Atakowane Kraje
+      </li>
+      <li
+        hx-get="/most-actor-country-poland"
+        hx-target="#analysis"
+        hx-trigger="click"
+        hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+        hx-swap="innerHTML"
+        class="list-item"
+      >
+        Atakujące Kraje - Polska
+      </li>
+      <li
+        hx-get="/cyber-attack-actor-types"
+        hx-target="#analysis"
+        hx-trigger="click"
+        hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+        hx-swap="innerHTML"
+        class="list-item"
+      >
+        Aktorzy Cyberataków
+      </li>
+      <li
+        hx-get="/cyber-attack-motives"
+        hx-target="#analysis"
+        hx-trigger="click"
+        hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+        hx-swap="innerHTML"
+        class="list-item"
+      >
+        Motywy Cyberataków
+      </li>
+      <li
+        hx-get="/cyber-attack-event-types"
+        hx-target="#analysis"
+        hx-trigger="click"
+        hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+        hx-swap="innerHTML"
+        class="list-item"
+      >
+        Typy Cyberataków
+      </li>
+      <li
+        hx-get="/cyber-attack-motives-poland"
+        hx-target="#analysis"
+        hx-trigger="click"
+        hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+        hx-swap="innerHTML"
+        class="list-item"
+      >
+        Motywy Cyberataków - Polska
+      </li>
+      <li
+        hx-get="/number-of-events"
+        hx-target="#analysis"
+        hx-trigger="click"
+        hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+        hx-swap="innerHTML"
+        class="list-item"
+      >
+        Liczba Ataków
+      </li>
+      <li
+        hx-get="/summary"
+        hx-target="#analysis"
+        hx-trigger="click"
+        hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+        hx-swap="innerHTML"
+        class="list-item"
+      >
+        Podsumowanie
+      </li>
+    </ul>
+  </div>
 </div>
 <div id="analysis" class="analysis">
   {% include 'htmx/most_actor_country.html' %}
