@@ -41,7 +41,7 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, f
         
         contents = await file.read()
         if len(contents) >= 26214400:
-            content = """Plik może mieć maksymalnie 8MB"""
+            content = """<p>Plik może mieć maksymalnie 8MB</p>"""
             return HTMLResponse(content=content)
         
         post = Posts()
@@ -63,11 +63,11 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, f
         db.commit()
         db.refresh(post)
         
-        content = """Artykuł został dodany poprawnie"""
+        content = """<p>Artykuł został dodany poprawnie</p>"""
         return HTMLResponse(content=content)
         
     except HTTPException as e:
-        content = f'Błąd: {e.detail}'
+        content = f'<p><strong>Błąd:</strong> {e.detail}</p>'
         return HTMLResponse(content=content)
   
 

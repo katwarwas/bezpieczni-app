@@ -21,3 +21,7 @@
 #file + label svg {
   cursor: pointer;
 }
+
+#info p {
+  margin-left: 8px;
+}
