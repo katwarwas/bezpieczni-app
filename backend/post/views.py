@@ -15,6 +15,7 @@ from .exceptions import post_exception, admin_exception
 from datetime import datetime
 from .services import remove_html_tags
 from backend.limiter import limiter
+from markupsafe import escape
 
 router = APIRouter(
     tags=["Post"],
@@ -45,7 +46,7 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, f
             return HTMLResponse(content=content)
         
         post = Posts()
-        post.title = title
+        post.title = escape(title)
         post.content = content
         post.user_id = current_user.id
 
@@ -79,7 +80,7 @@ async def posts(request: Request, db: DbSession, page: int = 0):
         raise post_exception()
     for post in posts:
         clean_post_content = remove_html_tags(post.content)[:200]
-        post.title = post.title[:100]
+        post.title = escape(post.title[:100])
         post.content = clean_post_content
     pages = ceil(db.query(Posts).count() / 12)
     if pages is None:
@@ -92,7 +93,8 @@ async def posts(request: Request, db: DbSession, page: int = 0):
 async def posts(request: Request, db: DbSession, id: int, current_user: CurrentUser):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
     author = db.query(Users).filter(Users.id == post.user_id).execution_options(include_deleted=True).one_or_none()
-
+    post.title = escape(post.title)
+    post.content = post.content
     if author.id == current_user.id or current_user.role_id == 1:
         return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author, "author_post": True})
     return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author,"author_post": False})
@@ -118,7 +120,7 @@ async def update_post(request:Request, db: DbSession, id: int, file: Optional[Up
         if post is None:
             raise post_exception()
 
-        post.title = title
+        post.title = escape(title)
         post.content = content
         post.updated_at = datetime.utcnow()
         if file:

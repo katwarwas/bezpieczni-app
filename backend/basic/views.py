@@ -9,6 +9,7 @@ from math import ceil
 from backend.post.services import remove_html_tags
 from .exceptions import post_exception
 from backend.limiter import limiter
+from markupsafe import escape
 
 router = APIRouter(
     tags=["basic"]
@@ -38,7 +39,7 @@ async def posts(request: Request, db: DbSession, page: int = 0):
         raise post_exception()
     for post in posts:
         clean_post_content = remove_html_tags(post.content)[:200]
-        post.title = post.title[:100]
+        post.title = escape(post.title[:100])
         post.content = clean_post_content
     pages = ceil(db.query(Posts).count() / 12)
     if pages is None:
@@ -51,6 +52,8 @@ async def posts(request: Request, db: DbSession, page: int = 0):
 async def posts(request: Request, db: DbSession, id: int):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
     author = db.query(Users).filter(Users.id == post.user_id).execution_options(include_deleted=True).one_or_none()
+    post.title = escape(post.title)
+    post.content = post.content
     return templates.TemplateResponse("subpages/actual_news.html", {"request": request, "post": post, "author": author})
 
 

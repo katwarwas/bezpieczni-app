@@ -16,8 +16,8 @@
 
     <label for="role">Rola:</label><br />
     <select id="role" name="role" required>
-      <option value="1" {% if user.role_id == '1'%} selected {% endif %}/>Administrator</option>
-      <option value="2" {% if user.role_id == '2'%} selected {% endif %}>Moderator</option>
+      <option value="1" {% if user.role_id  == 1 %}selected{% endif %}/>Administrator</option>
+      <option value="2" {% if user.role_id == 2 %}selected{% endif %}>Moderator</option>
       <br /></select
     ><br />
     {% if user %}

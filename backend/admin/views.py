@@ -13,6 +13,7 @@ from ..post.models import Posts
 from ..post.views import CurrentUser
 from config import settings
 from backend.limiter import limiter
+from markupsafe import escape
 
 
 router = APIRouter(
@@ -43,8 +44,8 @@ async def login_html(request: Request):
 @limiter.limit("20/minute")
 async def login(request: Request, db: DbSession, email: str = Form(...), password: str = Form(...)):
     user = Users()
-    user.email = email
-    user.password = password
+    user.email = escape(email)
+    user.password = escape(password)
     user = get_by_email(db=db, email=user.email)
 
     if not user or not user.check_password(password):
@@ -109,9 +110,9 @@ async def register(request: Request, db: DbSession,
     if user:
         if user.deleted_at is not None:
             user.undelete()
-            user.name = name
-            user.surname = surname
-            user.role_id = role
+            user.name = escape(name)
+            user.surname = escape(surname)
+            user.role_id = escape(role)
             user.password = password
             db.commit()
             db.refresh(user)
@@ -121,10 +122,10 @@ async def register(request: Request, db: DbSession,
         raise get_user_exist_exception()
 
     user_in = Users()
-    user_in.name = name
-    user_in.surname = surname
-    user_in.email = email
-    user_in.role_id = role
+    user_in.name = escape(name)
+    user_in.surname = escape(surname)
+    user_in.email = escape(email)
+    user_in.role_id = escape(role)
     user_in.password = password
 
     db.add(user_in)
@@ -145,9 +146,9 @@ async def user_list(request: Request, db: DbSession):
 
 @router.get("/edit-user/{id}", dependencies=[Depends(get_current_user)])
 @limiter.limit("20/minute")
-async def edit_user(request: Request, db: DbSession, id: int):
+async def edit_user(request: Request, db: DbSession, id: int, current_user: CurrentUser):
     user = db.query(Users).filter(Users.id == id).one_or_none()
-    if user.role_id != 1:
+    if current_user.role_id != 1:
         return HTMLResponse(status_code=401)
     if user is None:
         raise get_user_exist_exception()
@@ -165,10 +166,10 @@ async def update_user(request: Request, db: DbSession, id: int,name: str = Form(
     if not user:
         raise get_user_exist_exception()
     
-    user.name = name
-    user.surname = surname
-    user.email = email
-    user.role_id = role
+    user.name = escape(name)
+    user.surname = escape(surname)
+    user.email = escape(email)
+    user.role_id = escape(role)
     if change_password:
         print('tak')
         random_password = generate_random_password()
