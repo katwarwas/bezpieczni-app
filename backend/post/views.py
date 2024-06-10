@@ -152,7 +152,7 @@ async def update_post(request:Request, db: DbSession, id: int, file: Optional[Up
 @limiter.limit("20/minute")
 async def delete_post(request:Request, db: DbSession, id: int, current_user: CurrentUser):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
-    if post.user_id != current_user.id:
+    if post.user_id != current_user.id and current_user.role_id != 1:
         raise admin_exception()
     if post is None:
         raise post_exception()
