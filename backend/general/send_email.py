@@ -9,7 +9,7 @@ class EmailSchema(BaseModel):
 
 conf = ConnectionConfig(
     MAIL_USERNAME ="testbezpieczni@gmail.com",
-    MAIL_PASSWORD = "bcux vaej ajwh huao",
+    MAIL_PASSWORD = "wzcw jobi ibyl mmoe",
     MAIL_FROM = "testbezpieczni@gmail.com",
     MAIL_PORT = 465,
     MAIL_SERVER = "smtp.gmail.com",

@@ -2,13 +2,14 @@ from sqlalchemy import Column, Integer, String, LargeBinary, ForeignKey, DateTim
 from sqlalchemy.orm import relationship
 from sqlalchemy_utils import ChoiceType
 from enum import Enum
-from database import engine
 from database import Base
 import bcrypt
 from config import settings
 from jose import jwt
 from datetime import datetime, timedelta
 from ..general.soft_delete import SoftDeleteMixin
+
+
 
 class RoleEnum(Enum):
     admin = "Admin"
@@ -58,16 +59,6 @@ class Roles(Base):
     name = Column(ChoiceType(RoleEnum), nullable=False)
 
 
-def init_roles():
-    from sqlalchemy.orm import Session
-    session = Session(bind=engine)
-    if not session.query(Roles).filter_by(name=RoleEnum.admin).first():
-        admin_role = Roles(name=RoleEnum.admin)
-        admin_role.id = 1
-        session.add(admin_role)
-    if not session.query(Roles).filter_by(name=RoleEnum.moderator).first():
-        moderator_role = Roles(name=RoleEnum.moderator)
-        moderator_role.id = 2
-        session.add(moderator_role)
-    session.commit()
-    session.close()
+
+
+
