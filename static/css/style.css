@@ -30,6 +30,9 @@ body {
 .mainContent {
   flex: 1;
   margin-top: clamp(40px, 9vw, 80px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 h1 {

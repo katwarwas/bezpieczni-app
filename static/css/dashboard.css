@@ -5,6 +5,9 @@
   align-items: flex-start;
   gap: 40px;
   margin-top: 50px;
+  width: 100%;
+  max-width: 2400px;
+  margin-top: 5vw;
 }
 
 .info-dashboard {

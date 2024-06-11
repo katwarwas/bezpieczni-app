@@ -4,6 +4,7 @@
   align-items: center;
   margin-left: 10%;
   margin-right: 10%;
+  max-width: 2400px;
 }
 
 .actual-news-content img {
@@ -20,7 +21,7 @@
   font-style: normal;
   text-align: center;
   text-indent: 2vw;
-  font-size: clamp(16px, 1.2vw, 24px);
+  font-size: clamp(16px, 1vw, 20px);
   margin: 5px;
   margin-bottom: 20px;
 }
