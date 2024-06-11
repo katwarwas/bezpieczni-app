@@ -1,25 +1,25 @@
 {% extends "base.html" %} {% block content %}
-    <div class="actual-news-content">
-      <img src="{{ post.img_url }}" alt="Photo-{{ post.id }}" />
-      <h2
-        class="actual-news-title"
-        style="text-align: center; color: rgb(192, 208, 231)"
-      >
-        {{ post.title }}
-      </h3>
-      <p style="color: rgb(192, 208, 231); margin-left: 5%; margin-right: 5%">
-        {{ post.content }}
-      </p>
-      <p
-        style="
-          text-align: right;
-          color: rgb(192, 208, 231);
-          margin-left: 50px;
-          margin-right: 50px;
-          text-indent: 0%;
-        "
-      >
-        {{ author.name }} {{author.surname }}
-      </p>
-    </div>
-    {% endblock %}
+<div class="actual-news-content">
+  <img src="{{ post.img_url }}" alt="Photo-{{ post.id }}" />
+  <h1
+    class="actual-news-title"
+    style="text-align: center; color: rgb(192, 208, 231)"
+  >
+    {{ post.title }}
+  </h1>
+  <p style="color: rgb(192, 208, 231); margin-left: 5%; margin-right: 5%">
+    {{ post.content }}
+  </p>
+  <p
+    style="
+      text-align: right;
+      color: rgb(192, 208, 231);
+      margin-left: 50px;
+      margin-right: 50px;
+      text-indent: 0%;
+    "
+  >
+    {{ author.name }} {{author.surname }}
+  </p>
+</div>
+{% endblock %}
