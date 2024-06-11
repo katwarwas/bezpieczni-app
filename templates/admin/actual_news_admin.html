@@ -1,7 +1,10 @@
 {% extends "admin_base.html" %} {% block content %}
 <div class="actual-news-content">
   <img src="{{ post.img_url }}" alt="Photo-{{ post.id }}" />
-  <h1 style="text-align: center; color: rgb(192, 208, 231)">
+  <h1
+    class="actual-news-title"
+    style="text-align: center; color: rgb(192, 208, 231)"
+  >
     {{ post.title }}
   </h1>
   <p style="color: rgb(192, 208, 231); margin-left: 5%; margin-right: 5%">

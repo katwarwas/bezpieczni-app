@@ -92,6 +92,8 @@ async def posts(request: Request, db: DbSession, page: int = 0):
 @limiter.limit("20/minute")
 async def posts(request: Request, db: DbSession, id: int, current_user: CurrentUser):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
+    if posts is None:
+        raise post_exception()
     author = db.query(Users).filter(Users.id == post.user_id).execution_options(include_deleted=True).one_or_none()
     post.title = escape(post.title)
     post.content = post.content
