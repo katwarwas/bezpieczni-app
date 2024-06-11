@@ -1,36 +1,38 @@
 {% extends "admin_base.html" %} {% block content %}
-<div class="actual-news-content">
-  <img src="{{ post.img_url }}" alt="Photo-{{ post.id }}" />
-  <h1
-    class="actual-news-title"
-    style="text-align: center; color: rgb(192, 208, 231)"
-  >
-    {{ post.title }}
-  </h1>
-  <p style="color: rgb(192, 208, 231); margin-left: 5%; margin-right: 5%">
-    {{ post.content }}
-  </p>
-  <p
-    style="
-      text-align: right;
-      color: rgb(192, 208, 231);
-      margin-left: 50px;
-      margin-right: 50px;
-      text-indent: 0%;
-    "
-  >
-    {{ author.name }} {{author.surname }}
-  </p>
-</div>
-<br />
-{% if author_post %}
-<div class="update-delete-button">
-  <button><a href="/update/news-{{post.id}}">Zaaktualizuj</a></button>
-  <button
-    hx-delete="/post-{{post.id}}"
-    hx-confirm="Czy na pewno chcesz usunąć artykuł?"
-  >
-    Usuń
-  </button>
+<div class="mainDiv">
+  <div class="actual-news-content">
+    <img src="{{ post.img_url }}" alt="Photo-{{ post.id }}" />
+    <h1
+      class="actual-news-title"
+      style="text-align: center; color: rgb(192, 208, 231)"
+    >
+      {{ post.title }}
+    </h1>
+    <p style="color: rgb(192, 208, 231); margin-left: 5%; margin-right: 5%">
+      {{ post.content }}
+    </p>
+    <p
+      style="
+        text-align: right;
+        color: rgb(192, 208, 231);
+        margin-left: 50px;
+        margin-right: 50px;
+        text-indent: 0%;
+      "
+    >
+      {{ author.name }} {{author.surname }}
+    </p>
+  </div>
+  <br />
+  {% if author_post %}
+  <div class="update-delete-button">
+    <button><a href="/update/news-{{post.id}}">Zaaktualizuj</a></button>
+    <button
+      hx-delete="/post-{{post.id}}"
+      hx-confirm="Czy na pewno chcesz usunąć artykuł?"
+    >
+      Usuń
+    </button>
+  </div>
 </div>
 {% endif %} {% endblock %}

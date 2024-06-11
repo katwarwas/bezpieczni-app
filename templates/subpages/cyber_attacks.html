@@ -1,141 +1,142 @@
 {% extends "base.html" %} {% set active_page = 'cyberattacks' %} {% block
 content %}
+<div class="mainDiv">
+  <h2 class="pageHeading">Cyber Ataki - najważniejsze informacje</h2>
+  <div class="cyberattacks">
+    <article id="v1">
+      <img
+        src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/whats-cyberattacks.jpeg"
+        alt="Haker"
+      />
 
-<h2 class="pageHeading">Cyber Ataki - najważniejsze informacje</h2>
-<div class="cyberattacks">
-  <article id="v1">
-    <img
-      src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/whats-cyberattacks.jpeg"
-      alt="Haker"
-    />
+      <div>
+        <h3>Czym są?</h3>
+        <br />
+        <p>
+          Cyberataki to dzisiaj jedno z najbardziej palących zagrożeń dla
+          społeczeństwa, gospodarki i instytucji na całym świecie. W dzisiejszym
+          zglobalizowanym i zdigitalizowanym środowisku, gdzie wiele aspektów
+          życia przenosi się do przestrzeni online, cyberatak może przyjąć wiele
+          różnych form i mieć bardzo poważne konsekwencje.<br /><br />
+          Na ogół można określić cyberatak jako celowe działania przeprowadzane
+          przez jednostki, grupy lub nawet państwa, które wykorzystują
+          technologie informatyczne do nieuprawnionego dostępu, zakłócania,
+          manipulowania lub niszczenia danych, systemów informatycznych lub
+          sieci komputerowych. Cyberatak może być skierowany przeciwko różnym
+          celom, w tym przeciwko instytucjom rządowym, firmom, organizacjom
+          pozarządowym, a nawet przeciwko pojedynczym użytkownikom.
+        </p>
+      </div>
+    </article>
+    <article id="v2">
+      <div id="list-attacks">
+        <h3>Najpopularniejsze rodzaje:</h3>
+        <br />
+        <ul>
+          <li
+            hx-get="/phishing"
+            hx-target="#attack-content"
+            hx-trigger="click"
+            hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+            hx-swap="innerHTML"
+            class="list-item active"
+          >
+            Phishing
+          </li>
+          <li
+            hx-get="/malware"
+            hx-target="#attack-content"
+            hx-trigger="click"
+            hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+            hx-swap="innerHTML"
+            class="list-item"
+          >
+            Malware
+          </li>
+          <li
+            hx-get="/ddos"
+            hx-target="#attack-content"
+            hx-trigger="click"
+            hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+            hx-swap="innerHTML"
+            class="list-item"
+          >
+            DDoS
+          </li>
+          <li
+            hx-get="/mitm"
+            hx-target="#attack-content"
+            hx-trigger="click"
+            hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+            hx-swap="innerHTML"
+            class="list-item"
+          >
+            Man-in-the-middle
+          </li>
+          <li
+            hx-get="/sql"
+            hx-target="#attack-content"
+            hx-trigger="click"
+            hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+            hx-swap="innerHTML"
+            class="list-item"
+          >
+            SQL Injection
+          </li>
+          <li
+            hx-get="/zero-day"
+            hx-target="#attack-content"
+            hx-trigger="click"
+            hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+            hx-swap="innerHTML"
+            class="list-item"
+          >
+            Zero-day
+          </li>
+        </ul>
+      </div>
+      <div id="attack-content" hx-on::after-swap="scrollToElement('ul')">
+        {% include 'htmx/phishing.html' %}
+      </div>
 
-    <div>
-      <h3>Czym są?</h3>
-      <br />
-      <p>
-        Cyberataki to dzisiaj jedno z najbardziej palących zagrożeń dla
-        społeczeństwa, gospodarki i instytucji na całym świecie. W dzisiejszym
-        zglobalizowanym i zdigitalizowanym środowisku, gdzie wiele aspektów
-        życia przenosi się do przestrzeni online, cyberatak może przyjąć wiele
-        różnych form i mieć bardzo poważne konsekwencje.<br /><br />
-        Na ogół można określić cyberatak jako celowe działania przeprowadzane
-        przez jednostki, grupy lub nawet państwa, które wykorzystują technologie
-        informatyczne do nieuprawnionego dostępu, zakłócania, manipulowania lub
-        niszczenia danych, systemów informatycznych lub sieci komputerowych.
-        Cyberatak może być skierowany przeciwko różnym celom, w tym przeciwko
-        instytucjom rządowym, firmom, organizacjom pozarządowym, a nawet
-        przeciwko pojedynczym użytkownikom.
-      </p>
-    </div>
-  </article>
-  <article id="v2">
-    <div id="list-attacks">
-      <h3>Najpopularniejsze rodzaje:</h3>
-      <br />
-      <ul>
-        <li
-          hx-get="/phishing"
-          hx-target="#attack-content"
-          hx-trigger="click"
-          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-          hx-swap="innerHTML"
-          class="list-item active"
-        >
-          Phishing
-        </li>
-        <li
-          hx-get="/malware"
-          hx-target="#attack-content"
-          hx-trigger="click"
-          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-          hx-swap="innerHTML"
-          class="list-item"
-        >
-          Malware
-        </li>
-        <li
-          hx-get="/ddos"
-          hx-target="#attack-content"
-          hx-trigger="click"
-          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-          hx-swap="innerHTML"
-          class="list-item"
-        >
-          DDoS
-        </li>
-        <li
-          hx-get="/mitm"
-          hx-target="#attack-content"
-          hx-trigger="click"
-          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-          hx-swap="innerHTML"
-          class="list-item"
-        >
-          Man-in-the-middle
-        </li>
-        <li
-          hx-get="/sql"
-          hx-target="#attack-content"
-          hx-trigger="click"
-          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-          hx-swap="innerHTML"
-          class="list-item"
-        >
-          SQL Injection
-        </li>
-        <li
-          hx-get="/zero-day"
-          hx-target="#attack-content"
-          hx-trigger="click"
-          hx-on="click: this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-          hx-swap="innerHTML"
-          class="list-item"
-        >
-          Zero-day
-        </li>
-      </ul>
-    </div>
-    <div id="attack-content" hx-on::after-swap="scrollToElement('ul')">
-      {% include 'htmx/phishing.html' %}
-    </div>
-
-    <!-- <img
+      <!-- <img
           src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyberattacks-types.jpeg"
           alt="Haker"
         /> -->
-  </article>
-  <article id="v3">
-    <div>
-      <h3>Pierwszy cyberatak: Creeper Worm (1971)</h3>
-      <br />
-      <img
-        src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/creeper.jpg"
-        alt="Creeper Worm"
-      />
-      <br />
-      <p>
-        <strong>Tło</strong><br />
-        Pierwszy znany cyberatak przeprowadzono w 1971 roku. Nosił nazwę Creeper
-        Worm i został stworzony przez Boba Thomasa, pracownika firmy BBN
-        Technologies. ARPANET, sieć komputerowa sponsorowana przez Agencję
-        Zaawansowanych Projektów Badawczych Departamentu Obrony Stanów
-        Zjednoczonych (DARPA), była wtedy wczesnym prekursorem dzisiejszego
-        Internetu.<br /><br /><strong>Jak działał?</strong><br />
-        Creeper Worm był eksperymentalnym programem zaprojektowanym do
-        demonstracji koncepcji mobilnych programów, które mogą przemieszczać się
-        między komputerami w sieci. Creeper był w stanie przemieszczać się
-        między komputerami DEC PDP-10 w sieci ARPANET. Gdy infekował komputer,
-        wyświetlał wiadomość. Creeper Worm nie wyrządzał żadnych szkód i nie
-        zawierał złośliwego kodu, ale jego zdolność do przemieszczania się
-        autonomicznie między komputerami była nowatorska.<br /><br /><strong
-          >Reakcja i Konsekwencje</strong
-        ><br />Aby przeciwdziałać Creeper Worm, Ray Tomlinson, ten sam
-        programista, który wynalazł e-mail, stworzył pierwszy program
-        antywirusowy, o nazwie Reaper. Reaper był zaprojektowany do ścigania i
-        usuwania Creeper Worm z zainfekowanych systemów.<br />
-      </p>
-    </div>
-  </article>
+    </article>
+    <article id="v3">
+      <div>
+        <h3>Pierwszy cyberatak: Creeper Worm (1971)</h3>
+        <br />
+        <img
+          src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/creeper.jpg"
+          alt="Creeper Worm"
+        />
+        <br />
+        <p>
+          <strong>Tło</strong><br />
+          Pierwszy znany cyberatak przeprowadzono w 1971 roku. Nosił nazwę
+          Creeper Worm i został stworzony przez Boba Thomasa, pracownika firmy
+          BBN Technologies. ARPANET, sieć komputerowa sponsorowana przez Agencję
+          Zaawansowanych Projektów Badawczych Departamentu Obrony Stanów
+          Zjednoczonych (DARPA), była wtedy wczesnym prekursorem dzisiejszego
+          Internetu.<br /><br /><strong>Jak działał?</strong><br />
+          Creeper Worm był eksperymentalnym programem zaprojektowanym do
+          demonstracji koncepcji mobilnych programów, które mogą przemieszczać
+          się między komputerami w sieci. Creeper był w stanie przemieszczać się
+          między komputerami DEC PDP-10 w sieci ARPANET. Gdy infekował komputer,
+          wyświetlał wiadomość. Creeper Worm nie wyrządzał żadnych szkód i nie
+          zawierał złośliwego kodu, ale jego zdolność do przemieszczania się
+          autonomicznie między komputerami była nowatorska.<br /><br /><strong
+            >Reakcja i Konsekwencje</strong
+          ><br />Aby przeciwdziałać Creeper Worm, Ray Tomlinson, ten sam
+          programista, który wynalazł e-mail, stworzył pierwszy program
+          antywirusowy, o nazwie Reaper. Reaper był zaprojektowany do ścigania i
+          usuwania Creeper Worm z zainfekowanych systemów.<br />
+        </p>
+      </div>
+    </article>
+  </div>
 </div>
 <script>
   function scrollToElement(selector) {

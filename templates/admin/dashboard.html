@@ -1,42 +1,43 @@
 {% extends "admin_base.html" %} {% block content %}
-<div class="dashboard-div">
-  {% if admin %}
-  <div class="info-dashboard">
-    <div>
-      <h3>Zarządzenie</h3>
-      <ul class="dashboard-list">
-        <li
-          hx-get="/user-list"
-          hx-target="#admin-panel"
-          hx-swap="outterHTML"
-          hx-on:click=" this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-          class="admin-list-item"
-        >
-          Lista użytkowników
-        </li>
-        <li
-          hx-get="/register"
-          hx-target="#admin-panel"
-          hx-swap="outterHTML"
-          hx-on:click=" this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
-          class="admin-list-item"
-        >
-          Zarejestruj użytkownika
-        </li>
-      </ul>
-      <div
-        id="admin-panel"
-        class="hide"
-        hx-on::after-swap="document.querySelector('#admin-panel').classList.remove('hide');"
-      ></div>
+<div class="mainDiv">
+  <div class="dashboard-div">
+    {% if admin %}
+    <div class="info-dashboard">
+      <div>
+        <h3>Zarządzenie</h3>
+        <ul class="dashboard-list">
+          <li
+            hx-get="/user-list"
+            hx-target="#admin-panel"
+            hx-swap="outterHTML"
+            hx-on:click=" this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+            class="admin-list-item"
+          >
+            Lista użytkowników
+          </li>
+          <li
+            hx-get="/register"
+            hx-target="#admin-panel"
+            hx-swap="outterHTML"
+            hx-on:click=" this.classList.add('active'); this.parentElement.querySelectorAll('li').forEach(el => { if (el !== this) el.classList.remove('active'); })"
+            class="admin-list-item"
+          >
+            Zarejestruj użytkownika
+          </li>
+        </ul>
+        <div
+          id="admin-panel"
+          class="hide"
+          hx-on::after-swap="document.querySelector('#admin-panel').classList.remove('hide');"
+        ></div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="info-dashboard">
+      <h3>Liczba postów</h3>
+      <p class="n-posts">{{ posts_number }}</p>
+      <p>w tym twoich: <span>{{ my_posts_number }}</span></p>
     </div>
   </div>
-  {% endif %}
-  <div class="info-dashboard">
-    <h3>Liczba postów</h3>
-    <p class="n-posts">{{ posts_number }}</p>
-    <p>w tym twoich: <span>{{ my_posts_number }}</span></p>
-  </div>
 </div>
-
 {% endblock %}
