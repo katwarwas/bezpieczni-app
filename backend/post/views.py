@@ -42,7 +42,7 @@ async def add_post(db: DbSession, current_user: CurrentUser, request: Request, f
         
         contents = await file.read()
         if len(contents) >= 26214400:
-            content = """<p>Plik może mieć maksymalnie 8MB</p>"""
+            content = """<p>Plik może mieć maksymalnie 25MB</p>"""
             return HTMLResponse(content=content)
         
         post = Posts()

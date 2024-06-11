@@ -52,3 +52,4 @@ def on_startup():
 async def trigger_500():
     raise Exception("This is a test for a 500 error")
 
+
