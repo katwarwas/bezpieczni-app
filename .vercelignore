@@ -1,8 +1,9 @@
 .env
+node_modules/
 node_modules
 .vercel
 __pycache__
 venv/
 venv
 .git/
-.gitgit ls-files | grep venv
+jupyter_n/
