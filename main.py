@@ -44,10 +44,12 @@ app.add_exception_handler(Exception, custom_exception_handler)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, rate_limit_exceeded_handler)
 
+
 @app.on_event("startup")
 async def on_startup():
     init_roles()
     await create_first_user()
+
 
 @app.get("/trigger-500")
 async def trigger_500():
