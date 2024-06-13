@@ -1,9 +1,0 @@
-.env
-node_modules/
-node_modules
-.vercel
-__pycache__
-venv/
-venv
-.git/
-jupyter_n/
