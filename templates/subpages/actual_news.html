@@ -1,4 +1,5 @@
 {% extends "base.html" %} {% block content %}
+<div class="mainDiv"></div>
 <div class="actual-news-content">
   <img src="{{ post.img_url }}" alt="Photo-{{ post.id }}" />
   <h1
@@ -17,9 +18,24 @@
       margin-left: 50px;
       margin-right: 50px;
       text-indent: 0%;
+      margin-bottom: 0px;
     "
   >
     {{ author.name }} {{author.surname }}
   </p>
+  <p class="time-cell" style="font-size: 12px; text-align: center; text-indent: 0;">{{ post.created_at }}</p>
 </div>
+</div>
+<script defer>
+  function formatTime(timeStr) {
+    return timeStr.substring(0, 16)
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    let timeCells = document.querySelectorAll(".time-cell")
+    timeCells.forEach(function (cell) {
+      cell.textContent = formatTime(cell.textContent)
+    })
+  })
+</script>
 {% endblock %}

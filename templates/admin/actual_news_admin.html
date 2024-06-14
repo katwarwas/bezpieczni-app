@@ -18,9 +18,16 @@
         margin-left: 50px;
         margin-right: 50px;
         text-indent: 0%;
+        margin-bottom: 0px;
       "
     >
       {{ author.name }} {{author.surname }}
+    </p>
+    <p
+      class="time-cell"
+      style="font-size: 12px; text-align: center; text-indent: 0"
+    >
+      {{ post.created_at }}
     </p>
   </div>
   <br />
@@ -35,4 +42,5 @@
     </button>
   </div>
 </div>
+
 {% endif %} {% endblock %}

@@ -82,6 +82,7 @@ async def posts(request: Request, db: DbSession, page: int = 0):
         clean_post_content = remove_html_tags(post.content)[:200]
         post.title = escape(post.title[:100])
         post.content = clean_post_content
+        post.created_at = post.created_at.strftime("%Y-%m-%d %H:%M")
     pages = ceil(db.query(Posts).count() / 12)
     if pages is None:
         raise post_exception()
@@ -92,11 +93,11 @@ async def posts(request: Request, db: DbSession, page: int = 0):
 @limiter.limit("20/minute")
 async def posts(request: Request, db: DbSession, id: int, current_user: CurrentUser):
     post = db.query(Posts).filter(Posts.id == id).one_or_none()
-    if posts is None:
+    if post is None:
         raise post_exception()
     author = db.query(Users).filter(Users.id == post.user_id).execution_options(include_deleted=True).one_or_none()
     post.title = escape(post.title)
-    post.content = post.content
+    post.created_at = post.created_at.strftime("%Y-%m-%d %H:%M")
     if author.id == current_user.id or current_user.role_id == 1:
         return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author, "author_post": True})
     return templates.TemplateResponse("admin/actual_news_admin.html", {"request": request, "post": post, "author": author,"author_post": False})
