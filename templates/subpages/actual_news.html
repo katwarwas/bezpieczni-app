@@ -31,16 +31,4 @@
     </p>
   </div>
 </div>
-<script defer>
-  function formatTime(timeStr) {
-    return timeStr.substring(0, 16)
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    let timeCells = document.querySelectorAll(".time-cell")
-    timeCells.forEach(function (cell) {
-      cell.textContent = formatTime(cell.textContent)
-    })
-  })
-</script>
 {% endblock %}
