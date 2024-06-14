@@ -87,11 +87,12 @@
 
 .newsTitle {
   line-height: 1.2;
-  height: 44px;
+  max-height: calc(1.2em * 2);
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 53rem) {
