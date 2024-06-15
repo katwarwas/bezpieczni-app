@@ -22,7 +22,6 @@
   text-align: left;
   font-size: clamp(16px, 1vw, 20px);
   margin: 5px;
-  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -37,7 +36,7 @@
   font-weight: 400;
   font-style: normal;
   text-align: left;
-  font-size: 20px;
+  font-size: 24px;
   margin: 10px;
   width: 100%;
 }
@@ -51,6 +50,11 @@
   text-align: center;
   font-size: 28px;
   margin: 10px;
+  width: 100%;
+}
+
+.actual-news-content ul,
+.actual-news-content ol {
   width: 100%;
 }
 
@@ -121,4 +125,30 @@
   display: flex;
   margin-left: 10px;
   justify-content: flex-end;
+}
+
+.actual-news-content .ql-indent-1 {
+  margin-left: 5vw;
+}
+
+.actual-news-content .ql-indent-2 {
+  margin-left: 10vw;
+}
+
+.actual-news-content .ql-indent-3 {
+  margin-left: 10vw;
+}
+
+.actual-news-content h4 {
+  background-color: transparent;
+  border-radius: 0px;
+  color: #d0dced;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  font-size: 20px;
+  margin: 10px;
+  width: 100%;
 }
