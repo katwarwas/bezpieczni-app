@@ -3,7 +3,6 @@ from backend.admin.views import templates
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as starletteHTTPException
 from slowapi.errors import RateLimitExceeded
-from starlette.responses import JSONResponse
 
 async def http_exception_handler(request: Request, exc: starletteHTTPException):
     return templates.TemplateResponse(

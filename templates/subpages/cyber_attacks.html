@@ -98,11 +98,6 @@ content %}
       <div id="attack-content" hx-on::after-swap="scrollToElement('ul')">
         {% include 'htmx/phishing.html' %}
       </div>
-
-      <!-- <img
-          src="https://cyberbucket-s3.s3.eu-north-1.amazonaws.com/cyberattacks-types.jpeg"
-          alt="Haker"
-        /> -->
     </article>
     <article id="v3">
       <div>
@@ -141,9 +136,9 @@ content %}
 <script>
   function scrollToElement(selector) {
     const element = document.querySelector(selector)
-    const headerOffset = document.querySelector("header").offsetHeight // Pobieranie wysokości nagłówka
-    const elementPosition = element.getBoundingClientRect().top // Pozycja elementu względem viewport
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset // Obliczenie końcowej pozycji z uwzględnieniem nagłówka
+    const headerOffset = document.querySelector("header").offsetHeight // Retrieving header height
+    const elementPosition = element.getBoundingClientRect().top // Position of the element relative to the viewport
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset // Calculation of the final position including header
 
     window.scrollTo({
       top: offsetPosition,

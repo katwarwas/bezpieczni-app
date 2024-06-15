@@ -1,5 +1,4 @@
-from fastapi import APIRouter, Request, Response, Form, Depends, HTTPException
-from typing import Annotated
+from fastapi import APIRouter, Request, Response, Form, Depends
 from database import DbSession
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, FileResponse

@@ -58,11 +58,11 @@ content %}
   <div id="info" hx-on::after-swap="hideContent()"></div>
 </div>
 
-<!-- Podłączanie Quill z CDN -->
+<!-- Connecting Quill with CDN -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
 
-<!-- Inicjalizacja Quill -->
+<!-- Quill initialization -->
 <script>
   var toolbarOptions = [
     ["bold", "italic", "underline", "strike"], // toggled buttons
@@ -90,7 +90,6 @@ content %}
   var hiddenInput = document.getElementById("content")
 
   form.onsubmit = function () {
-    // Ustaw zawartość pola tekstowego na zawartość edytora Quill
     hiddenInput.value = quill.root.innerHTML
   }
   const input = document.getElementById("file")
@@ -102,7 +101,7 @@ content %}
   function hideContent() {
     setTimeout(function () {
       document.getElementById("info").textContent = ""
-    }, 5000) // Ukryj zawartość po 5 sekundach
+    }, 5000)
 
     if (
       document.getElementById("info").textContent ===

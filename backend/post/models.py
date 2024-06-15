@@ -1,7 +1,6 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Text, TIMESTAMP, text, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, Text, TIMESTAMP, text
 from sqlalchemy.orm import relationship
 from database import Base
-from ..general.soft_delete import SoftDeleteMixin
 
 
 class Posts(Base):
