@@ -90,7 +90,7 @@ def get_current_admin(db: DbSession, token: Annotated[str | None, Cookie(alias="
 
 async def create_first_user():
     session = Session(bind=engine)
-    if session.query(Users).all() is None:
+    if session.query(Users).all() == []:
         random_password = generate_random_password()
         password = hash_password(random_password)
         user_in = Users()
